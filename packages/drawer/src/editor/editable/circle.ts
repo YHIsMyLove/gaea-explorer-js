@@ -100,8 +100,10 @@ export class EditableCircle extends EditableShape {
   }
 
   finalize(): void {
-    this._entity.ellipse!.semiMinorAxis = this._radius as any;
-    this._entity.ellipse!.semiMajorAxis = this._radius as any;
+    if (this._entity.ellipse) {
+      this._entity.ellipse.semiMinorAxis = this._radius as any;
+      this._entity.ellipse.semiMajorAxis = this._radius as any;
+    }
   }
 
   getEditingParams(): EditingParams {

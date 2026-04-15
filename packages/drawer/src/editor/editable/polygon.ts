@@ -27,8 +27,9 @@ export class EditablePolygon extends EditablePolyline {
     const positions = resolvedHierarchy?.positions ?? resolvedHierarchy;
     this._positions = [...positions];
 
-    // 替换 polygon.hierarchy 为 CallbackProperty
-    this._entity.polygon!.hierarchy = new CallbackProperty(
+    // polygon 已通过上面的 null 检查
+    const polygon = this._entity.polygon;
+    polygon.hierarchy = new CallbackProperty(
       () => new PolygonHierarchy(this._positions),
       false,
     ) as any;
@@ -94,12 +95,14 @@ export class EditablePolygon extends EditablePolyline {
     });
 
     for (const mp of midPoints) {
-      const meta = this.getControlPointMeta(mp)!;
+      const meta = this.getControlPointMeta(mp);
+      if (!meta) continue;
       if (
         meta.vertexIndex === (vertexIndex - 1 + n) % n ||
         meta.vertexIndex === vertexIndex
       ) {
-        const i = meta.vertexIndex!;
+        const i = meta.vertexIndex;
+        if (i === undefined) continue;
         const next = (i + 1) % n;
         const mid = Cartesian3.midpoint(
           this._positions[i],
@@ -124,9 +127,11 @@ export class EditablePolygon extends EditablePolyline {
   }
 
   finalize(): void {
-    this._entity.polygon!.hierarchy = new PolygonHierarchy([
-      ...this._positions,
-    ]) as any;
+    if (this._entity.polygon) {
+      this._entity.polygon.hierarchy = new PolygonHierarchy([
+        ...this._positions,
+      ]) as any;
+    }
     if (this._entity.polyline) {
       this._entity.polyline.positions = [
         ...this._positions,

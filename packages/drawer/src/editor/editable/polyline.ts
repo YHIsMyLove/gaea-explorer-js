@@ -18,8 +18,9 @@ export class EditablePolyline extends EditableShape {
       ? [...rawPositions]
       : ((rawPositions as CallbackProperty).getValue?.({}) ?? []);
 
-    // 替换为 CallbackProperty 以实时更新
-    this._entity.polyline!.positions = new CallbackProperty(
+    // polyline 已通过上面的 null 检查
+    const polyline = this._entity.polyline;
+    polyline.positions = new CallbackProperty(
       () => this._positions,
       false,
     ) as any;
@@ -71,8 +72,11 @@ export class EditablePolyline extends EditableShape {
     const meta = this.getControlPointMeta(controlPointEntity);
     if (!meta) return;
 
-    if (meta.controlType === ControlPointType.VERTEX) {
-      const index = meta.vertexIndex!;
+    if (
+      meta.controlType === ControlPointType.VERTEX &&
+      meta.vertexIndex !== undefined
+    ) {
+      const index = meta.vertexIndex;
       this._positions[index] = newPosition;
       this.updateControlPointPosition(controlPointEntity, newPosition);
       this._refreshAdjacentMidPoints(index);
@@ -88,12 +92,14 @@ export class EditablePolyline extends EditableShape {
     });
 
     for (const mp of midPoints) {
-      const meta = this.getControlPointMeta(mp)!;
+      const meta = this.getControlPointMeta(mp);
+      if (!meta) continue;
       if (
         meta.vertexIndex === vertexIndex - 1 ||
         meta.vertexIndex === vertexIndex
       ) {
-        const i = meta.vertexIndex!;
+        const i = meta.vertexIndex;
+        if (i === undefined) continue;
         const mid = Cartesian3.midpoint(
           this._positions[i],
           this._positions[i + 1],
@@ -147,7 +153,9 @@ export class EditablePolyline extends EditableShape {
   }
 
   finalize(): void {
-    this._entity.polyline!.positions = [...this._positions] as any;
+    if (this._entity.polyline) {
+      this._entity.polyline.positions = [...this._positions] as any;
+    }
   }
 
   getEditingParams(): EditingParams {
