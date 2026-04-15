@@ -1,6 +1,6 @@
 import { Color, Entity, JulianDate } from 'cesium';
-import { MouseTooltip } from '@cesium-extends/tooltip';
-import Subscriber from '@cesium-extends/subscriber';
+import { MouseTooltip } from '@gaea/tooltip';
+import Subscriber from '@gaea/subscriber';
 
 import Painter from './painter';
 import Circle from './shape/circle';
@@ -10,7 +10,7 @@ import Polygon from './shape/polygon';
 import Rectangle from './shape/rectangle';
 
 import type { Viewer } from 'cesium';
-import type { EventArgs, EventType } from '@cesium-extends/subscriber';
+import type { EventArgs, EventType } from '@gaea/subscriber';
 import type { BasicGraphicesOptions } from './base';
 import type {
   ActionCallback,
@@ -87,7 +87,7 @@ export default class Drawer {
 
   private _option: DrawOption;
 
-  private $Instance!: Entity | void;
+  private $Instance!: Entity | undefined;
   private $AddedInstance: Entity[] = [];
 
   private _dropPoint!: (move: EventArgs) => void;
@@ -237,7 +237,7 @@ export default class Drawer {
    */
   start(
     config: StartOption,
-    overrideFunc: OverrideEntityFunc = (action: EventType, entity: Entity) =>
+    overrideFunc: OverrideEntityFunc = (_action: EventType, entity: Entity) =>
       entity,
   ): void {
     config = config ?? {};
@@ -394,3 +394,14 @@ export default class Drawer {
     this._status = 'DESTROY';
   }
 }
+
+// Editor
+export { Editor } from './editor';
+export type {
+  EditorOptions,
+  EditCallbacks,
+  EditingParams,
+  EditableType,
+  ControlPointType,
+  ControlPointMeta,
+} from './editor/typings';
