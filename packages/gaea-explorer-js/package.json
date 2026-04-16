@@ -1,5 +1,5 @@
 {
-  "name": "gaea-explorer-js",
+  "name": "@gaea-explorer/gaea-explorer-js",
   "version": "1.0.1",
   "type": "module",
   "main": "./dist/index.js",
