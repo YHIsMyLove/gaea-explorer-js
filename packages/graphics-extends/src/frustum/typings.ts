@@ -1,6 +1,6 @@
 // packages/graphics-extends/src/frustum/typings.ts
 
-import type { Property, Color } from 'cesium';
+import type { Property, Color, Entity, Scene } from 'cesium';
 
 /**
  * FrustumGraphics 构造选项
@@ -42,7 +42,7 @@ export interface FrustumGraphicsConstructorOptions {
  * FrustumPrimitive 构造选项（内部使用）
  */
 export interface FrustumPrimitiveOptions {
-  entity: Cesium.Entity;
-  graphics: FrustumGraphics;
-  scene: Cesium.Scene;
+  entity: Entity;
+  graphics: FrustumGraphics;  // 将在后续 Task 定义
+  scene: Scene;
 }
