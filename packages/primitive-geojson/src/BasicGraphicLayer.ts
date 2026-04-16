@@ -2,8 +2,8 @@ import { Event } from 'cesium';
 
 import type Subscriber from '@gaea-explorer/subscriber';
 import type {
-	EventType,
-	ExternalListenCallback,
+  EventType,
+  ExternalListenCallback,
 } from '@gaea-explorer/subscriber';
 
 /**
