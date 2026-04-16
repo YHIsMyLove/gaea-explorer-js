@@ -1,3 +1,41 @@
+# @gaea-explorer/drawer 1.0.0 (2026-04-16)
+
+
+### Bug Fixes
+
+* defaults no moveDebounce ([d946251](https://github.com/YHIsMyLove/gaea-explorer-js/commit/d9462510849764043585fdbbbf1b9c0b73de30c6))
+* dont show shape on terrain when use model mode [#10](https://github.com/YHIsMyLove/gaea-explorer-js/issues/10) ([e14f175](https://github.com/YHIsMyLove/gaea-explorer-js/commit/e14f17560271bb48576c269c7779a559f793d6e6))
+* **drawer:** add screenSpaceCameraController to test mock viewer ([3e697c4](https://github.com/YHIsMyLove/gaea-explorer-js/commit/3e697c418aae7987769322eeea834f3d0137b16f))
+* **drawer:** fix the destroy function does not correctly mark  _status as 'DESTROY' ([d053b93](https://github.com/YHIsMyLove/gaea-explorer-js/commit/d053b9305acd200e323a1115f39842523b6508b2))
+* **drawer:** incorrect drawing of circles and rectangles ([9ff29f1](https://github.com/YHIsMyLove/gaea-explorer-js/commit/9ff29f16fc6a142a7098de67763d3f792b8b95e8))
+* **drawer:** rectangle drawer returns 4 vertices ([5056397](https://github.com/YHIsMyLove/gaea-explorer-js/commit/505639736d67b9d0cb4fc38f13723d3cb3a49bc1))
+* **drawer:** sameStyle的配置没有正确生效 ([b9c6160](https://github.com/YHIsMyLove/gaea-explorer-js/commit/b9c6160ac17eae4515ba0e463b7ce5a73789fb88))
+* fix continuous drawing no dynamic graphics ([ee91da5](https://github.com/YHIsMyLove/gaea-explorer-js/commit/ee91da5defde4776770cb9c3b37b9f2b337b003a))
+* fix line drawing becoming a curve ([37ac972](https://github.com/YHIsMyLove/gaea-explorer-js/commit/37ac972add184f9c0ea8edd85c8b15dbf2dbae6e))
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/YHIsMyLove/gaea-explorer-js/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+* remove deprecated defaultValue for cesium 1.134 ([6d2cef1](https://github.com/YHIsMyLove/gaea-explorer-js/commit/6d2cef16f8088d7c6eb33f509c088a811c8348aa))
+* restore workspace dependencies across all packages ([#6](https://github.com/YHIsMyLove/gaea-explorer-js/issues/6)) ([3a6479b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/3a6479b056c8cb86c7a186854988bce3a5bf7f8d))
+* ts error MouseTooltip without enabled ([741a80d](https://github.com/YHIsMyLove/gaea-explorer-js/commit/741a80d0d69ce67e5db95b2e62b175d701989b7c))
+* use ^dep [#2](https://github.com/YHIsMyLove/gaea-explorer-js/issues/2) ([663c92c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/663c92c0718c12174f45305a3b18d9fadcaf4ba2))
+
+
+### Features
+
+* drawer ([f05841c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/f05841cccea51a13a0eb9d858fa28a4f175418ae))
+* **drawer:** add Editor module for entity editing with control points ([1d7e875](https://github.com/YHIsMyLove/gaea-explorer-js/commit/1d7e875f826d87b58c0cf86ec4751d6af64ecb41))
+* **drawer:** enable draw on model ([e23df17](https://github.com/YHIsMyLove/gaea-explorer-js/commit/e23df176b92d20589d55b30b2da7afb2ca9a1956))
+* measure ([deb314f](https://github.com/YHIsMyLove/gaea-explorer-js/commit/deb314f29fbcb2425a502dc1cee00b856bf30d4d))
+* sync-viewer ([cf5d1b9](https://github.com/YHIsMyLove/gaea-explorer-js/commit/cf5d1b9609e0ae702563eb82ecb4bb84081da975))
+
+
+
+
+
+### Dependencies
+
+* **@gaea-explorer/subscriber:** upgraded to 1.0.0
+* **@gaea-explorer/tooltip:** upgraded to 1.0.0
+
 ## @gaea/drawer [1.3.8](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/drawer@1.3.7...@gaea/drawer@1.3.8) (2025-10-10)
 
 ### Bug Fixes
