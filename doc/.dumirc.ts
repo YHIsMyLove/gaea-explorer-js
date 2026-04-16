@@ -5,11 +5,15 @@ const cesiumSource = 'node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
 export default defineConfig({
+  // GitHub Pages 子路径部署配置
+  base: '/gaea-explorer-js/',
+  publicPath: '/gaea-explorer-js/',
+
   themeConfig: {
     name: 'gaea-explorer-js',
-    logo: '/logo.svg',
+    logo: '/gaea-explorer-js/logo.svg',
     socialLinks: {
-      github: 'https://github.com/omt-tech/gaea-explorer-js',
+      github: 'https://github.com/YHIsMyLove/gaea-explorer-js',
     },
   },
   alias: {
@@ -35,7 +39,7 @@ export default defineConfig({
     { from: path.join(cesiumSource, 'Widgets'), to: 'dist/cesium/Widgets' },
   ],
   define: {
-    CESIUM_BASE_URL: '/cesium',
+    CESIUM_BASE_URL: '/gaea-explorer-js/cesium',
   },
   jsMinifier: 'terser',
 });
