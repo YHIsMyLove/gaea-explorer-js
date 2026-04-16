@@ -1,6 +1,6 @@
 {
   "name": "@gaea-explorer/primitive-geojson",
-  "version": "1.0.11",
+  "version": "1.0.0",
   "description": "A faster method to load geojson on cesium by primitive",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,7 +28,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@gaea-explorer/subscriber": "1.1.1",
+    "@gaea-explorer/subscriber": "1.0.0",
     "@types/geojson": "^7946.0.10",
     "cesium": "^1.125.0"
   },
