@@ -1,3 +1,20 @@
+# @gaea-explorer/compass 1.0.0 (2026-04-16)
+
+
+### Bug Fixes
+
+* export options interface ([5efbb7b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/5efbb7bed8726324cc95fba3bfc5a97d9af1c1cf))
+* icons options dont working ([50bec0c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/50bec0ccc2ad2275fd86e478b771f6bdf3216660))
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/YHIsMyLove/gaea-explorer-js/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+* restore workspace dependencies across all packages ([#6](https://github.com/YHIsMyLove/gaea-explorer-js/issues/6)) ([3a6479b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/3a6479b056c8cb86c7a186854988bce3a5bf7f8d))
+
+
+### Features
+
+* add icons option ([e01f250](https://github.com/YHIsMyLove/gaea-explorer-js/commit/e01f2500267a700585155e2ab1a462368c7a62b0))
+* compass ([0144f91](https://github.com/YHIsMyLove/gaea-explorer-js/commit/0144f919fc1e269554b6780bc1f601555ff72f98))
+* update @cesium-extends/common@1.0.1 ([605ba3c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/605ba3c4995f548381aa573c4f18926ef8b7e7fb))
+
 # @gaea/compass 1.0.0 (2026-04-16)
 
 
