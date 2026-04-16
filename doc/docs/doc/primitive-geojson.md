@@ -5,24 +5,24 @@ group: 扩展
 order: 2
 ---
 
-## @gaea/primitive-geojson
+## @gaea-explorer/primitive-geojson
 
-@gaea/primitive-geojson 是基于 Cesium 的 JavaScript 库，用于将 GeoJSON 和 TopoJSON 数据解析为可视化的 Cesium 实体，包括点、线、面、标注等。它可以作为 npm 包安装，并在 Cesium 项目中直接使用。
+@gaea-explorer/primitive-geojson 是基于 Cesium 的 JavaScript 库，用于将 GeoJSON 和 TopoJSON 数据解析为可视化的 Cesium 实体，包括点、线、面、标注等。它可以作为 npm 包安装，并在 Cesium 项目中直接使用。
 
 ### 安装
 
 通过 npm 进行安装：
 
 ```
-npm install @gaea/primitive-geojson
+npm install @gaea-explorer/primitive-geojson
 ```
 
 ### 使用方法
 
-要在您的项目中使用 @gaea/primitive-geojson，只需像其他模块一样导入即可：
+要在您的项目中使用 @gaea-explorer/primitive-geojson，只需像其他模块一样导入即可：
 
 ```javascript
-import { GeoJsonPrimitiveLayer } from '@gaea/primitive-geojson';
+import { GeoJsonPrimitiveLayer } from '@gaea-explorer/primitive-geojson';
 
 GeoJsonPrimitiveLayer.load('path/to/data.json').then(() => {
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);

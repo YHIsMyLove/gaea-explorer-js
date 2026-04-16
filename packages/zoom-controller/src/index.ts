@@ -9,7 +9,7 @@ import {
 
 import Icons from './icons';
 import './styles/zoom-controller.scss';
-import { DomUtil, Widget } from '@gaea/common';
+import { DomUtil, Widget } from '@gaea-explorer/common';
 
 import type { Camera, Scene, Viewer } from 'cesium';
 

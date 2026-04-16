@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/subscriber",
+  "name": "@gaea-explorer/subscriber",
   "version": "1.1.1",
   "type": "module",
   "main": "./dist/index.js",

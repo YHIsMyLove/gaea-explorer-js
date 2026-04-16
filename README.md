@@ -27,18 +27,18 @@ npm install gaea-explorer-js --save
 
 gaea-explorer-js 提供了以下功能：
 
-- 事件订阅 `@gaea/subscriber` - [npm](https://www.npmjs.com/package/@gaea/subscriber)
-- primitive 方式加速渲染 geojson `@gaea/primitive-geojson` - [npm](https://www.npmjs.com/package/@gaea/primitive-geojson)
-- 丰富的 geojson 样式渲染 `@gaea/geojson-render` - [npm](https://www.npmjs.com/package/@gaea/geojson-render)
-- tooltip `@gaea/tooltip` - [npm](https://www.npmjs.com/package/@gaea/tooltip)
-- 弹出框 `@gaea/popup` - [npm](https://www.npmjs.com/package/@gaea/popup)
-- 指南针 `@gaea/compass` - [npm](https://www.npmjs.com/package/@gaea/compass)
-- 缩放控制 `@gaea/zoom-control` - [npm](https://www.npmjs.com/package/@gaea/zoom-control)
-- 绘图工具 `@gaea/drawer` - [npm](https://www.npmjs.com/package/@gaea/drawer)
-- 测量工具 `@gaea/measure` - [npm](https://www.npmjs.com/package/@gaea/measure)
-- 双屏联动工具 `@gaea/sync-viewer` - [npm](https://www.npmjs.com/package/@gaea/sync-viewer)
-- 热力图 `@gaea/heat` - [npm](https://www.npmjs.com/package/@gaea/heat)
-- 公共工具 `@gaea/common` - [npm](https://www.npmjs.com/package/@gaea/common)
+- 事件订阅 `@gaea-explorer/subscriber` - [npm](https://www.npmjs.com/package/@gaea-explorer/subscriber)
+- primitive 方式加速渲染 geojson `@gaea-explorer/primitive-geojson` - [npm](https://www.npmjs.com/package/@gaea-explorer/primitive-geojson)
+- 丰富的 geojson 样式渲染 `@gaea-explorer/geojson-render` - [npm](https://www.npmjs.com/package/@gaea-explorer/geojson-render)
+- tooltip `@gaea-explorer/tooltip` - [npm](https://www.npmjs.com/package/@gaea-explorer/tooltip)
+- 弹出框 `@gaea-explorer/popup` - [npm](https://www.npmjs.com/package/@gaea-explorer/popup)
+- 指南针 `@gaea-explorer/compass` - [npm](https://www.npmjs.com/package/@gaea-explorer/compass)
+- 缩放控制 `@gaea-explorer/zoom-control` - [npm](https://www.npmjs.com/package/@gaea-explorer/zoom-control)
+- 绘图工具 `@gaea-explorer/drawer` - [npm](https://www.npmjs.com/package/@gaea-explorer/drawer)
+- 测量工具 `@gaea-explorer/measure` - [npm](https://www.npmjs.com/package/@gaea-explorer/measure)
+- 双屏联动工具 `@gaea-explorer/sync-viewer` - [npm](https://www.npmjs.com/package/@gaea-explorer/sync-viewer)
+- 热力图 `@gaea-explorer/heat` - [npm](https://www.npmjs.com/package/@gaea-explorer/heat)
+- 公共工具 `@gaea-explorer/common` - [npm](https://www.npmjs.com/package/@gaea-explorer/common)
 
 详细信息及 demo，请参阅 [API 文档](https://yhislove.github.io/gaea-explorer-js/)。
 

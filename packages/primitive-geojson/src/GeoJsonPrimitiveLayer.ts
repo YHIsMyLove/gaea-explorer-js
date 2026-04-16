@@ -39,7 +39,7 @@ import {
 } from './GeoJsonLayer-util';
 import getPositionsCenter from './getPositionsCenter';
 
-import type Subscriber from '@gaea/subscriber';
+import type Subscriber from '@gaea-explorer/subscriber';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,

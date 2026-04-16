@@ -11,7 +11,7 @@ import {
   SceneMode,
   Transforms,
 } from 'cesium';
-import { DomUtil, Widget } from '@gaea/common';
+import { DomUtil, Widget } from '@gaea-explorer/common';
 
 import Icons from './icons';
 import './styles/Compass.scss';

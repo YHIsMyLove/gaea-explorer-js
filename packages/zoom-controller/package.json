@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/zoom-control",
+  "name": "@gaea-explorer/zoom-control",
   "version": "1.2.2",
   "type": "module",
   "main": "./dist/index.js",
@@ -29,6 +29,6 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/common": "workspace:*"
+    "@gaea-explorer/common": "workspace:*"
   }
 }

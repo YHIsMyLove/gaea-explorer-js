@@ -1,6 +1,6 @@
 import { Color, Entity, JulianDate } from 'cesium';
-import { MouseTooltip } from '@gaea/tooltip';
-import Subscriber from '@gaea/subscriber';
+import { MouseTooltip } from '@gaea-explorer/tooltip';
+import Subscriber from '@gaea-explorer/subscriber';
 
 import Painter from './painter';
 import Circle from './shape/circle';
@@ -10,7 +10,7 @@ import Polygon from './shape/polygon';
 import Rectangle from './shape/rectangle';
 
 import type { Viewer } from 'cesium';
-import type { EventArgs, EventType } from '@gaea/subscriber';
+import type { EventArgs, EventType } from '@gaea-explorer/subscriber';
 import type { BasicGraphicesOptions } from './base';
 import type {
   ActionCallback,

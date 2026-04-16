@@ -1,4 +1,4 @@
-import { GeoJsonPrimitiveLayerOptions } from '@gaea/primitive-geojson';
+import { GeoJsonPrimitiveLayerOptions } from '@gaea-explorer/primitive-geojson';
 import {
   Property,
   PointGraphics,

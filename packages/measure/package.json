@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/measure",
+  "name": "@gaea-explorer/measure",
   "version": "1.1.4",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,9 +28,9 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/drawer": "workspace:*",
-    "@gaea/subscriber": "workspace:*",
-    "@gaea/tooltip": "workspace:*",
+    "@gaea-explorer/drawer": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/tooltip": "workspace:*",
     "@turf/area": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "@turf/intersect": "^6.5.0",

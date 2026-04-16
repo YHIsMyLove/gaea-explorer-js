@@ -26,16 +26,16 @@
     "cesium": "*"
   },
   "dependencies": {
-    "@gaea/compass": "workspace:*",
-    "@gaea/drawer": "workspace:*",
-    "@gaea/geojson-render": "workspace:*",
-    "@gaea/heat": "workspace:*",
-    "@gaea/measure": "workspace:*",
-    "@gaea/popup": "workspace:*",
-    "@gaea/primitive-geojson": "workspace:*",
-    "@gaea/subscriber": "workspace:*",
-    "@gaea/sync-viewer": "workspace:*",
-    "@gaea/tooltip": "workspace:*",
-    "@gaea/zoom-control": "workspace:*"
+    "@gaea-explorer/compass": "workspace:*",
+    "@gaea-explorer/drawer": "workspace:*",
+    "@gaea-explorer/geojson-render": "workspace:*",
+    "@gaea-explorer/heat": "workspace:*",
+    "@gaea-explorer/measure": "workspace:*",
+    "@gaea-explorer/popup": "workspace:*",
+    "@gaea-explorer/primitive-geojson": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/sync-viewer": "workspace:*",
+    "@gaea-explorer/tooltip": "workspace:*",
+    "@gaea-explorer/zoom-control": "workspace:*"
   }
 }

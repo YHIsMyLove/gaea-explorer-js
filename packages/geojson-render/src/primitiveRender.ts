@@ -9,14 +9,14 @@ import type {
   CustomPaintItem,
   CylinderEntityConstructor,
 } from './renderConfig/entityStyle';
-import type GeoJsonPrimitiveLayer from '@gaea/primitive-geojson';
+import type GeoJsonPrimitiveLayer from '@gaea-explorer/primitive-geojson';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
   PointPrimitiveItem,
   PolylinePrimitiveItem,
   PolygonPrimitiveItem,
-} from '@gaea/primitive-geojson';
+} from '@gaea-explorer/primitive-geojson';
 
 export const primitiveGeoJsonRender = async (
   primitiveLayer: GeoJsonPrimitiveLayer,

@@ -1,0 +1,192 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776309622891,
+  "projectRoot": "C:\\Users\\soeaz\\Documents\\Work\\4-ai-code\\cesium-demo\\gaea-explorer-js",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": ">= 16",
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "esbuild",
+        "version": "0.17.18",
+        "category": "build"
+      },
+      {
+        "name": "rollup",
+        "version": "4.19.1",
+        "category": "build"
+      },
+      {
+        "name": "vitest",
+        "version": "2.0.4",
+        "category": "testing"
+      }
+    ],
+    "packageManager": "pnpm",
+    "runtime": "Node.js 16"
+  },
+  "build": {
+    "buildCommand": "pnpm build",
+    "testCommand": "pnpm test",
+    "lintCommand": "pnpm lint",
+    "devCommand": "pnpm dev",
+    "scripts": {
+      "dev": "turbo dev --concurrency 16",
+      "build": "turbo build --filter=!doc --filter=!example",
+      "build:doc": "turbo build --filter=doc",
+      "clean": "turbo clean",
+      "test": "turbo test",
+      "format": "biome format --write packages",
+      "lint": "biome check packages",
+      "lint:fix": "biome check --write --unsafe packages",
+      "coverage": "vitest run --coverage",
+      "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
+      "prepare": "husky install",
+      "postinstall": "pnpm run build"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": true,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "doc": {
+      "path": "doc",
+      "purpose": null,
+      "fileCount": 8,
+      "lastAccessed": 1776309622864,
+      "keyFiles": [
+        "CHANGELOG.md",
+        "LICENSE",
+        "package.json",
+        "README.md",
+        "tsconfig.json"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1776309622864,
+      "keyFiles": []
+    },
+    "packages": {
+      "path": "packages",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776309622865,
+      "keyFiles": []
+    },
+    "vite-example": {
+      "path": "vite-example",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1776309622873,
+      "keyFiles": [
+        "index.html",
+        "package.json",
+        "tsconfig.json",
+        "vite.config.js"
+      ]
+    },
+    "doc\\docs": {
+      "path": "doc\\docs",
+      "purpose": "Documentation",
+      "fileCount": 1,
+      "lastAccessed": 1776309622874,
+      "keyFiles": [
+        "index.md"
+      ]
+    },
+    "doc\\node_modules": {
+      "path": "doc\\node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 0,
+      "lastAccessed": 1776309622874,
+      "keyFiles": []
+    },
+    "vite-example\\node_modules": {
+      "path": "vite-example\\node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 0,
+      "lastAccessed": 1776309622876,
+      "keyFiles": []
+    },
+    "vite-example\\public": {
+      "path": "vite-example\\public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1776309622877,
+      "keyFiles": [
+        "test.geojson",
+        "vite.svg"
+      ]
+    },
+    "vite-example\\src": {
+      "path": "vite-example\\src",
+      "purpose": "Source code",
+      "fileCount": 3,
+      "lastAccessed": 1776309622877,
+      "keyFiles": [
+        "index.ts",
+        "style.css",
+        "vite-env.d.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "doc\\.dumirc.ts",
+      "accessCount": 6,
+      "lastAccessed": 1776311196959,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1776310887050,
+      "type": "file"
+    },
+    {
+      "path": ".releaserc.json",
+      "accessCount": 1,
+      "lastAccessed": 1776309635763,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1776310942115,
+      "type": "file"
+    },
+    {
+      "path": "doc\\package.json",
+      "accessCount": 1,
+      "lastAccessed": 1776310964433,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

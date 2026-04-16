@@ -8,7 +8,7 @@ import {
 import BasicGraphices from '../base';
 
 import { Cartesian3 } from 'cesium';
-import type { EventArgs } from '@gaea/subscriber';
+import type { EventArgs } from '@gaea-explorer/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Circle extends BasicGraphices implements LifeCycle {

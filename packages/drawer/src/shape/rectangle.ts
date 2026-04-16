@@ -10,7 +10,7 @@ import {
 import BasicGraphices from '../base';
 
 import type { Rectangle as TRectangle } from 'cesium';
-import type { EventArgs } from '@gaea/subscriber';
+import type { EventArgs } from '@gaea-explorer/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Rectangle extends BasicGraphices implements LifeCycle {

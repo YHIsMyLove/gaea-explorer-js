@@ -3,7 +3,7 @@ import { defined, Entity } from 'cesium';
 import BasicGraphices from '../base';
 
 import type { Cartesian3 } from 'cesium';
-import type { EventArgs } from '@gaea/subscriber';
+import type { EventArgs } from '@gaea-explorer/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Point extends BasicGraphices implements LifeCycle {

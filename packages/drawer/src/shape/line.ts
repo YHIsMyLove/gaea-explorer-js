@@ -3,7 +3,7 @@ import BasicGraphices from '../base';
 
 import type { LifeCycle } from '../base';
 import type { CallbackProperty, Cartesian3, PolylineGraphics } from 'cesium';
-import type { EventArgs } from '@gaea/subscriber';
+import type { EventArgs } from '@gaea-explorer/subscriber';
 
 export default class Line extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {
