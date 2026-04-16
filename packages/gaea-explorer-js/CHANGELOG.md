@@ -1,3 +1,28 @@
+## gaea-explorer-js [1.0.1](https://github.com/YHIsMyLove/gaea-explorer-js/compare/gaea-explorer-js@1.0.0...gaea-explorer-js@1.0.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* restore workspace dependencies for monorepo ([ef7fd7b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/ef7fd7b7370298eeee48058d455f25b2b5dfd1ff))
+
+
+
+
+
+### Dependencies
+
+* **@gaea/compass:** upgraded to 1.0.0
+* **@gaea/drawer:** upgraded to 1.0.0
+* **@gaea/geojson-render:** upgraded to 1.0.0
+* **@gaea/heat:** upgraded to 1.0.0
+* **@gaea/measure:** upgraded to 1.0.0
+* **@gaea/popup:** upgraded to 1.0.0
+* **@gaea/primitive-geojson:** upgraded to 1.0.0
+* **@gaea/subscriber:** upgraded to 1.0.0
+* **@gaea/sync-viewer:** upgraded to 1.0.0
+* **@gaea/tooltip:** upgraded to 1.0.0
+* **@gaea/zoom-control:** upgraded to 1.0.0
+
 # gaea-explorer-js 1.0.0 (2026-04-16)
 
 
