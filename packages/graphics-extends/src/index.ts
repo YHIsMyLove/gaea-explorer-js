@@ -1,8 +1,8 @@
-// Frustum Graphics Extension for Cesium Entity API
-// This package extends Cesium's Entity API to support Frustum graphics
+export { FrustumGraphics } from './frustum/FrustumGraphics';
+export { FrustumVisualizer } from './frustum/FrustumVisualizer';
+export type { FrustumGraphicsConstructorOptions } from './frustum/typings';
 
-export const PACKAGE_NAME = '@gaea-explorer/graphics-extends';
-export const VERSION = '1.0.0';
+// FrustumPrimitive 不对外导出（内部实现）
 
-// Placeholder export - FrustumGraphics will be implemented in subsequent tasks
-export {};
+// Module Augmentation 自动生效
+import './typings';
