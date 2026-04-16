@@ -15,6 +15,7 @@ export class FrustumVisualizer {
   private readonly _scene: Scene;
   private readonly _primitives: Map<Entity, FrustumPrimitive>;
   private readonly _onCollectionChanged: (
+    collection: EntityCollection,
     added: Entity[],
     removed: Entity[],
     changed: Entity[],
@@ -27,6 +28,7 @@ export class FrustumVisualizer {
     this._primitives = new Map();
 
     this._onCollectionChanged = (
+      _collection: EntityCollection,
       added: Entity[],
       removed: Entity[],
       changed: Entity[],

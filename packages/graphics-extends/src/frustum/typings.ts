@@ -1,6 +1,7 @@
 // packages/graphics-extends/src/frustum/typings.ts
 
 import type { Property, Color, Entity, Scene } from 'cesium';
+import type { FrustumGraphics } from './FrustumGraphics';
 
 /**
  * FrustumGraphics 构造选项

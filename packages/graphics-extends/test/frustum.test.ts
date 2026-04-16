@@ -196,7 +196,7 @@ describe('FrustumVisualizer', () => {
 
     // Add entity to collection and fire event
     (collection as any).values.push(entity);
-    cc.fire([entity], [], []);
+    cc.fire(collection, [entity], [], []);
 
     // Primitive should have been created - verify by checking update doesn't throw
     const time = JulianDate.now();
@@ -213,7 +213,7 @@ describe('FrustumVisualizer', () => {
     const visualizer = new FrustumVisualizer(collection, viewer.scene);
     const entity = createFrustumEntity(); // no frustum
 
-    cc.fire([entity], [], []);
+    cc.fire(collection, [entity], [], []);
 
     // Should not throw
     const time = JulianDate.now();
@@ -232,7 +232,7 @@ describe('FrustumVisualizer', () => {
     const visualizer = new FrustumVisualizer(collection, viewer.scene);
 
     // Fire remove event
-    cc.fire([], [entity], []);
+    cc.fire(collection, [], [entity], []);
 
     // Should not throw on update
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
@@ -252,7 +252,7 @@ describe('FrustumVisualizer', () => {
     // Replace frustum with a new graphics instance
     const newGraphics = new FrustumGraphics({ fov: 90 });
     (entity as any).frustum = newGraphics;
-    cc.fire([], [], [entity]);
+    cc.fire(collection, [], [], [entity]);
 
     // Should not throw, visualizer should have recreated the primitive
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
@@ -271,7 +271,7 @@ describe('FrustumVisualizer', () => {
 
     // Remove frustum property
     delete (entity as any).frustum;
-    cc.fire([], [], [entity]);
+    cc.fire(collection, [], [], [entity]);
 
     // Should not throw
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
@@ -290,7 +290,7 @@ describe('FrustumVisualizer', () => {
     // Add frustum property
     const graphics = new FrustumGraphics();
     (entity as any).frustum = graphics;
-    cc.fire([], [], [entity]);
+    cc.fire(collection, [], [], [entity]);
 
     // Should not throw - primitive should now be created
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
@@ -308,7 +308,7 @@ describe('FrustumVisualizer', () => {
     const visualizer = new FrustumVisualizer(collection, viewer.scene);
 
     // Fire change event with same graphics instance
-    cc.fire([], [], [entity]);
+    cc.fire(collection, [], [], [entity]);
 
     // Should still work fine - no double-creation
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
@@ -387,7 +387,7 @@ describe('FrustumVisualizer', () => {
     const visualizer = new FrustumVisualizer(collection, viewer.scene);
 
     // Fire add event for the same entity again - should not create duplicate
-    cc.fire([entity], [], []);
+    cc.fire(collection, [entity], [], []);
 
     // Should still work correctly
     expect(() => visualizer.update(JulianDate.now())).not.toThrow();
