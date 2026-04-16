@@ -1,6 +1,6 @@
 {
   "name": "@gaea/compass",
-  "version": "1.2.2",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -29,6 +29,6 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/common": "workspace:*"
+    "@gaea/common": "1.0.0"
   }
 }
