@@ -15,7 +15,7 @@ import {
   renderGeoJson,
   GeoJsonPrimitiveLayer,
   renderPrimitiveGeoJson,
-} from 'cesium-extends';
+} from 'gaea-explorer-js';
 
 /**
  * 初始化地图

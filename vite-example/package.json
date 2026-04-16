@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "cesium": "^1.125.0",
-    "cesium-extends": "workspace:^"
+    "gaea-explorer-js": "workspace:^"
   },
   "devDependencies": {
     "typescript": "^5.5.3",

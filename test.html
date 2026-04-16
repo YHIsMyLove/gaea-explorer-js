@@ -1,119 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>引入 ESM 包</title>
-  <!-- 引入Cesium样式 -->
-  <link href="https://esm.sh/cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    #cesiumContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-  </style>
-</head>
-<body>
-  <div id="cesiumContainer"></div>
-  <script type="module">
-    
-    // 导入Cesium
-    import { Viewer, ImageryLayer, ArcGisMapServerImageryProvider, GeographicTilingScheme } from 'https://esm.sh/cesium';
-    // 导入cesium-extends中的GeoJSON相关功能
-    import {
-      Compass,
-      ZoomControl,
-      renderGeoJson,
-      GeoJsonPrimitiveLayer,
-      renderPrimitiveGeoJson,
-      updateDataSourcePosition,
-    } from 'https://esm.sh/cesium-extends';
-    
-    // 创建查看器
-    const viewer = new Viewer('cesiumContainer', {
-      baseLayerPicker: false,
-      animation: false,
-      fullscreenButton: false,
-      geocoder: false,
-      infoBox: false,
-      homeButton: false,
-      sceneModePicker: true,
-      selectionIndicator: false,
-      timeline: false,
-      navigationHelpButton: false,
-      shouldAnimate: true,
-      useBrowserRecommendedResolution: false,
-      maximumRenderTimeChange: Infinity,
-    });
+  <head>
+    <meta charset="UTF-8" />
+    <title>引入 ESM 包</title>
+    <!-- 引入Cesium样式 -->
+    <link
+      href="https://esm.sh/cesium/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #cesiumContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+    <script type="module">
+      // 导入Cesium
+      import {
+        Viewer,
+        ImageryLayer,
+        ArcGisMapServerImageryProvider,
+        GeographicTilingScheme,
+      } from 'https://esm.sh/cesium';
+      // 导入gaea-explorer-js中的GeoJSON相关功能
+      import {
+        Compass,
+        ZoomControl,
+        renderGeoJson,
+        GeoJsonPrimitiveLayer,
+        renderPrimitiveGeoJson,
+        updateDataSourcePosition,
+      } from 'https://esm.sh/gaea-explorer-js';
 
-    // 初始化ZoomControl
-    const zoomController = new ZoomControl(viewer);
-    // 初始化Compass小部件
-    const compass = new Compass(viewer);
-    
-    // GeoJSON渲染配置
-    const config = {
-      type: 'point',
-      style: {
-        type: 'bubble',
-        config: {
-          field: 'MAG',
-          'fill-type': 'multi',
-          'section-type': 'average',
-          'section-num': 10,
-          'label-size': [2, 40],
-          'circle-stroke-width': 1,
-          'circle-stroke-color': 'white',
-          colors: [
-            '#313695',
-            '#4575b4',
-            '#74add1',
-            '#abd9e9',
-            '#e0f3f8',
-            '#ffffbf',
-            '#fee090',
-            '#fdae61',
-            '#f46d43',
-            '#d73027',
-            '#a50026',
-          ],
+      // 创建查看器
+      const viewer = new Viewer('cesiumContainer', {
+        baseLayerPicker: false,
+        animation: false,
+        fullscreenButton: false,
+        geocoder: false,
+        infoBox: false,
+        homeButton: false,
+        sceneModePicker: true,
+        selectionIndicator: false,
+        timeline: false,
+        navigationHelpButton: false,
+        shouldAnimate: true,
+        useBrowserRecommendedResolution: false,
+        maximumRenderTimeChange: Infinity,
+      });
+
+      // 初始化ZoomControl
+      const zoomController = new ZoomControl(viewer);
+      // 初始化Compass小部件
+      const compass = new Compass(viewer);
+
+      // GeoJSON渲染配置
+      const config = {
+        type: 'point',
+        style: {
+          type: 'bubble',
+          config: {
+            field: 'MAG',
+            'fill-type': 'multi',
+            'section-type': 'average',
+            'section-num': 10,
+            'label-size': [2, 40],
+            'circle-stroke-width': 1,
+            'circle-stroke-color': 'white',
+            colors: [
+              '#313695',
+              '#4575b4',
+              '#74add1',
+              '#abd9e9',
+              '#e0f3f8',
+              '#ffffbf',
+              '#fee090',
+              '#fdae61',
+              '#f46d43',
+              '#d73027',
+              '#a50026',
+            ],
+          },
         },
-      },
-    };
-    
-    // 使用Primitive方式添加GeoJSON
-    async function addGeojsonByPrimitive(viewer, url, config) {
-      const primitiveLayer = await GeoJsonPrimitiveLayer.load(url, {
-        depthTest: true,
-      });
-      await renderPrimitiveGeoJson(primitiveLayer, config);
-      viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
-      viewer.scene.primitives.lowerToBottom(primitiveLayer.primitiveCollection);
-    
-      return primitiveLayer;
-    }
-    
-    // 加载地震数据
-    addGeojsonByPrimitive(viewer, 'https://extends.opendde.com/earthquack.geojson', config)
-      .then(primitiveLayer => {
-        console.log('地震数据加载成功', primitiveLayer);
-      })
-      .catch(error => {
-        console.error('加载地震数据失败', error);
-      });
-    
-  </script>
-</body>
+      };
+
+      // 使用Primitive方式添加GeoJSON
+      async function addGeojsonByPrimitive(viewer, url, config) {
+        const primitiveLayer = await GeoJsonPrimitiveLayer.load(url, {
+          depthTest: true,
+        });
+        await renderPrimitiveGeoJson(primitiveLayer, config);
+        viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
+        viewer.scene.primitives.lowerToBottom(
+          primitiveLayer.primitiveCollection,
+        );
+
+        return primitiveLayer;
+      }
+
+      // 加载地震数据
+      addGeojsonByPrimitive(
+        viewer,
+        'https://extends.opendde.com/earthquack.geojson',
+        config,
+      )
+        .then((primitiveLayer) => {
+          console.log('地震数据加载成功', primitiveLayer);
+        })
+        .catch((error) => {
+          console.error('加载地震数据失败', error);
+        });
+    </script>
+  </body>
 </html>
