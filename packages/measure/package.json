@@ -28,9 +28,9 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/drawer": "^1.2.2",
-    "@gaea/subscriber": "^1.0.1",
-    "@gaea/tooltip": "^1.2.1",
+    "@gaea/drawer": "workspace:*",
+    "@gaea/subscriber": "workspace:*",
+    "@gaea/tooltip": "workspace:*",
     "@turf/area": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "@turf/intersect": "^6.5.0",

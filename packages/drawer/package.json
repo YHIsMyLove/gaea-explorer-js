@@ -29,8 +29,8 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/common": "^1.0.1",
-    "@gaea/subscriber": "^1.0.1",
-    "@gaea/tooltip": "^1.2.1"
+    "@gaea/common": "workspace:*",
+    "@gaea/subscriber": "workspace:*",
+    "@gaea/tooltip": "workspace:*"
   }
 }
