@@ -1,3 +1,33 @@
+# @gaea-explorer/measure 1.0.0 (2026-04-16)
+
+
+### Bug Fixes
+
+* add heightReference error [#1](https://github.com/YHIsMyLove/gaea-explorer-js/issues/1) ([8068c0c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/8068c0ca7973195bf5587b697f86741fcc58b8a7))
+* area measure inaccurate results [#3](https://github.com/YHIsMyLove/gaea-explorer-js/issues/3) ([d472209](https://github.com/YHIsMyLove/gaea-explorer-js/commit/d47220964f0498d002c0a2b9f7ce10cfe3e3e5ae))
+* bump deps version ([db7d794](https://github.com/YHIsMyLove/gaea-explorer-js/commit/db7d7947d13e82b85387a6c72b6a8c095aca62ec))
+* export Measure ([398806c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/398806c864f9a0949300b08b0a4c1de5a438e5e8))
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/YHIsMyLove/gaea-explorer-js/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+* replace wgs84ToWindowCoordinates [#27](https://github.com/YHIsMyLove/gaea-explorer-js/issues/27) ([0d7b68a](https://github.com/YHIsMyLove/gaea-explorer-js/commit/0d7b68adb6c3244416792fdaef860e86ba3f6f9b))
+* restore workspace dependencies across all packages ([#6](https://github.com/YHIsMyLove/gaea-explorer-js/issues/6)) ([3a6479b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/3a6479b056c8cb86c7a186854988bce3a5bf7f8d))
+* use ^dep [#2](https://github.com/YHIsMyLove/gaea-explorer-js/issues/2) ([663c92c](https://github.com/YHIsMyLove/gaea-explorer-js/commit/663c92c0718c12174f45305a3b18d9fadcaf4ba2))
+
+
+### Features
+
+* measure ([deb314f](https://github.com/YHIsMyLove/gaea-explorer-js/commit/deb314f29fbcb2425a502dc1cee00b856bf30d4d))
+* measure tool add locale option ([1ff46ed](https://github.com/YHIsMyLove/gaea-explorer-js/commit/1ff46eda2c5764804ebbd5c222bdbc30183cad1f))
+
+
+
+
+
+### Dependencies
+
+* **@gaea-explorer/drawer:** upgraded to 1.0.0
+* **@gaea-explorer/subscriber:** upgraded to 1.0.0
+* **@gaea-explorer/tooltip:** upgraded to 1.0.0
+
 ## @gaea/measure [1.1.4](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/measure@1.1.3...@gaea/measure@1.1.4) (2024-11-25)
 
 ### Bug Fixes
