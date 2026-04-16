@@ -12,7 +12,7 @@ gaea-explorer-js 是一个从 [DDE-Earth](https://alpha.deep-time.org/map/#/) �
 
 ## 链接
 
-- **文档与 Demo**: [GitHub Pages](https://yhislove.github.io/gaea-explorer-js/)
+- **文档与 Demo**: [GitHub Pages](https://yhismylove.github.io/gaea-explorer-js/)
 - **npm 主包**: [gaea-explorer-js](https://www.npmjs.com/package/gaea-explorer-js)
 
 ## 安装
@@ -40,7 +40,7 @@ gaea-explorer-js 提供了以下功能：
 - 热力图 `@gaea-explorer/heat` - [npm](https://www.npmjs.com/package/@gaea-explorer/heat)
 - 公共工具 `@gaea-explorer/common` - [npm](https://www.npmjs.com/package/@gaea-explorer/common)
 
-详细信息及 demo，请参阅 [API 文档](https://yhislove.github.io/gaea-explorer-js/)。
+详细信息及 demo，请参阅 [API 文档](https://yhismylove.github.io/gaea-explorer-js/)。
 
 ## 示例
 
@@ -58,4 +58,3 @@ gaea-explorer-js 提供了以下功能：
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-test
