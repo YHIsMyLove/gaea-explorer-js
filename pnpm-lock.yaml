@@ -77,15 +77,15 @@ importers:
 
   doc:
     dependencies:
+      '@gaea-explorer/gaea-explorer-js':
+        specifier: workspace:*
+        version: link:../packages/gaea-explorer-js
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(react@18.2.0)
       cesium:
         specifier: 1.140.0
         version: 1.140.0
-      gaea-explorer-js:
-        specifier: workspace:*
-        version: link:../packages/gaea-explorer-js
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -108,8 +108,8 @@ importers:
 
   packages/compass:
     dependencies:
-      '@gaea/common':
-        specifier: ^1.0.1
+      '@gaea-explorer/common':
+        specifier: workspace:*
         version: link:../common
     devDependencies:
       cesium:
@@ -118,14 +118,14 @@ importers:
 
   packages/drawer:
     dependencies:
-      '@gaea/common':
-        specifier: ^1.0.1
+      '@gaea-explorer/common':
+        specifier: workspace:*
         version: link:../common
-      '@gaea/subscriber':
-        specifier: ^1.0.1
+      '@gaea-explorer/subscriber':
+        specifier: workspace:*
         version: link:../subscriber
-      '@gaea/tooltip':
-        specifier: ^1.2.1
+      '@gaea-explorer/tooltip':
+        specifier: workspace:*
         version: link:../tooltip
     devDependencies:
       cesium:
@@ -134,38 +134,38 @@ importers:
 
   packages/gaea-explorer-js:
     dependencies:
-      '@gaea/compass':
-        specifier: 1.2.2
+      '@gaea-explorer/compass':
+        specifier: workspace:*
         version: link:../compass
-      '@gaea/drawer':
-        specifier: 1.3.8
+      '@gaea-explorer/drawer':
+        specifier: workspace:*
         version: link:../drawer
-      '@gaea/geojson-render':
-        specifier: 1.0.8
+      '@gaea-explorer/geojson-render':
+        specifier: workspace:*
         version: link:../geojson-render
-      '@gaea/heat':
-        specifier: 1.0.4
+      '@gaea-explorer/heat':
+        specifier: workspace:*
         version: link:../heat
-      '@gaea/measure':
-        specifier: 1.1.4
+      '@gaea-explorer/measure':
+        specifier: workspace:*
         version: link:../measure
-      '@gaea/popup':
-        specifier: 1.0.2
+      '@gaea-explorer/popup':
+        specifier: workspace:*
         version: link:../popup
-      '@gaea/primitive-geojson':
-        specifier: 1.0.11
+      '@gaea-explorer/primitive-geojson':
+        specifier: workspace:*
         version: link:../primitive-geojson
-      '@gaea/subscriber':
-        specifier: 1.1.1
+      '@gaea-explorer/subscriber':
+        specifier: workspace:*
         version: link:../subscriber
-      '@gaea/sync-viewer':
-        specifier: 1.0.1
+      '@gaea-explorer/sync-viewer':
+        specifier: workspace:*
         version: link:../sync-viewer
-      '@gaea/tooltip':
-        specifier: 1.2.3
+      '@gaea-explorer/tooltip':
+        specifier: workspace:*
         version: link:../tooltip
-      '@gaea/zoom-control':
-        specifier: 1.2.2
+      '@gaea-explorer/zoom-control':
+        specifier: workspace:*
         version: link:../zoom-controller
       cesium:
         specifier: '*'
@@ -173,8 +173,8 @@ importers:
 
   packages/geojson-render:
     dependencies:
-      '@gaea/primitive-geojson':
-        specifier: ^1.0.1
+      '@gaea-explorer/primitive-geojson':
+        specifier: workspace:*
         version: link:../primitive-geojson
       '@turf/turf':
         specifier: ^6.5.0
@@ -196,14 +196,14 @@ importers:
 
   packages/measure:
     dependencies:
-      '@gaea/drawer':
-        specifier: ^1.2.2
+      '@gaea-explorer/drawer':
+        specifier: workspace:*
         version: link:../drawer
-      '@gaea/subscriber':
-        specifier: ^1.0.1
+      '@gaea-explorer/subscriber':
+        specifier: workspace:*
         version: link:../subscriber
-      '@gaea/tooltip':
-        specifier: ^1.2.1
+      '@gaea-explorer/tooltip':
+        specifier: workspace:*
         version: link:../tooltip
       '@turf/area':
         specifier: ^6.5.0
@@ -243,7 +243,7 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2
     devDependencies:
-      '@gaea/subscriber':
+      '@gaea-explorer/subscriber':
         specifier: 1.1.1
         version: link:../subscriber
       '@types/geojson':
@@ -267,12 +267,12 @@ importers:
 
   packages/tooltip:
     dependencies:
-      '@gaea/common':
-        specifier: ^1.0.1
+      '@gaea-explorer/common':
+        specifier: workspace:*
         version: link:../common
     devDependencies:
-      '@gaea/subscriber':
-        specifier: ^1.0.1
+      '@gaea-explorer/subscriber':
+        specifier: workspace:*
         version: link:../subscriber
       cesium:
         specifier: 1.140.0
@@ -280,8 +280,8 @@ importers:
 
   packages/zoom-controller:
     dependencies:
-      '@gaea/common':
-        specifier: ^1.0.1
+      '@gaea-explorer/common':
+        specifier: workspace:*
         version: link:../common
     devDependencies:
       cesium:
@@ -290,12 +290,12 @@ importers:
 
   vite-example:
     dependencies:
+      '@gaea-explorer/gaea-explorer-js':
+        specifier: workspace:^
+        version: link:../packages/gaea-explorer-js
       cesium:
         specifier: 1.140.0
         version: 1.140.0
-      gaea-explorer-js:
-        specifier: workspace:^
-        version: link:../packages/gaea-explorer-js
     devDependencies:
       typescript:
         specifier: ^5.5.3
