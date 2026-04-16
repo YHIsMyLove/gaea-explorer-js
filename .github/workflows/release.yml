@@ -38,6 +38,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Configure git credentials
+        run: git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
