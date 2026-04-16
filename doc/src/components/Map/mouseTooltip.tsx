@@ -1,6 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import { MouseTooltip } from 'gaea-explorer-js';
+import { MouseTooltip } from '@gaea-explorer/gaea-explorer-js';
 
 import { initMap } from '../../utils/initMap';
 import './index.less';

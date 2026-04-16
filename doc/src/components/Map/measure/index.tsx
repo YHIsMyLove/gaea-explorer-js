@@ -14,7 +14,7 @@ import {
   DistanceMeasure,
   DistanceSurfaceMeasure,
   Measure,
-} from 'gaea-explorer-js';
+} from '@gaea-explorer/gaea-explorer-js';
 import './index.less';
 
 interface MapProps {}

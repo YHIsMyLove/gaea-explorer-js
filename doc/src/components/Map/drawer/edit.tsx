@@ -2,7 +2,7 @@ import { ScreenSpaceEventHandler, ScreenSpaceEventType, Viewer } from 'cesium';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { initMap } from '@/utils/initMap';
-import { Drawer, Editor, StartOption } from 'gaea-explorer-js';
+import { Drawer, Editor, StartOption } from '@gaea-explorer/gaea-explorer-js';
 import './index.less';
 
 const DRAW_OPERATIONS: {

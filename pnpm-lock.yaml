@@ -109,7 +109,7 @@ importers:
   packages/compass:
     dependencies:
       '@gaea-explorer/common':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../common
     devDependencies:
       cesium:
