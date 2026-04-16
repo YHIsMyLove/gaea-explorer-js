@@ -1,3 +1,23 @@
+# gaea-explorer-js 1.0.0 (2026-04-16)
+
+
+
+
+
+### Dependencies
+
+* **@gaea/compass:** upgraded to 1.0.0
+* **@gaea/drawer:** upgraded to 1.0.0
+* **@gaea/geojson-render:** upgraded to 1.0.0
+* **@gaea/heat:** upgraded to 1.0.0
+* **@gaea/measure:** upgraded to 1.0.0
+* **@gaea/popup:** upgraded to 1.0.0
+* **@gaea/primitive-geojson:** upgraded to 1.0.0
+* **@gaea/subscriber:** upgraded to 1.0.0
+* **@gaea/sync-viewer:** upgraded to 1.0.0
+* **@gaea/tooltip:** upgraded to 1.0.0
+* **@gaea/zoom-control:** upgraded to 1.0.0
+
 ## gaea-explorer-js [1.8.24](https://github.com/hongfaqiu/gaea-explorer-js/compare/gaea-explorer-js@1.8.23...gaea-explorer-js@1.8.24) (2025-10-10)
 
 ### Dependencies
