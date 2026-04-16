@@ -1,13 +1,13 @@
-# @cesium-extends/tooltip
+# @gaea/tooltip
 
-`@cesium-extends/tooltip` 是一个基于 [Cesium](https://cesium.com/) 对象实现的 tooltip 组件，支持自定义内容。包含两个类：`Tooltip` 和 `MouseTooltip`。
+`@gaea/tooltip` 是一个基于 [Cesium](https://cesium.com/) 对象实现的 tooltip 组件，支持自定义内容。包含两个类：`Tooltip` 和 `MouseTooltip`。
 
 `MouseTooltip` 会创建一个跟随鼠标移动的 tooltip.
 
 ## 安装
 
 ```bash
-npm install @cesium-extends/tooltip
+npm install @gaea/tooltip
 ```
 
 ## 使用
@@ -17,16 +17,16 @@ npm install @cesium-extends/tooltip
 用法示例：
 
 ```javascript
-import { Cartesian2, Viewer } from "cesium";
-import { Tooltip } from "@cesium-extends/tooltip";
+import { Cartesian2, Viewer } from 'cesium';
+import { Tooltip } from '@gaea/tooltip';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const tooltip = new Tooltip(viewer, {
   offset: [10, -10],
-  content: "Hello, World!",
+  content: 'Hello, World!',
 });
 
-tooltip.content = "Philadelphia";
+tooltip.content = 'Philadelphia';
 
 // 显示（添加content后默认显示）
 tooltip.show();
@@ -68,15 +68,15 @@ tooltip.destroy();
 用法示例：
 
 ```javascript
-import { Viewer } from "cesium";
-import { MouseTooltip } from "@cesium-extends/tooltip";
+import { Viewer } from 'cesium';
+import { MouseTooltip } from '@gaea/tooltip';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const mouseTooltip = new MouseTooltip(viewer, {
   offset: [10, -10],
 });
 
-mouseTooltip.content = "Philadelphia";
+mouseTooltip.content = 'Philadelphia';
 
 // 显示（添加content后默认显示）
 mouseTooltip.show();

@@ -5,7 +5,7 @@ A Cesium plugin for rendering GeoJSON data.
 ## Installation
 
 ```bash
-npm install @cesium-extends/geojson-render
+npm install @gaea/geojson-render
 ```
 
 ## Usage

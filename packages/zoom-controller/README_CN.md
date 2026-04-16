@@ -1,6 +1,6 @@
-# @cesium-extends/zoom-control
+# @gaea/zoom-control
 
-@cesium-extends/zoom-control 是一个用于 Cesium 的缩放控制部件，它是一个 npm 包，可以与 [Cesium](https://cesium.com/) 一起使用。
+@gaea/zoom-control 是一个用于 Cesium 的缩放控制部件，它是一个 npm 包，可以与 [Cesium](https://cesium.com/) 一起使用。
 
 ## 特性
 
@@ -11,7 +11,7 @@
 通过 npm 安装：
 
 ```bash
-npm install @cesium-extends/zoom-control
+npm install @gaea/zoom-control
 ```
 
 ## 使用
@@ -19,20 +19,20 @@ npm install @cesium-extends/zoom-control
 ### 导入模块
 
 ```javascript
-import ZoomController from "@cesium-extends/zoom-control";
+import ZoomController from '@gaea/zoom-control';
 ```
 
 ### 创建部件实例
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const zoomController = new ZoomController(viewer, {
-  container: document.getElementById("myContainer"),
+  container: document.getElementById('myContainer'),
   home: new Cesium.Cartesian3.fromDegrees(-98.57, 39.82, 5000000),
   tips: {
-    zoomIn: "放大",
-    zoomOut: "缩小",
-    refresh: "重置缩放",
+    zoomIn: '放大',
+    zoomOut: '缩小',
+    refresh: '重置缩放',
   },
 });
 ```

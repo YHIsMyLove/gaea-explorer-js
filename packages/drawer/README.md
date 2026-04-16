@@ -1,4 +1,4 @@
-# @cesium-extends/drawer
+# @gaea/drawer
 
 A drawing tool library based on Cesium, supporting commonly used shapes such as point, line, polygon, circle, etc.
 [中文 Readme](./README_CN.md)
@@ -8,24 +8,24 @@ A drawing tool library based on Cesium, supporting commonly used shapes such as 
 Using npm:
 
 ```bash
-npm install @cesium-extends/drawer --save
+npm install @gaea/drawer --save
 ```
 
 ## Usage
 
 ```javascript
-import Drawer from "@cesium-extends/drawer";
-import Cesium from "cesium";
+import Drawer from '@gaea/drawer';
+import Cesium from 'cesium';
 
 // Initialize the viewer
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 
 // Create a Drawer instance
 const drawer = new Drawer(viewer);
 
 // Start drawing
 drawer.start({
-  type: "POLYGON",
+  type: 'POLYGON',
   finalOptions: {
     material: Cesium.Color.RED.withAlpha(0.5),
   },
@@ -98,12 +98,12 @@ type DrawOption = {
 
 ```typescript
 type StartOption = {
-  type: "POLYGON" | "POLYLINE" | "POINT" | "CIRCLE" | "RECTANGLE";
+  type: 'POLYGON' | 'POLYLINE' | 'POINT' | 'CIRCLE' | 'RECTANGLE';
   once?: boolean;
   oneInstance?: boolean;
   finalOptions?: object;
   dynamicOptions?: object;
-  onPointsChange?: BasicGraphicesOptions["onPointsChange"];
+  onPointsChange?: BasicGraphicesOptions['onPointsChange'];
   onEnd?: (entity: Entity, positions: Cartesian3[]) => void;
 };
 ```
@@ -111,7 +111,7 @@ type StartOption = {
 ### Status
 
 ```typescript
-type Status = "INIT" | "START" | "PAUSE" | "DESTROY";
+type Status = 'INIT' | 'START' | 'PAUSE' | 'DESTROY';
 ```
 
 ### OperationType

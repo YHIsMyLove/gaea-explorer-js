@@ -1,24 +1,23 @@
-## @cesium-extends/subscriber [1.1.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/subscriber@1.1.0...@cesium-extends/subscriber@1.1.1) (2024-11-25)
-
-
-### Bug Fixes
-
-* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
-
-# @cesium-extends/subscriber [1.1.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/subscriber@1.0.1...@cesium-extends/subscriber@1.1.0) (2023-08-04)
-
-### Features
-
-- **subscriber:** add enable option ([827666d](https://github.com/hongfaqiu/cesium-extends/commit/827666dc191056e0f1f254fb3f1cb77bdb7c7a81))
-
-## @cesium-extends/subscriber [1.0.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/subscriber@1.0.0...@cesium-extends/subscriber@1.0.1) (2023-04-14)
+## @gaea/subscriber [1.1.1](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/subscriber@1.1.0...@gaea/subscriber@1.1.1) (2024-11-25)
 
 ### Bug Fixes
 
-- defaults no moveDebounce ([d946251](https://github.com/hongfaqiu/cesium-extends/commit/d9462510849764043585fdbbbf1b9c0b73de30c6))
+- **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/gaea-explorer-js/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
 
-# @cesium-extends/subscriber 1.0.0 (2023-04-04)
+# @gaea/subscriber [1.1.0](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/subscriber@1.0.1...@gaea/subscriber@1.1.0) (2023-08-04)
 
 ### Features
 
-- initial ([e21d004](https://github.com/hongfaqiu/cesium-extends/commit/e21d00448ca613d6b168e59368fae4ba815950d3))
+- **subscriber:** add enable option ([827666d](https://github.com/hongfaqiu/gaea-explorer-js/commit/827666dc191056e0f1f254fb3f1cb77bdb7c7a81))
+
+## @gaea/subscriber [1.0.1](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/subscriber@1.0.0...@gaea/subscriber@1.0.1) (2023-04-14)
+
+### Bug Fixes
+
+- defaults no moveDebounce ([d946251](https://github.com/hongfaqiu/gaea-explorer-js/commit/d9462510849764043585fdbbbf1b9c0b73de30c6))
+
+# @gaea/subscriber 1.0.0 (2023-04-04)
+
+### Features
+
+- initial ([e21d004](https://github.com/hongfaqiu/gaea-explorer-js/commit/e21d00448ca613d6b168e59368fae4ba815950d3))

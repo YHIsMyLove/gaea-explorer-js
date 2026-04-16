@@ -1,6 +1,6 @@
-# @cesium-extends/measure
+# @gaea/measure
 
-@cesium-extends/measure is a measurement tool based on Cesium, which supports distance and area measurement and is easy to use.
+@gaea/measure is a measurement tool based on Cesium, which supports distance and area measurement and is easy to use.
 [中文 Readme](./README_CN.md)
 
 ## Installation
@@ -8,22 +8,22 @@
 Install via npm:
 
 ```bash
-npm install @cesium-extends/measure --save
+npm install @gaea/measure --save
 ```
 
 ## Usage
 
-Import the `@cesium-extends/measure` module in your project, then instantiate the corresponding measuring class for measurement.
+Import the `@gaea/measure` module in your project, then instantiate the corresponding measuring class for measurement.
 
 ### AreaMeasure
 
 Used for non-ground area measurement.
 
 ```typescript
-import { Viewer } from "cesium";
-import { AreaMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { AreaMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const areaMeasure = new AreaMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
@@ -39,10 +39,10 @@ areaMeasure.start();
 Used for ground area measurement.
 
 ```typescript
-import { Viewer } from "cesium";
-import { AreaSurfaceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { AreaSurfaceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const areaSurfaceMeasure = new AreaSurfaceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
@@ -58,10 +58,10 @@ areaSurfaceMeasure.start();
 Used for non-ground distance measurement.
 
 ```typescript
-import { Viewer } from "cesium";
-import { DistanceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { DistanceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const distanceMeasure = new DistanceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
@@ -77,10 +77,10 @@ distanceMeasure.start();
 Used for ground distance measurement.
 
 ```typescript
-import { Viewer } from "cesium";
-import { DistanceSurfaceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { DistanceSurfaceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result

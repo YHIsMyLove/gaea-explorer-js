@@ -1,18 +1,18 @@
-# @cesium-extends/measure
+# @gaea/measure
 
-@cesium-extends/measure 是一个基于 Cesium 实现的测量工具，支持距离和面积测量，使用简单方便。
+@gaea/measure 是一个基于 Cesium 实现的测量工具，支持距离和面积测量，使用简单方便。
 
 ## 安装
 
 通过 npm 安装：
 
 ```bash
-npm install @cesium-extends/measure --save
+npm install @gaea/measure --save
 ```
 
 ## 使用
 
-在项目中引入`@cesium-extends/measure`模块，然后实例化对应的测量类即可进行测量。
+在项目中引入`@gaea/measure`模块，然后实例化对应的测量类即可进行测量。
 
 ### AreaMeasure
 
@@ -20,7 +20,7 @@ npm install @cesium-extends/measure --save
 
 ```typescript
 import { Viewer } from "cesium";
-import { AreaMeasure } from "@cesium-extends/measure";
+import { AreaMeasure } from "@gaea/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const areaMeasure = new AreaMeasure(viewer, {
@@ -62,10 +62,10 @@ areaMeasure.start();
 用于贴地的面积测量。
 
 ```typescript
-import { Viewer } from "cesium";
-import { AreaSurfaceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { AreaSurfaceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const areaSurfaceMeasure = new AreaSurfaceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
@@ -81,10 +81,10 @@ areaSurfaceMeasure.start();
 用于不贴地的距离测量。
 
 ```typescript
-import { Viewer } from "cesium";
-import { DistanceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { DistanceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const distanceMeasure = new DistanceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
@@ -100,10 +100,10 @@ distanceMeasure.start();
 用于贴地的距离测量。
 
 ```typescript
-import { Viewer } from "cesium";
-import { DistanceSurfaceMeasure } from "@cesium-extends/measure";
+import { Viewer } from 'cesium';
+import { DistanceSurfaceMeasure } from '@gaea/measure';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果

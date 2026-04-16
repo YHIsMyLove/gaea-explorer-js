@@ -1,12 +1,12 @@
-# @cesium-extends/compass
+# @gaea/compass
 
-A compass widget for [Cesium](https://cesium.com/) based on [@cesium-extends/common](https://www.npmjs.com/package/@cesium-extends/common) library.
+A compass widget for [Cesium](https://cesium.com/) based on [@gaea/common](https://www.npmjs.com/package/@gaea/common) library.
 [中文 Readme](./README_CN.md)
 
 ## Installation
 
 ```bash
-npm install @cesium-extends/compass
+npm install @gaea/compass
 ```
 
 ## Usage
@@ -14,13 +14,13 @@ npm install @cesium-extends/compass
 The `Compass` widget can be used in a Cesium app to display a compass. To use the widget, first import it into your project:
 
 ```javascript
-import Compass from "@cesium-extends/compass";
+import Compass from '@gaea/compass';
 ```
 
 Next, create a new instance of the widget and pass it your Cesium Viewer instance:
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const compass = new Compass(viewer);
 ```
 
@@ -28,10 +28,10 @@ You can also customize the widget by passing an options object when creating a n
 
 ```javascript
 const compass = new Compass(viewer, {
-  container: document.getElementById("compass-container"),
+  container: document.getElementById('compass-container'),
   tips: {
-    inner: "North",
-    outer: "Rotate",
+    inner: 'North',
+    outer: 'Rotate',
   },
 });
 ```

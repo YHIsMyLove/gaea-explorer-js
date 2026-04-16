@@ -1,4 +1,4 @@
-# @cesium-extends/heat
+# @gaea/heat
 
 ## 简介
 
@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-npm install @cesium-extends/heat
+npm install @gaea/heat
 ```
 
 ## 使用方法
@@ -15,13 +15,13 @@ npm install @cesium-extends/heat
 ### 导入
 
 ```javascript
-import HeatMapLayer from "@cesium-extends/heat";
+import HeatMapLayer from '@gaea/heat';
 ```
 
 ### 创建图层
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const data = [
   { pos: [lon1, lat1], value: value1 },
   { pos: [lon2, lat2], value: value2 },
@@ -130,9 +130,9 @@ heatmap.destroy();
 以下是使用 `HeatMapLayer` 类在 CesiumJS 地图上创建热力图层的示例：
 
 ```javascript
-import HeatMapLayer from "@cesium-extends/heat";
+import HeatMapLayer from '@gaea/heat';
 
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 
 // 热力图的数据
 const data = [

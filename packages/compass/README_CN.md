@@ -1,11 +1,11 @@
-# @cesium-extends/compass
+# @gaea/compass
 
-一款基于 [@cesium-extends/common](https://www.npmjs.com/package/@cesium-extends/common) 库的[Cesium](https://cesium.com/)指南针插件。
+一款基于 [@gaea/common](https://www.npmjs.com/package/@gaea/common) 库的[Cesium](https://cesium.com/)指南针插件。
 
 ## 安装
 
 ```bash
-npm install @cesium-extends/compass
+npm install @gaea/compass
 ```
 
 ## 使用方法
@@ -13,13 +13,13 @@ npm install @cesium-extends/compass
 `Compass` 小部件可在 Cesium 应用程序中用于显示指南针。要使用该小部件，首先将其导入到您的项目中：
 
 ```javascript
-import Compass from "@cesium-extends/compass";
+import Compass from '@gaea/compass';
 ```
 
 接下来，创建小部件的一个新实例并将其传递给您的 Cesium Viewer 实例：
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const compass = new Compass(viewer);
 ```
 

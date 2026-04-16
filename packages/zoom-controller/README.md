@@ -1,4 +1,4 @@
-# @cesium-extends/zoom-control
+# @gaea/zoom-control
 
 A zoom controller widget for Cesium, which is an npm package that can be used with [Cesium](https://cesium.com/).
 [中文 Readme](./README_CN.md)
@@ -12,7 +12,7 @@ A zoom controller widget for Cesium, which is an npm package that can be used wi
 Install it via npm:
 
 ```bash
-npm install @cesium-extends/zoom-control
+npm install @gaea/zoom-control
 ```
 
 ## Usage
@@ -20,15 +20,15 @@ npm install @cesium-extends/zoom-control
 ### Importing the module
 
 ```javascript
-import ZoomController from "@cesium-extends/zoom-control";
+import ZoomController from '@gaea/zoom-control';
 ```
 
 ### Creating an instance of the widget
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const zoomController = new ZoomController(viewer, {
-  container: document.getElementById("myContainer"),
+  container: document.getElementById('myContainer'),
   home: new Cesium.Cartesian3.fromDegrees(-98.57, 39.82, 5000000),
 });
 ```

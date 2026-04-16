@@ -1,29 +1,29 @@
-# @cesium-extends/popup
+# @gaea/popup
 
 A lightweight and easy-to-use popup component for CesiumJS.
 [中文 Readme](./README_CN.md)
 
 ## Installation
 
-To install `@cesium-extends/popup`, run:
+To install `@gaea/popup`, run:
 
 ```bash
-npm install @cesium-extends/popup
+npm install @gaea/popup
 ```
 
 ## Usage
 
-Here's an example of how to use `@cesium-extends/popup`:
+Here's an example of how to use `@gaea/popup`:
 
 ```javascript
-import Popup from "@cesium-extends/popup";
-import { Viewer } from "cesium";
+import Popup from '@gaea/popup';
+import { Viewer } from 'cesium';
 
-const viewer = new Viewer("cesiumContainer");
+const viewer = new Viewer('cesiumContainer');
 
 const options = {
   position: [120, 30, 0],
-  element: document.getElementById("popup"),
+  element: document.getElementById('popup'),
   offset: [10, 10],
 };
 

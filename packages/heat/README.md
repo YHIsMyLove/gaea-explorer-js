@@ -1,4 +1,4 @@
-# @cesium-extends/heat
+# @gaea/heat
 
 ## Introduction
 
@@ -9,7 +9,7 @@ This is a package for creating heatmap layers on CesiumJS map. It provides an ea
 ## Installation
 
 ```bash
-npm install @cesium-extends/heat
+npm install @gaea/heat
 ```
 
 ## Usage
@@ -17,13 +17,13 @@ npm install @cesium-extends/heat
 ### Importing
 
 ```javascript
-import HeatMapLayer from "@cesium-extends/heat";
+import HeatMapLayer from '@gaea/heat';
 ```
 
 ### Creating a layer
 
 ```javascript
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 const data = [
   { pos: [lon1, lat1], value: value1 },
   { pos: [lon2, lat2], value: value2 },
@@ -132,9 +132,9 @@ The heatmap layer can be completely destroyed (including its container) by calli
 Here is an example of using the `HeatMapLayer` class to create a heatmap layer on a CesiumJS map:
 
 ```javascript
-import HeatMapLayer from "@cesium-extends/heat";
+import HeatMapLayer from '@gaea/heat';
 
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 
 // Data for the heatmap
 const data = [

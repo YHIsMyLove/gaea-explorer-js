@@ -1,4 +1,4 @@
-# @cesium-extends/subscriber
+# @gaea/subscriber
 
 该包提供了一种方便的方式，用于在 Cesium 场景中订阅事件。它允许您为指定的实体添加事件监听器，并在发生事件时触发回调函数。
 
@@ -7,14 +7,14 @@
 使用 npm 进行安装：
 
 ```
-npm install @cesium-extends/subscriber
+npm install @gaea/subscriber
 ```
 
 ## 用法
 
 ```javascript
-import Subscriber, { EventType } from "@cesium-extends/subscriber";
-import { viewer, entities } from "./cesiumInit";
+import Subscriber, { EventType } from '@gaea/subscriber';
+import { viewer, entities } from './cesiumInit';
 
 // 创建订阅者
 const subscriber = new Subscriber(viewer);

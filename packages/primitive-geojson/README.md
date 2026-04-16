@@ -1,6 +1,6 @@
-## @cesium-extends/primitive-geojson
+## @gaea/primitive-geojson
 
-@cesium-extends/primitive-geojson is a JavaScript library based on Cesium that parses GeoJSON and TopoJSON data into visualizable Cesium entities, including points, lines, polygons, labels, etc. It can be installed as an npm package and used directly in Cesium projects.
+@gaea/primitive-geojson is a JavaScript library based on Cesium that parses GeoJSON and TopoJSON data into visualizable Cesium entities, including points, lines, polygons, labels, etc. It can be installed as an npm package and used directly in Cesium projects.
 [中文 Readme](./README_CN.md)
 
 ### Installation
@@ -8,22 +8,22 @@
 Install using npm:
 
 ```
-npm install @cesium-extends/primitive-geojson
+npm install @gaea/primitive-geojson
 ```
 
 ### Usage
 
-To use @cesium-extends/primitive-geojson in your project, simply import it like any other module:
+To use @gaea/primitive-geojson in your project, simply import it like any other module:
 
 ```javascript
-import { GeoJsonPrimitiveLayer } from "@cesium-extends/primitive-geojson";
+import { GeoJsonPrimitiveLayer } from '@gaea/primitive-geojson';
 ```
 
 Then create a new instance of the `GeoJsonPrimitiveLayer` class and load your GeoJSON data:
 
 ```javascript
 const layer = new GeoJsonPrimitiveLayer();
-layer.load("path/to/data.json").then(() => {
+layer.load('path/to/data.json').then(() => {
   // Do something when the data is loaded
 });
 ```

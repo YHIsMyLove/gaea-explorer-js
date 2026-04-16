@@ -1,22 +1,22 @@
-# @cesium-extends/sync-viewer
+# @gaea/sync-viewer
 
-`@cesium-extends/sync-viewer` is an npm package for synchronizing two Cesium Viewer instances.
+`@gaea/sync-viewer` is an npm package for synchronizing two Cesium Viewer instances.
 [中文 Readme](./README_CN.md)
 
 ## Installation
 
 ```bash
-npm install @cesium-extends/sync-viewer
+npm install @gaea/sync-viewer
 ```
 
 ## Usage
 
 ```js
-import { Viewer } from "cesium";
-import SyncViewer from "@cesium-extends/sync-viewer";
+import { Viewer } from 'cesium';
+import SyncViewer from '@gaea/sync-viewer';
 
-const leftViewer = new Viewer("left-container");
-const rightViewer = new Viewer("right-container");
+const leftViewer = new Viewer('left-container');
+const rightViewer = new Viewer('right-container');
 
 const syncViewer = new SyncViewer(leftViewer, rightViewer);
 

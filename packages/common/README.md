@@ -1,4 +1,4 @@
-# @cesium-extends/common
+# @gaea/common
 
 - `Widget` is a base class that you can extend to create your own widgets. You can import it into your project:
 - `DomUtil` is a utility class that provides some DOM manipulation methods.
@@ -7,13 +7,13 @@
 ## Installation
 
 ```bash
-npm install --save @cesium-extends/common
+npm install --save @gaea/common
 ```
 
 ## Usage
 
 ```javascript
-import { Widget, DomUtil } from "@cesium-extends/common";
+import { Widget, DomUtil } from '@gaea/common';
 ```
 
 ## Widget
