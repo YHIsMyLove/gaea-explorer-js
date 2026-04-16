@@ -34,6 +34,13 @@ export function createMockViewer(): Viewer {
       globe: {
         pick: () => undefined,
       },
+      screenSpaceCameraController: {
+        enableInputs: true,
+        enableRotate: true,
+        enableZoom: true,
+        enableTilt: true,
+        enableTranslate: true,
+      },
     } as any,
     camera: {
       getPickRay: () => undefined,
