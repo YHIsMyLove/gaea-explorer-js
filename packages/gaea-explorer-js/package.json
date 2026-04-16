@@ -1,5 +1,5 @@
 {
-  "name": "gaea-explorer-js",
+  "name": "@gaea-explorer/gaea-explorer-js",
   "version": "1.0.2",
   "type": "module",
   "main": "./dist/index.js",
@@ -26,16 +26,16 @@
     "cesium": "*"
   },
   "dependencies": {
-    "@gaea-explorer/compass": "1.0.0",
-    "@gaea-explorer/drawer": "1.0.0",
-    "@gaea-explorer/geojson-render": "1.0.0",
-    "@gaea-explorer/heat": "1.0.0",
-    "@gaea-explorer/measure": "1.0.0",
-    "@gaea-explorer/popup": "1.0.0",
-    "@gaea-explorer/primitive-geojson": "1.0.0",
-    "@gaea-explorer/subscriber": "1.0.0",
-    "@gaea-explorer/sync-viewer": "1.0.0",
-    "@gaea-explorer/tooltip": "1.0.0",
-    "@gaea-explorer/zoom-control": "1.0.0"
+    "@gaea-explorer/compass": "workspace:*",
+    "@gaea-explorer/drawer": "workspace:*",
+    "@gaea-explorer/geojson-render": "workspace:*",
+    "@gaea-explorer/heat": "workspace:*",
+    "@gaea-explorer/measure": "workspace:*",
+    "@gaea-explorer/popup": "workspace:*",
+    "@gaea-explorer/primitive-geojson": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/sync-viewer": "workspace:*",
+    "@gaea-explorer/tooltip": "workspace:*",
+    "@gaea-explorer/zoom-control": "workspace:*"
   }
 }

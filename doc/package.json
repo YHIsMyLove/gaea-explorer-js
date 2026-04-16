@@ -21,7 +21,7 @@
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "cesium": "^1.125.0",
-    "gaea-explorer-js": "workspace:*",
+    "@gaea-explorer/gaea-explorer-js": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
