@@ -1,5 +1,5 @@
 {
-  "name": "@cesium-extends/geojson-render",
+  "name": "@gaea/geojson-render",
   "version": "1.0.8",
   "description": "Load geojson on cesium with deep custom style",
   "type": "module",
@@ -12,16 +12,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
-    "directory": "packages/geojson-render"
-  },
   "scripts": {
     "build": "rimraf dist && rollup -c",
-    "dev": "rollup -c --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "dev": "rollup -c --watch"
   },
   "keywords": [
     "cesium",
@@ -31,10 +24,6 @@
   ],
   "author": "hongfaqiu",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hongfaqiu/cesium-extends/issues"
-  },
-  "homepage": "https://github.com/hongfaqiu/cesium-extends#readme",
   "peerDependencies": {
     "cesium": "*"
   },
@@ -42,7 +31,7 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@cesium-extends/primitive-geojson": "^1.0.1",
+    "@gaea/primitive-geojson": "^1.0.1",
     "@turf/turf": "^6.5.0"
   }
 }

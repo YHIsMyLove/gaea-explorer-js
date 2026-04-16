@@ -10,13 +10,6 @@
       "outputs": ["coverage/**"],
       "dependsOn": ["^test"]
     },
-    "lint": {
-      "outputs": []
-    },
-    "lint:fix": {
-      "outputs": []
-    },
-    "format": {},
     "dev": {
       "cache": false,
       "persistent": true

@@ -1,5 +1,5 @@
 {
-  "name": "@cesium-extends/popup",
+  "name": "@gaea/popup",
   "version": "1.0.2",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,16 +11,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
-    "directory": "packages/popup"
-  },
   "scripts": {
     "build": "rimraf dist && rollup -c",
-    "dev": "rollup -c --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "dev": "rollup -c --watch"
   },
   "keywords": [
     "cesium",

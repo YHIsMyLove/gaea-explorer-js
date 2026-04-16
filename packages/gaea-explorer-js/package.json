@@ -1,6 +1,6 @@
 {
-  "name": "@gaea/compass",
-  "version": "1.2.2",
+  "name": "gaea-explorer-js",
+  "version": "1.8.24",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -17,18 +17,25 @@
   },
   "keywords": [
     "cesium",
-    "widget",
-    "compass"
+    "plugin",
+    "extends"
   ],
   "author": "hongfaqiu",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
   },
-  "devDependencies": {
-    "cesium": "^1.125.0"
-  },
   "dependencies": {
-    "@gaea/common": "^1.0.1"
+    "@gaea/compass": "1.2.2",
+    "@gaea/drawer": "1.3.8",
+    "@gaea/geojson-render": "1.0.8",
+    "@gaea/heat": "1.0.4",
+    "@gaea/measure": "1.1.4",
+    "@gaea/popup": "1.0.2",
+    "@gaea/primitive-geojson": "1.0.11",
+    "@gaea/subscriber": "1.1.1",
+    "@gaea/sync-viewer": "1.0.1",
+    "@gaea/tooltip": "1.2.3",
+    "@gaea/zoom-control": "1.2.2"
   }
 }

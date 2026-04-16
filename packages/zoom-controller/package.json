@@ -1,5 +1,5 @@
 {
-  "name": "@cesium-extends/zoom-control",
+  "name": "@gaea/zoom-control",
   "version": "1.2.2",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,16 +11,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
-    "directory": "packages/zoom-control"
-  },
   "scripts": {
     "build": "rimraf dist && rollup -c",
-    "dev": "rollup -c --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "dev": "rollup -c --watch"
   },
   "keywords": [
     "cesium",
@@ -36,6 +29,6 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@cesium-extends/common": "^1.0.1"
+    "@gaea/common": "^1.0.1"
   }
 }
