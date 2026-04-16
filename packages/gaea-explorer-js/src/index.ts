@@ -4,6 +4,7 @@ export * from '@gaea-explorer/subscriber';
 export * from '@gaea-explorer/tooltip';
 export * from '@gaea-explorer/drawer';
 export * from '@gaea-explorer/measure';
+export * from '@gaea-explorer/graphics-extends';
 
 export { default as Drawer } from '@gaea-explorer/drawer';
 export { default as Popup } from '@gaea-explorer/popup';

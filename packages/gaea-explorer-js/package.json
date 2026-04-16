@@ -29,6 +29,7 @@
     "@gaea-explorer/compass": "workspace:*",
     "@gaea-explorer/drawer": "workspace:*",
     "@gaea-explorer/geojson-render": "workspace:*",
+    "@gaea-explorer/graphics-extends": "workspace:*",
     "@gaea-explorer/heat": "workspace:*",
     "@gaea-explorer/measure": "workspace:*",
     "@gaea-explorer/popup": "workspace:*",

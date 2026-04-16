@@ -143,6 +143,9 @@ importers:
       '@gaea-explorer/geojson-render':
         specifier: workspace:*
         version: link:../geojson-render
+      '@gaea-explorer/graphics-extends':
+        specifier: workspace:*
+        version: link:../graphics-extends
       '@gaea-explorer/heat':
         specifier: workspace:*
         version: link:../heat
