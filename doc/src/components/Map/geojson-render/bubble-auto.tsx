@@ -7,7 +7,7 @@ import {
   GeoJsonStyle,
   GeoJsonRenderConfig,
   updateDataSourcePosition,
-} from 'cesium-extends';
+} from 'gaea-explorer-js';
 import { GeoJsonDataSource } from 'cesium';
 
 import { initMap } from '@/utils/initMap';

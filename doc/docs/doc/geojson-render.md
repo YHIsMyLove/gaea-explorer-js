@@ -5,7 +5,7 @@ group: 扩展
 order: 3
 ---
 
-# @cesium-extends/geojson-render
+# @gaea/geojson-render
 
 这个 npm 库提供了两个方法用于渲染 GeoJSON 数据，分别是 `renderGeoJson` 和 `renderPrimitiveGeoJson`。
 
@@ -14,7 +14,7 @@ order: 3
 使用 npm 安装此库：
 
 ```
-npm install @cesium-extends/geojson-render
+npm install @gaea/geojson-render
 ```
 
 ## 用法
@@ -38,7 +38,7 @@ npm install @cesium-extends/geojson-render
 示例代码：
 
 ```typescript
-import { renderGeoJson } from '@cesium-extends/geojson-render';
+import { renderGeoJson } from '@gaea/geojson-render';
 import { GeoJsonDataSource } from 'cesium';
 
 const geoJsonData = {
@@ -91,8 +91,8 @@ renderGeoJson(dataSource, config).then((entityStyle) => {
 示例代码：
 
 ```typescript
-import { renderPrimitiveGeoJson } from '@cesium-extends/geojson-render';
-import { GeoJsonPrimitiveLayer } from '@cesium-extends/primitive-geojson';
+import { renderPrimitiveGeoJson } from '@gaea/geojson-render';
+import { GeoJsonPrimitiveLayer } from '@gaea/primitive-geojson';
 
 const viewer = new Cesium.Viewer('cesiumContainer');
 

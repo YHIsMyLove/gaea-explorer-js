@@ -2,7 +2,7 @@ import { Viewer } from 'cesium';
 import React, { useEffect, useRef } from 'react';
 
 import { initMap } from '@/utils/initMap';
-import { StartOption, Drawer } from 'cesium-extends';
+import { StartOption, Drawer } from 'gaea-explorer-js';
 import './index.less';
 import { CartesiantoLonlat } from '@/utils/funcs';
 

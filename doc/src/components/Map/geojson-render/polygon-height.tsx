@@ -4,7 +4,7 @@ import {
   GeoJsonPrimitiveLayer,
   renderPrimitiveGeoJson,
   GeoJsonRenderConfig,
-} from 'cesium-extends';
+} from 'gaea-explorer-js';
 
 import { initMap } from '@/utils/initMap';
 

@@ -1,6 +1,6 @@
 import { Cartesian3, Color, Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import { Subscriber } from 'cesium-extends';
+import { Subscriber } from 'gaea-explorer-js';
 
 import { initMap } from '../../utils/initMap';
 

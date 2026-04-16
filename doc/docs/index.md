@@ -1,13 +1,13 @@
 ---
 title: Cesium extends
 hero:
-  title: cesium-extends
-  description: cesium-extends
+  title: gaea-explorer-js
+  description: gaea-explorer-js
   actions:
     - text: Document
       link: /doc
     - text: GitHub
-      link: https://github.com/hongfaqiu/cesium-extends.git
+      link: https://github.com/hongfaqiu/gaea-explorer-js.git
 ---
 
 <code src="@/components/Analytics.tsx" inline></code>

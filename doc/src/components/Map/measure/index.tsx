@@ -14,7 +14,7 @@ import {
   DistanceMeasure,
   DistanceSurfaceMeasure,
   Measure,
-} from 'cesium-extends';
+} from 'gaea-explorer-js';
 import './index.less';
 
 interface MapProps {}

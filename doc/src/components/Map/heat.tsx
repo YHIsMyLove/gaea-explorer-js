@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { initMap } from '../../utils/initMap';
 import './index.less';
-import { HeatMapLayer } from 'cesium-extends';
+import { HeatMapLayer } from 'gaea-explorer-js';
 
 interface MapProps {}
 

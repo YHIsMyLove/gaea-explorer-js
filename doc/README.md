@@ -1,4 +1,4 @@
-# cesium-extends
+# gaea-explorer-js
 
 A static site base on [dumi](https://d.umijs.org).
 

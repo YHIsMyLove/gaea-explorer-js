@@ -1,6 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect, useRef } from 'react';
-import { Compass } from 'cesium-extends';
+import { Compass } from 'gaea-explorer-js';
 
 import { initMap } from '../../utils/initMap';
 
