@@ -8,7 +8,7 @@ import type {
   PolylineGraphics,
   RectangleGraphics,
 } from 'cesium';
-import type { EventArgs, EventType } from '@gaea/subscriber';
+import type { EventArgs, EventType } from '@gaea-explorer/subscriber';
 import type { BasicGraphicesOptions } from './base';
 import Drawer from '.';
 

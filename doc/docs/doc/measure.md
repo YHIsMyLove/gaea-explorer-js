@@ -5,21 +5,21 @@ group: 扩展
 order: 10
 ---
 
-# @gaea/measure
+# @gaea-explorer/measure
 
-@gaea/measure 是一个基于 Cesium 实现的测量工具，支持距离和面积测量，使用简单方便。
+@gaea-explorer/measure 是一个基于 Cesium 实现的测量工具，支持距离和面积测量，使用简单方便。
 
 ## 安装
 
 通过 npm 安装：
 
 ```bash
-npm install @gaea/measure --save
+npm install @gaea-explorer/measure --save
 ```
 
 ## 使用
 
-在项目中引入`@gaea/measure`模块，然后实例化对应的测量类即可进行测量。
+在项目中引入`@gaea-explorer/measure`模块，然后实例化对应的测量类即可进行测量。
 
 ### AreaMeasure
 
@@ -27,7 +27,7 @@ npm install @gaea/measure --save
 
 ```typescript
 import { Viewer } from "cesium";
-import { AreaMeasure } from "@gaea/measure";
+import { AreaMeasure } from "@gaea-explorer/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const areaMeasure = new AreaMeasure(viewer, {
@@ -70,7 +70,7 @@ areaMeasure.start();
 
 ```typescript
 import { Viewer } from 'cesium';
-import { AreaSurfaceMeasure } from '@gaea/measure';
+import { AreaSurfaceMeasure } from '@gaea-explorer/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const areaSurfaceMeasure = new AreaSurfaceMeasure(viewer, {
@@ -89,7 +89,7 @@ areaSurfaceMeasure.start();
 
 ```typescript
 import { Viewer } from 'cesium';
-import { DistanceMeasure } from '@gaea/measure';
+import { DistanceMeasure } from '@gaea-explorer/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const distanceMeasure = new DistanceMeasure(viewer, {
@@ -108,7 +108,7 @@ distanceMeasure.start();
 
 ```typescript
 import { Viewer } from 'cesium';
-import { DistanceSurfaceMeasure } from '@gaea/measure';
+import { DistanceSurfaceMeasure } from '@gaea-explorer/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {

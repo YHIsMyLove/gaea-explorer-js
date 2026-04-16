@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/tooltip",
+  "name": "@gaea-explorer/tooltip",
   "version": "1.2.3",
   "type": "module",
   "main": "./dist/index.js",
@@ -26,10 +26,10 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@gaea/subscriber": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/common": "workspace:*"
+    "@gaea-explorer/common": "workspace:*"
   }
 }

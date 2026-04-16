@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/sync-viewer",
+  "name": "@gaea-explorer/sync-viewer",
   "version": "1.0.1",
   "type": "module",
   "main": "./dist/index.js",

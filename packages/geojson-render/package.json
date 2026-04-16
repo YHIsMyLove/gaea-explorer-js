@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/geojson-render",
+  "name": "@gaea-explorer/geojson-render",
   "version": "1.0.8",
   "description": "Load geojson on cesium with deep custom style",
   "type": "module",
@@ -31,7 +31,7 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/primitive-geojson": "workspace:*",
+    "@gaea-explorer/primitive-geojson": "workspace:*",
     "@turf/turf": "^6.5.0"
   }
 }

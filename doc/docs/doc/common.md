@@ -5,7 +5,7 @@ group: 扩展
 order: 4
 ---
 
-# @gaea/common
+# @gaea-explorer/common
 
 - `Widget` 是一个基类，你需要拓展它来创建自己的小部件。你可以将它导入到你的项目中：
 - `DomUtil` 是一个提供一些 DOM 操作方法的实用工具类。
@@ -13,13 +13,13 @@ order: 4
 ## 安装
 
 ```bash
-npm install --save @gaea/common
+npm install --save @gaea-explorer/common
 ```
 
 ## 使用
 
 ```javascript
-import { Widget, DomUtil } from '@gaea/common';
+import { Widget, DomUtil } from '@gaea-explorer/common';
 ```
 
 ## Widget

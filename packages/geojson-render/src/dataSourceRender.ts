@@ -30,7 +30,7 @@ import type {
 } from 'cesium';
 import type { GeoJsonRenderConfig } from './renderConfig/typing';
 import type { EntityStyle, CustomPaintItem } from './renderConfig/entityStyle';
-import { getPositionsCenter } from '@gaea/primitive-geojson';
+import { getPositionsCenter } from '@gaea-explorer/primitive-geojson';
 
 export const dataSourceRender = async (
   dataSource: DataSource,

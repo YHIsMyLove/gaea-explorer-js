@@ -1,4 +1,4 @@
-import { DomUtil, Widget } from '@gaea/common';
+import { DomUtil, Widget } from '@gaea-explorer/common';
 
 import type { Cartesian2, Viewer } from 'cesium';
 

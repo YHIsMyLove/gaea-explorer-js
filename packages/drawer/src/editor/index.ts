@@ -1,6 +1,6 @@
 import { Cartesian2, Cartesian3, Entity, JulianDate } from 'cesium';
 import type { PointGraphics, Viewer } from 'cesium';
-import Subscriber from '@gaea/subscriber';
+import Subscriber from '@gaea-explorer/subscriber';
 import { pickCartesian3 } from '../utils';
 import { detectEditableType } from './detect';
 import { ControlPointType } from './typings';

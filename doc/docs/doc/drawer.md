@@ -5,7 +5,7 @@ group: 扩展
 order: 9
 ---
 
-# @gaea/drawer
+# @gaea-explorer/drawer
 
 一个基于 Cesium 的绘制工具库，支持勾画点、线、多边形、圆等常用图形。
 
@@ -14,13 +14,13 @@ order: 9
 使用 npm 安装：
 
 ```bash
-npm install @gaea/drawer --save
+npm install @gaea-explorer/drawer --save
 ```
 
 ## 使用方法
 
 ```javascript
-import Drawer from '@gaea/drawer';
+import Drawer from '@gaea-explorer/drawer';
 import Cesium from 'cesium';
 
 // 初始化Viewer
@@ -46,10 +46,10 @@ drawer.start({
 
 ## 编辑示例
 
-`@gaea/drawer` 提供了 `Editor` 类，支持对已绘制的图形进行编辑，包括拖拽顶点、中点插入、调整半径等操作。
+`@gaea-explorer/drawer` 提供了 `Editor` 类，支持对已绘制的图形进行编辑，包括拖拽顶点、中点插入、调整半径等操作。
 
 ```javascript
-import { Drawer, Editor } from '@gaea/drawer';
+import { Drawer, Editor } from '@gaea-explorer/drawer';
 import Cesium from 'cesium';
 
 const viewer = new Cesium.Viewer('cesiumContainer');

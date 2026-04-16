@@ -5,21 +5,21 @@ group: 扩展
 order: 11
 ---
 
-# @gaea/sync-viewer
+# @gaea-explorer/sync-viewer
 
-`@gaea/sync-viewer` 是一个用于同步两个 Cesium Viewer 视图的 npm 包。
+`@gaea-explorer/sync-viewer` 是一个用于同步两个 Cesium Viewer 视图的 npm 包。
 
 ## 安装
 
 ```bash
-npm install @gaea/sync-viewer
+npm install @gaea-explorer/sync-viewer
 ```
 
 ## 使用
 
 ```js
 import { Viewer } from 'cesium';
-import SyncViewer from '@gaea/sync-viewer';
+import SyncViewer from '@gaea-explorer/sync-viewer';
 
 const leftViewer = new Viewer('left-container');
 const rightViewer = new Viewer('right-container');

@@ -8,12 +8,12 @@ import {
   HeightReference,
 } from 'cesium';
 
-import { MouseTooltip } from '@gaea/tooltip';
-import Drawer from '@gaea/drawer';
+import { MouseTooltip } from '@gaea-explorer/tooltip';
+import Drawer from '@gaea-explorer/drawer';
 
 import type { Units } from '@turf/helpers';
 import type { Cartesian3, Entity, Viewer } from 'cesium';
-import type { DrawOption } from '@gaea/drawer';
+import type { DrawOption } from '@gaea-explorer/drawer';
 import { formatArea, formatLength } from './utils';
 
 export type MeasureUnits = Units;

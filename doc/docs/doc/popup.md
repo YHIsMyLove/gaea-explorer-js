@@ -5,24 +5,24 @@ group: 扩展
 order: 6
 ---
 
-# @gaea/popup
+# @gaea-explorer/popup
 
 一个轻量级、易于使用的 CesiumJS 弹窗组件。
 
 ## 安装
 
-要安装 `@gaea/popup`，请运行以下命令：
+要安装 `@gaea-explorer/popup`，请运行以下命令：
 
 ```bash
-npm install @gaea/popup
+npm install @gaea-explorer/popup
 ```
 
 ## 使用
 
-以下是如何使用 `@gaea/popup` 的示例：
+以下是如何使用 `@gaea-explorer/popup` 的示例：
 
 ```javascript
-import Popup from '@gaea/popup';
+import Popup from '@gaea-explorer/popup';
 import { Viewer } from 'cesium';
 
 const viewer = new Viewer('cesiumContainer');

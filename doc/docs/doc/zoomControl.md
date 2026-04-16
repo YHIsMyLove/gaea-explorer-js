@@ -5,9 +5,9 @@ group: 扩展
 order: 8
 ---
 
-# @gaea/zoom-control
+# @gaea-explorer/zoom-control
 
-@gaea/zoom-control 是一个用于 Cesium 的缩放控制部件，它是一个 npm 包，可以与 [Cesium](https://cesium.com/) 一起使用。
+@gaea-explorer/zoom-control 是一个用于 Cesium 的缩放控制部件，它是一个 npm 包，可以与 [Cesium](https://cesium.com/) 一起使用。
 
 ## 特性
 
@@ -18,7 +18,7 @@ order: 8
 通过 npm 安装：
 
 ```bash
-npm install @gaea/zoom-control
+npm install @gaea-explorer/zoom-control
 ```
 
 ## 示例
@@ -32,7 +32,7 @@ npm install @gaea/zoom-control
 ### 导入模块
 
 ```javascript
-import ZoomController from '@gaea/zoom-control';
+import ZoomController from '@gaea-explorer/zoom-control';
 ```
 
 ### 创建部件实例

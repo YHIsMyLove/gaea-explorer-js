@@ -5,14 +5,14 @@ group: 扩展
 order: 7
 ---
 
-# @gaea/compass
+# @gaea-explorer/compass
 
-一款基于 [@gaea/common](https://www.npmjs.com/package/@gaea/common) 库的[Cesium](https://cesium.com/)指南针插件。
+一款基于 [@gaea-explorer/common](https://www.npmjs.com/package/@gaea-explorer/common) 库的[Cesium](https://cesium.com/)指南针插件。
 
 ## 安装
 
 ```bash
-npm install @gaea/compass
+npm install @gaea-explorer/compass
 ```
 
 ## 使用方法
@@ -20,7 +20,7 @@ npm install @gaea/compass
 `Compass` 小部件可在 Cesium 应用程序中用于显示指南针。要使用该小部件，首先将其导入到您的项目中：
 
 ```javascript
-import Compass from '@gaea/compass';
+import Compass from '@gaea-explorer/compass';
 ```
 
 接下来，创建小部件的一个新实例并将其传递给您的 Cesium Viewer 实例：

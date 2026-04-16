@@ -1,5 +1,5 @@
 {
-  "name": "@gaea/drawer",
+  "name": "@gaea-explorer/drawer",
   "version": "1.3.8",
   "type": "module",
   "main": "./dist/index.js",
@@ -29,8 +29,8 @@
     "cesium": "^1.125.0"
   },
   "dependencies": {
-    "@gaea/common": "workspace:*",
-    "@gaea/subscriber": "workspace:*",
-    "@gaea/tooltip": "workspace:*"
+    "@gaea-explorer/common": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/tooltip": "workspace:*"
   }
 }

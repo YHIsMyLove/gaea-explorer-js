@@ -24,17 +24,17 @@ npm install gaea-explorer-js --save
 
 gaea-explorer-js 提供了以下功能：
 
-- 事件订阅 `@gaea/subscriber`
-- primitive 方式加速渲染 geojson `@gaea/primitive-geojson`
-- 丰富的 geojson 样式渲染 `@gaea/geojson-render`
-- tooltip `@gaea/tooltip`
-- 弹出框 `@gaea/popup`
-- 指南针 `@gaea/compass`
-- 缩放控制 `@gaea/zoom-control`
-- 绘图工具 `@gaea/drawer`
-- 测量工具 `@gaea/measure`
-- 双屏联动工具 `@gaea/sync-viewer`
-- 热力图 `@gaea/heat`
+- 事件订阅 `@gaea-explorer/subscriber`
+- primitive 方式加速渲染 geojson `@gaea-explorer/primitive-geojson`
+- 丰富的 geojson 样式渲染 `@gaea-explorer/geojson-render`
+- tooltip `@gaea-explorer/tooltip`
+- 弹出框 `@gaea-explorer/popup`
+- 指南针 `@gaea-explorer/compass`
+- 缩放控制 `@gaea-explorer/zoom-control`
+- 绘图工具 `@gaea-explorer/drawer`
+- 测量工具 `@gaea-explorer/measure`
+- 双屏联动工具 `@gaea-explorer/sync-viewer`
+- 热力图 `@gaea-explorer/heat`
 - ...
 
 详细信息及 demo，请参阅 [API 文档](https://extends.opendde.com/)。
