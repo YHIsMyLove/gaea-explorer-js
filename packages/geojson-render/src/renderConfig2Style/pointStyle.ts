@@ -47,7 +47,7 @@ const PointConfig2Style = async (
 
   const labelSize = (config as any)['label-size'];
   const imageSize = labelSize + (config['circle-stroke-width'] ?? 0) * 2;
-  let image: HTMLCanvasElement | undefined = undefined;
+  let image: HTMLCanvasElement | undefined;
   if ((config as any)['label-type'] === 'icon') {
     const imageName = (config as any)['icon-image'];
     image = SpriteIcons?.getImageByName(imageName);

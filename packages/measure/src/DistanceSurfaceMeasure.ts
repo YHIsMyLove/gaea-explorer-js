@@ -40,7 +40,7 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
     const sampleWindowPoints = [startPoint];
     const interval =
       Math.sqrt(
-        Math.pow(endPoint.x - startPoint.x, 2) + (endPoint.y - startPoint.y, 2),
+        (endPoint.x - startPoint.x) ** 2 + (endPoint.y - startPoint.y) ** 2,
       ) / this._splitNum;
     for (let ii = 1; ii <= this._splitNum; ii += 1) {
       const tempPositon = this._findWindowPositionByPixelInterval(
@@ -82,8 +82,7 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
       geoD.setEndPoints(cartographicStart, cartographicEnd);
       innerS = geoD.surfaceDistance;
       innerS = Math.sqrt(
-        Math.pow(innerS, 2) +
-          Math.pow(cartographicStart.height - cartographicEnd.height, 2),
+        innerS ** 2 + (cartographicStart.height - cartographicEnd.height) ** 2,
       );
     }
     return innerS;
@@ -103,8 +102,8 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
   ): Cartesian2 {
     const result = new Cartesian2(0, 0);
     const length = Math.sqrt(
-      Math.pow(endPosition.x - startPosition.x, 2) +
-        Math.pow(endPosition.y - startPosition.y, 2),
+      (endPosition.x - startPosition.x) ** 2 +
+        (endPosition.y - startPosition.y) ** 2,
     );
     if (length < interval) {
       return result;
@@ -126,11 +125,12 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
     const start = SceneTransforms.worldToWindowCoordinates(
       this._viewer.scene,
       pos1,
-    )!;
+    );
     const end = SceneTransforms.worldToWindowCoordinates(
       this._viewer.scene,
       pos2,
-    )!;
+    );
+    if (!start || !end) return 0;
 
     return this._calculateSurfaceDistance(start, end);
   }

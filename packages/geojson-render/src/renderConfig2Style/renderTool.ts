@@ -242,7 +242,7 @@ export function custom2value(value: any, customConfig: CustomPaintItem) {
   if (custom) {
     for (const item of custom) {
       const { label, value: val } = item;
-      if (label instanceof Array && label[0] <= value && label[1] >= value) {
+      if (Array.isArray(label) && label[0] <= value && label[1] >= value) {
         return val;
       }
       if (label === value) return val;
@@ -265,17 +265,17 @@ export function loadImage(url: string, params?: Record<string, any>) {
   let png = url;
   if (params) {
     const entries = Object.entries(params);
-    png = url + '?';
+    png = `${url}?`;
     for (let i = 0; i < entries.length; i += 1) {
       if (i > 0) png += '&';
-      png += entries[i][0] + '=' + entries[i][1];
+      png += `${entries[i][0]}=${entries[i][1]}`;
     }
   }
   return new Promise<HTMLImageElement>((resolve) => {
     const img = new Image();
     img.src = png;
     img.crossOrigin = 'Anonymous';
-    img.onload = function () {
+    img.onload = () => {
       resolve(img);
     };
   });
@@ -284,6 +284,7 @@ export function loadImage(url: string, params?: Record<string, any>) {
 export const image2canvas = (
   image: CanvasImageSource,
   config?: SpriteConfig,
+  color?: string,
 ) => {
   if (!config || !image) return undefined;
 
@@ -302,5 +303,12 @@ export const image2canvas = (
     config.width,
     config.height,
   );
+
+  if (color && context) {
+    context.globalCompositeOperation = 'source-in';
+    context.fillStyle = color;
+    context.fillRect(0, 0, config.width, config.height);
+  }
+
   return newCanvas;
 };

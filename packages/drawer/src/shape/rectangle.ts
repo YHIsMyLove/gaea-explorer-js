@@ -10,7 +10,7 @@ import {
 import BasicGraphices from '../base';
 
 import type { Rectangle as TRectangle } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { EventArgs } from '@gaea/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Rectangle extends BasicGraphices implements LifeCycle {
@@ -62,7 +62,7 @@ export default class Rectangle extends BasicGraphices implements LifeCycle {
       {},
       isDynamic && !this.sameStyle ? this.dynamicOptions : this.finalOptions,
       {
-        coordinates: new CallbackProperty(function () {
+        coordinates: new CallbackProperty(() => {
           const obj = CesiumRectangle.fromCartesianArray(target);
           return obj;
         }, false),

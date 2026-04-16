@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Entity } from 'cesium';
+import { Cartesian3, Entity, PolygonHierarchy } from 'cesium';
 import { detectEditableType } from '../src/editor/detect';
 
 describe('detectEditableType', () => {
@@ -15,14 +15,16 @@ describe('detectEditableType', () => {
 
   it('should detect CIRCLE type', () => {
     const entity = new Entity({
-      position: { x: 0, y: 0, z: 0 },
+      position: new Cartesian3(0, 0, 0),
       ellipse: { semiMinorAxis: 100, semiMajorAxis: 100 },
     });
     expect(detectEditableType(entity)).toBe('CIRCLE');
   });
 
   it('should detect POLYGON type', () => {
-    const entity = new Entity({ polygon: { hierarchy: {} } });
+    const entity = new Entity({
+      polygon: { hierarchy: new PolygonHierarchy() },
+    });
     expect(detectEditableType(entity)).toBe('POLYGON');
   });
 
@@ -38,7 +40,7 @@ describe('detectEditableType', () => {
 
   it('should detect POLYGON over POLYLINE when both exist', () => {
     const entity = new Entity({
-      polygon: { hierarchy: {} },
+      polygon: { hierarchy: new PolygonHierarchy() },
       polyline: { positions: [] },
     });
     expect(detectEditableType(entity)).toBe('POLYGON');

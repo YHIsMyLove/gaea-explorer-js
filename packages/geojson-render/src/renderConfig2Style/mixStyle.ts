@@ -5,7 +5,7 @@ import type { MixEntityStyle } from '../renderConfig/entityStyle';
 import type { GeoJsonMixStyle } from '../renderConfig/typing';
 
 const MixConfig2Style = async (
-  data: Record<string, any>[],
+  _data: Record<string, any>[],
   jsonStyle: GeoJsonMixStyle,
 ) => {
   const { config, sprite } = jsonStyle;

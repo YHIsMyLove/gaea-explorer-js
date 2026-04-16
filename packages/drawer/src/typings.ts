@@ -8,7 +8,7 @@ import type {
   PolylineGraphics,
   RectangleGraphics,
 } from 'cesium';
-import type { EventArgs, EventType } from '@cesium-extends/subscriber';
+import type { EventArgs, EventType } from '@gaea/subscriber';
 import type { BasicGraphicesOptions } from './base';
 import Drawer from '.';
 
@@ -20,7 +20,7 @@ export type OverrideEntityFunc = (
   this: Drawer,
   action: EventType,
   entity: Entity,
-) => Entity | void;
+) => Entity | undefined;
 
 /**
  * @todo 为了防止产生侵入性bug，请在配置前确认相关事件是否可用，不再默认移除原生事件

@@ -30,7 +30,7 @@ import type {
 } from 'cesium';
 import type { GeoJsonRenderConfig } from './renderConfig/typing';
 import type { EntityStyle, CustomPaintItem } from './renderConfig/entityStyle';
-import { getPositionsCenter } from '@cesium-extends/primitive-geojson';
+import { getPositionsCenter } from '@gaea/primitive-geojson';
 
 export const dataSourceRender = async (
   dataSource: DataSource,
@@ -39,7 +39,7 @@ export const dataSourceRender = async (
   const entities = dataSource.entities.values;
   const { label, paint, type, custom } = style;
 
-  entities.map((entity) => {
+  entities.forEach((entity) => {
     const customStyle: Record<string, any> = {};
 
     for (const k in custom) {
@@ -175,7 +175,7 @@ export const dataSourceRender = async (
         ...label.paint,
         text: label.paint.text?.replace(
           /{([^{}]*)}/g,
-          (match, p1) => getEntityValue(entity, p1) ?? '',
+          (_match, p1) => getEntityValue(entity, p1) ?? '',
         ),
       });
     } else entity.label = undefined;
@@ -246,7 +246,7 @@ const clusterEvent = (
   cluster.billboard.verticalOrigin = VerticalOrigin.CENTER;
   const length = clusteredEntities.length;
   const numSize = length.toString().length;
-  const helpNum = Math.pow(10, numSize - 1);
+  const helpNum = 10 ** (numSize - 1);
   if (length <= maxNum) {
     const num = numSize > 1 ? ~~(length / helpNum) * helpNum : length;
     cluster.billboard.image = new BillBuilder()

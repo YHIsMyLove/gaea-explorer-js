@@ -1,4 +1,4 @@
-import { Cartesian2, Cartesian3, Entity } from 'cesium';
+import { Cartesian2, Cartesian3, Entity, JulianDate } from 'cesium';
 import type { PointGraphics, Viewer } from 'cesium';
 import Subscriber from '@gaea/subscriber';
 import { pickCartesian3 } from '../utils';
@@ -239,8 +239,9 @@ export class Editor {
       const pickedEntity = result?.id as Entity | undefined;
       if (
         pickedEntity &&
-        pickedEntity.properties?.[EDITOR_CONTROL_KEY]?.getValue?.({})
-          ?.editableEntityId === this._activeEntity?.id
+        pickedEntity.properties?.[EDITOR_CONTROL_KEY]?.getValue?.(
+          JulianDate.now(),
+        )?.editableEntityId === this._activeEntity?.id
       ) {
         this._isDragging = true;
         this._draggingControlPoint = pickedEntity;
@@ -276,7 +277,9 @@ export class Editor {
       const pickedEntity = result?.id as Entity | undefined;
 
       // 点击控制点 → 中点新增逻辑（如果不是拖动，是点击 MIDPOINT）
-      const meta = pickedEntity?.properties?.[EDITOR_CONTROL_KEY]?.getValue?.({});
+      const meta = pickedEntity?.properties?.[EDITOR_CONTROL_KEY]?.getValue?.(
+        JulianDate.now(),
+      );
       if (meta?.controlType === ControlPointType.MIDPOINT) {
         if (!_movement.position) return;
         const pos = this._pickPosition(_movement.position);

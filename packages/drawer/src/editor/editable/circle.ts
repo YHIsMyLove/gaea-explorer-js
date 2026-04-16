@@ -1,4 +1,4 @@
-import { CallbackProperty, Cartesian3 } from 'cesium';
+import { CallbackProperty, Cartesian3, JulianDate } from 'cesium';
 import type { Entity } from 'cesium';
 import { ControlPointType } from '../typings';
 import type { EditingParams } from '../typings';
@@ -17,7 +17,8 @@ export class EditableCircle extends EditableShape {
     this._radius =
       typeof semiMinor === 'number'
         ? semiMinor
-        : ((semiMinor as CallbackProperty)?.getValue?.({}) ?? 100);
+        : ((semiMinor as CallbackProperty)?.getValue?.(JulianDate.now()) ??
+          100);
 
     ellipse.semiMinorAxis = new CallbackProperty(
       () => this._radius,

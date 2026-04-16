@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Cartesian3, Entity } from 'cesium';
+import { Cartesian3, Entity, JulianDate } from 'cesium';
 import { ControlPointType } from '../src/editor/typings';
 import { EditablePoint } from '../src/editor/editable/point';
 import { createMockViewer } from './helpers';
@@ -35,7 +35,8 @@ describe('EditablePoint', () => {
     editable.onDrag(cp, newPos);
 
     const updatedPos =
-      editable.entity.position?.getValue?.({}) ?? editable.entity.position;
+      editable.entity.position?.getValue?.(JulianDate.now()) ??
+      editable.entity.position;
     expect(updatedPos).toEqual(newPos);
   });
 

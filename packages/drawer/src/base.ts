@@ -2,7 +2,7 @@ import { CallbackProperty, Cartesian2, defined } from 'cesium';
 
 import type { Cartesian3, Entity } from 'cesium';
 import type Painter from './painter';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { EventArgs } from '@gaea/subscriber';
 
 type CreateFunc = (callback: CallbackProperty, bool: boolean) => Entity;
 

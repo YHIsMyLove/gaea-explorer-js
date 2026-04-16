@@ -21,7 +21,7 @@ export class EditablePolygon extends EditablePolyline {
     // 处理各种 Property 类型：ConstantProperty, CallbackProperty, 或原始 PolygonHierarchy
     let resolvedHierarchy: any = hierarchy;
     if (typeof hierarchy?.getValue === 'function') {
-      resolvedHierarchy = hierarchy.getValue({});
+      resolvedHierarchy = hierarchy.getValue(JulianDate.now());
     }
 
     const positions = resolvedHierarchy?.positions ?? resolvedHierarchy;
@@ -29,6 +29,7 @@ export class EditablePolygon extends EditablePolyline {
 
     // polygon 已通过上面的 null 检查
     const polygon = this._entity.polygon;
+    if (!polygon) return [];
     polygon.hierarchy = new CallbackProperty(
       () => new PolygonHierarchy(this._positions),
       false,
@@ -155,7 +156,7 @@ export function convertRectangleToPolygon(
   entity: Entity,
   viewer: Viewer,
 ): Entity {
-  const rect = entity.rectangle?.coordinates?.getValue?.(new JulianDate());
+  const rect = entity.rectangle?.coordinates?.getValue?.(JulianDate.now());
   if (!rect) throw new Error('Entity has no rectangle coordinates');
 
   const { west, east, north, south } = rect;

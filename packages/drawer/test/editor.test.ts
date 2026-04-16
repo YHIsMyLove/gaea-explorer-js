@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { Cartesian3, Entity } from 'cesium';
+import { Cartesian3, Entity, JulianDate } from 'cesium';
 import { Editor } from '../src/editor';
 import { createMockViewer } from './helpers';
 
@@ -118,7 +118,7 @@ describe('Editor', () => {
     // Cesium wraps position in ConstantPositionProperty
     const actualPos =
       typeof currentPos?.getValue === 'function'
-        ? currentPos.getValue({})
+        ? currentPos.getValue(JulianDate.now())
         : currentPos;
     expect(actualPos).toEqual(newPos);
   });

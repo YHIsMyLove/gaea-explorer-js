@@ -1,10 +1,7 @@
 import { Event } from 'cesium';
 
-import type Subscriber from '@cesium-extends/subscriber';
-import type {
-  EventType,
-  ExternalListenCallback,
-} from '@cesium-extends/subscriber';
+import type Subscriber from '@gaea/subscriber';
+import type { EventType, ExternalListenCallback } from '@gaea/subscriber';
 
 /**
  * GraphicLayer 基类

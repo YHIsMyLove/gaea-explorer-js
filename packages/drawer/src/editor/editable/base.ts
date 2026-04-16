@@ -1,4 +1,4 @@
-import { Cartesian3, Color, Entity } from 'cesium';
+import { Cartesian3, Color, Entity, JulianDate } from 'cesium';
 import type { PointGraphics, Viewer } from 'cesium';
 import { ControlPointType } from '../typings';
 import type {
@@ -112,7 +112,8 @@ export abstract class EditableShape {
   protected getControlPointMeta(entity: Entity): ControlPointMeta | undefined {
     const raw = entity.properties?.[EDITOR_CONTROL_KEY];
     if (!raw) return undefined;
-    if (typeof raw.getValue === 'function') return raw.getValue({});
+    if (typeof raw.getValue === 'function')
+      return raw.getValue(JulianDate.now());
     return raw;
   }
 
@@ -128,7 +129,8 @@ export abstract class EditableShape {
   protected resolvePosition(): Cartesian3 {
     const pos = this._entity.position;
     if (pos instanceof Cartesian3) return pos;
-    if (typeof pos?.getValue === 'function') return pos.getValue({});
+    if (pos != null && typeof pos.getValue === 'function')
+      return pos.getValue(JulianDate.now()) as Cartesian3;
     return pos as unknown as Cartesian3;
   }
 }

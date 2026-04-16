@@ -76,8 +76,8 @@ class AreaSurfaceMeasure extends AreaMeasure {
       const point2cartographic = Cartographic.fromCartesian(p2);
       geodesic.setEndPoints(point1cartographic, point2cartographic);
       const s = Math.sqrt(
-        Math.pow(geodesic.surfaceDistance, 2) +
-          Math.pow(point2cartographic.height - point1cartographic.height, 2),
+        geodesic.surfaceDistance ** 2 +
+          (point2cartographic.height - point1cartographic.height) ** 2,
       );
       const lat1 = point2cartographic.latitude * radiansPerDegree;
       const lon1 = point2cartographic.longitude * radiansPerDegree;
@@ -134,12 +134,12 @@ class AreaSurfaceMeasure extends AreaMeasure {
    * @returns {number} 面积/平方米
    */
   getArea(positions: Cartesian3[]): number {
-    return this._calculateSurfaceArea(
-      positions.map(
-        (item) =>
-          SceneTransforms.worldToWindowCoordinates(this._viewer.scene, item)!,
-      ),
-    );
+    const windowCoords = positions
+      .map((item) =>
+        SceneTransforms.worldToWindowCoordinates(this._viewer.scene, item),
+      )
+      .filter((p): p is Cartesian2 => p != null);
+    return this._calculateSurfaceArea(windowCoords);
   }
 }
 

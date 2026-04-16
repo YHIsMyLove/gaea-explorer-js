@@ -39,7 +39,7 @@ import {
 } from './GeoJsonLayer-util';
 import getPositionsCenter from './getPositionsCenter';
 
-import type Subscriber from '@cesium-extends/subscriber';
+import type Subscriber from '@gaea/subscriber';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
@@ -155,7 +155,6 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   set name(value) {
     if (this._name !== value) {
       this._name = value;
-      // @ts-ignore
       this._changed.raiseEvent(this);
     }
   }
@@ -427,7 +426,7 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
    */
   removeFeatureItemById(id: string) {
     const feature = this._featureItems.find((item) => item.id === id);
-    if (feature && feature.instance) {
+    if (feature?.instance) {
       switch (feature.type) {
         case 'Point':
           this._pointCollection.remove(feature.instance);
@@ -512,7 +511,6 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     if (name && this._name !== name) {
       this._name = name;
-      // @ts-ignore
       this._changed.raiseEvent(this);
     }
 

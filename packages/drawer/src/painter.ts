@@ -1,6 +1,7 @@
 import type { Cartesian2, Cartesian3, PointGraphics, Viewer } from 'cesium';
 import { Entity } from 'cesium';
 import { defaultOptions } from '.';
+import { pickCartesian3 } from './utils';
 
 interface DrawOption {
   viewer: Viewer;
@@ -68,18 +69,7 @@ export default class Painter {
   }
 
   pickCartesian3(position: Cartesian2): Cartesian3 | undefined {
-    // We use `viewer.scene.pickPosition` here instead of `viewer.camera.pickEllipsoid` so that
-    // we get the correct point when mousing over terrain.
-    if (this._model) {
-      return this._viewer.scene.pickPosition(position);
-    }
-    if (this._terrain) {
-      const ray = this._viewer.camera.getPickRay(position);
-      if (ray) return this._viewer.scene.globe.pick(ray, this._viewer.scene);
-    } else {
-      return this._viewer.camera.pickEllipsoid(position);
-    }
-    return undefined;
+    return pickCartesian3(this._viewer, position, this._terrain, this._model);
   }
 
   /**

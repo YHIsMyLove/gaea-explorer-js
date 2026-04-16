@@ -311,7 +311,7 @@ function newDiv(style: Record<string, any>, parent: HTMLElement) {
   if (parent) parent.append(div);
   for (const k in style) {
     if (typeof style[k] === 'number') {
-      div.style[k] = style[k] + 'px';
+      div.style[k] = `${style[k]}px`;
       continue;
     }
     div.style[k] = style[k];

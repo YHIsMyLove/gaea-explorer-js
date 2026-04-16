@@ -128,7 +128,7 @@ export default class Popup {
     if (!this._viewer.isDestroyed()) {
       this._viewer.scene.postRender.removeEventListener(this.setPosition);
     }
-    // @ts-ignore
+    // @ts-expect-error
     this.setPosition = undefined;
     this._destroyed = true;
   }

@@ -73,7 +73,7 @@ export const geometryTypes: GetKey<GeoJSON.Geometry> = {
 export function processFeature(
   geoJsonLayer: GeoJsonPrimitiveLayer,
   feature: GeoJSON.Feature,
-  notUsed: GeoJSON.Feature | undefined,
+  _notUsed: GeoJSON.Feature | undefined,
   crsFunction: CrsFunction,
   options: GeoJsonPrimitiveLayerOptions,
 ) {
@@ -102,7 +102,7 @@ export function processFeature(
 export function processFeatureCollection(
   geoJsonLayer: GeoJsonPrimitiveLayer,
   featureCollection: GeoJSON.FeatureCollection,
-  notUsed: GeoJSON.FeatureCollection,
+  _notUsed: GeoJSON.FeatureCollection,
   crsFunction: CrsFunction,
   options: GeoJsonPrimitiveLayerOptions,
 ) {
@@ -196,17 +196,17 @@ export function createPoint(
     });
 
     const promise = Promise.resolve(canvasOrPromise)
-      .then(function (image) {
+      .then((image) => {
         image instanceof Promise
           ? image.then((i) => {
               billboard.image = i;
             })
           : (billboard.image = image as unknown as string);
-        // @ts-ignore
+        // @ts-expect-error
         billboard.image = image;
       })
-      .catch(function () {
-        // @ts-ignore
+      .catch(() => {
+        // @ts-expect-error
         billboard.image = geoJsonLayer.pinBuilder.fromColor(color, size);
       });
 

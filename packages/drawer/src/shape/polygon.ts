@@ -15,7 +15,7 @@ import type {
   PolygonGraphics,
   PolylineGraphics,
 } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { EventArgs } from '@gaea/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Polygon extends BasicGraphices implements LifeCycle {

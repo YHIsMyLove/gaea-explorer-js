@@ -1,4 +1,4 @@
-import { DomUtil, Widget } from '@cesium-extends/common';
+import { DomUtil, Widget } from '@gaea/common';
 
 import type { Cartesian2, Viewer } from 'cesium';
 
@@ -14,7 +14,7 @@ class Tooltip extends Widget {
    * @param viewer
    */
   constructor(viewer: Viewer, options: TooltipOptions = {}) {
-    super(viewer, DomUtil.create('div', 'cesium-tool-tip'));
+    super(viewer, DomUtil.createDom('div', 'cesium-tool-tip'));
     this._offset = options.offset ?? [0, 0];
     this._content = options.content ?? '';
   }

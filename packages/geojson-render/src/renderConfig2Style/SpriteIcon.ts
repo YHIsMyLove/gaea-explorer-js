@@ -1,4 +1,5 @@
-import { SpriteConfig, SpriteJson, getSpriteJson } from './sprite';
+import { SpriteJson, getSpriteJson } from './sprite';
+import { image2canvas, loadImage } from './renderTool';
 
 export type SpriteIconOptions = {
   url: string;
@@ -10,59 +11,7 @@ export type SpriteOptins = {
   json: SpriteJson;
 };
 
-const optionsCache: Record<string, SpriteOptins> = {};
-
-export function loadImage(url: string, params?: Record<string, any>) {
-  let png = url;
-  if (params) {
-    const entries = Object.entries(params);
-    png = url + '?';
-    for (let i = 0; i < entries.length; i += 1) {
-      if (i > 0) png += '&';
-      png += entries[i][0] + '=' + entries[i][1];
-    }
-  }
-  return new Promise<HTMLImageElement>((resolve) => {
-    const img = new Image();
-    img.src = png;
-    img.crossOrigin = 'Anonymous';
-    img.onload = function () {
-      resolve(img);
-    };
-  });
-}
-
-export const image2canvas = (
-  image: CanvasImageSource,
-  config?: SpriteConfig,
-  color?: string,
-) => {
-  if (!config || !image) return undefined;
-
-  const newCanvas = document.createElement('canvas');
-  newCanvas.height = config.height;
-  newCanvas.width = config.width;
-  const context = newCanvas.getContext('2d');
-  context?.drawImage(
-    image,
-    config.x,
-    config.y,
-    config.width,
-    config.height,
-    0,
-    0,
-    config.width,
-    config.height,
-  );
-
-  if (color && context) {
-    context.globalCompositeOperation = 'source-in';
-    context.fillStyle = color;
-    context.fillRect(0, 0, config.width, config.height);
-  }
-
-  return newCanvas;
-};
+export { loadImage, image2canvas };
 
 export const reColorCanvas = (image: HTMLCanvasElement, color?: string) => {
   if (!image) return undefined;

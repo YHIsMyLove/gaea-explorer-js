@@ -8,7 +8,7 @@ import {
 import BasicGraphices from '../base';
 
 import { Cartesian3 } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { EventArgs } from '@gaea/subscriber';
 import type { LifeCycle } from '../base';
 
 export default class Circle extends BasicGraphices implements LifeCycle {
@@ -32,7 +32,7 @@ export default class Circle extends BasicGraphices implements LifeCycle {
       ? hierarchy
       : hierarchy.getValue(JulianDate.now());
 
-    const radiusFuc = new CallbackProperty(function () {
+    const radiusFuc = new CallbackProperty(() => {
       const distance = Cartesian3.distance(
         target[0],
         target[target.length - 1],

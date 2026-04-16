@@ -38,7 +38,6 @@ class DistanceMeasure extends Measure {
       const label = this._labels.get(i);
       if (i === 0) {
         label.text = this._locale.start;
-        continue;
       } else {
         const newDis = +this.getDistance(
           positions[i - 1],

@@ -1,4 +1,4 @@
-import { GeoJsonPrimitiveLayerOptions } from '@cesium-extends/primitive-geojson';
+import { GeoJsonPrimitiveLayerOptions } from '@gaea/primitive-geojson';
 import {
   Property,
   PointGraphics,

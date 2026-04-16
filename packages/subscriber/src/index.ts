@@ -111,7 +111,7 @@ export class Subscriber {
     );
     this._moveDebounce = options.pickResult?.moveDebounce;
     this._enablePickResult = options.pickResult?.enable ?? false;
-    this._lastTime = new Date().getTime();
+    this._lastTime = Date.now();
     this._isDestroy = false;
     this._initListener();
   }
@@ -126,7 +126,7 @@ export class Subscriber {
   private _shouldUpdate(update = true) {
     if (!this._moveDebounce) return true;
 
-    const timeNow = new Date().getTime();
+    const timeNow = Date.now();
     if (timeNow - this._lastTime < this._moveDebounce) {
       return false;
     } else {

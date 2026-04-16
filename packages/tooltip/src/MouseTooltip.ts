@@ -6,7 +6,7 @@ import {
 import Tooltip from './Tooltip';
 
 import type { Viewer } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { EventArgs } from '@gaea/subscriber';
 import type { TooltipOptions } from './Tooltip';
 
 type MouseTooltipOptions = TooltipOptions;

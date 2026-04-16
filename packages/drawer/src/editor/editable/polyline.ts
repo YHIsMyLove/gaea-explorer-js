@@ -1,4 +1,4 @@
-import { CallbackProperty, Cartesian3 } from 'cesium';
+import { CallbackProperty, Cartesian3, JulianDate } from 'cesium';
 import type { Entity } from 'cesium';
 import { ControlPointType } from '../typings';
 import type { EditingParams } from '../typings';
@@ -16,10 +16,11 @@ export class EditablePolyline extends EditableShape {
 
     this._positions = Array.isArray(rawPositions)
       ? [...rawPositions]
-      : ((rawPositions as CallbackProperty).getValue?.({}) ?? []);
+      : ((rawPositions as CallbackProperty).getValue?.(JulianDate.now()) ?? []);
 
     // polyline 已通过上面的 null 检查
     const polyline = this._entity.polyline;
+    if (!polyline) return [];
     polyline.positions = new CallbackProperty(
       () => this._positions,
       false,

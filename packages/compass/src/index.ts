@@ -11,7 +11,7 @@ import {
   SceneMode,
   Transforms,
 } from 'cesium';
-import { DomUtil, Widget } from '@cesium-extends/common';
+import { DomUtil, Widget } from '@gaea/common';
 
 import Icons from './icons';
 import './styles/Compass.scss';
@@ -49,7 +49,7 @@ class Compass extends Widget {
   constructor(viewer: Viewer, options: CompassOptions = {}) {
     super(
       viewer,
-      DomUtil.create(
+      DomUtil.createDom(
         'div',
         'cesium-compass',
         options.container ?? viewer.container,
@@ -136,7 +136,7 @@ class Compass extends Widget {
 
   protected _mountContent() {
     const { tips } = this._options;
-    DomUtil.create('div', 'out-ring-bg', this._wrapper);
+    DomUtil.createDom('div', 'out-ring-bg', this._wrapper);
     this._outRing = DomUtil.parseDom(this._icons.compass_outer, 'out-ring');
     this._wrapper.appendChild(this._outRing);
     this._gyro = DomUtil.parseDom(this._icons.compass_inner, 'gyro');
@@ -165,7 +165,7 @@ class Compass extends Widget {
     if (scene.mode === SceneMode.MORPHING) {
       return true;
     }
-    // @ts-ignore
+    // @ts-expect-error
     const rect = e.currentTarget?.getBoundingClientRect();
     if (!rect) return false;
     this._compassRectangle = rect;

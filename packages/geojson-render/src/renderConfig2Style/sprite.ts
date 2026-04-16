@@ -19,5 +19,5 @@ export const getSpriteJson = (
   return Resource.fetchJson({
     url,
     queryParameters: params,
-  });
+  }) as Promise<SpriteJson>;
 };

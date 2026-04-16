@@ -66,6 +66,7 @@ describe('GeoJsonPrimitiveLayer', () => {
         [1, 0, 0],
         [0, 0, 0],
       ].map((pos) => Cartesian3.fromArray(pos)),
+      holes: [],
       style: {
         material: Color.WHITE,
       },

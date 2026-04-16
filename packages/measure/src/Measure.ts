@@ -8,12 +8,12 @@ import {
   HeightReference,
 } from 'cesium';
 
-import { MouseTooltip } from '@cesium-extends/tooltip';
-import Drawer from '@cesium-extends/drawer';
+import { MouseTooltip } from '@gaea/tooltip';
+import Drawer from '@gaea/drawer';
 
 import type { Units } from '@turf/helpers';
 import type { Cartesian3, Entity, Viewer } from 'cesium';
-import type { DrawOption } from '@cesium-extends/drawer';
+import type { DrawOption } from '@gaea/drawer';
 import { formatArea, formatLength } from './utils';
 
 export type MeasureUnits = Units;
@@ -161,7 +161,7 @@ export default class Measure {
    * @param {Cartesian3[]} positions
    */
 
-  protected _updateLabelFunc(positions: Cartesian3[]): void {}
+  protected _updateLabelFunc(_positions: Cartesian3[]): void {}
 
   protected _cartesian2Lonlat(positions: Cartesian3[]) {
     return positions.map((pos) => {
@@ -190,10 +190,9 @@ export default class Measure {
     const { style, clampToGround } = options ?? {};
     if (this._status !== 'INIT') return;
 
-    const self = this;
     this.drawer.start({
       type,
-      onPointsChange: self._updateLabelFunc.bind(self),
+      onPointsChange: this._updateLabelFunc.bind(this),
       dynamicOptions: {
         ...style,
         clampToGround,

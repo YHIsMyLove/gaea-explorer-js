@@ -9,14 +9,14 @@ import type {
   CustomPaintItem,
   CylinderEntityConstructor,
 } from './renderConfig/entityStyle';
-import type GeoJsonPrimitiveLayer from '@cesium-extends/primitive-geojson';
+import type GeoJsonPrimitiveLayer from '@gaea/primitive-geojson';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
   PointPrimitiveItem,
   PolylinePrimitiveItem,
   PolygonPrimitiveItem,
-} from '@cesium-extends/primitive-geojson';
+} from '@gaea/primitive-geojson';
 
 export const primitiveGeoJsonRender = async (
   primitiveLayer: GeoJsonPrimitiveLayer,
@@ -25,8 +25,8 @@ export const primitiveGeoJsonRender = async (
   const featureItems = [...primitiveLayer.featureItems];
   primitiveLayer.removeAllPrimitive();
   const { label, paint, type, custom } = style;
-  let depthTest: undefined | boolean = undefined;
-  featureItems.map((feature) => {
+  let depthTest: undefined | boolean;
+  featureItems.forEach((feature) => {
     const customStyle: any = {};
 
     for (const k in custom) {
@@ -165,7 +165,7 @@ export const primitiveGeoJsonRender = async (
           ...label.paint,
           text: label.paint.text?.replace(
             /{([^{}]*)}/g,
-            (match, p1) => feature.properties?.[p1] ?? '',
+            (_match, p1) => feature.properties?.[p1] ?? '',
           ),
         },
       });
