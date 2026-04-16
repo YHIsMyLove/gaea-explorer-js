@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { ConstantProperty, CallbackProperty, Color, JulianDate } from 'cesium';
+import { ConstantProperty, CallbackProperty, Color, JulianDate, Cartesian3, Entity } from 'cesium';
 import { FrustumGraphics } from '../src/frustum/FrustumGraphics';
+import { FrustumPrimitive } from '../src/frustum/FrustumPrimitive';
+import { createMockViewer } from './helpers';
 
 describe('FrustumGraphics', () => {
   it('should create with default values', () => {
@@ -67,5 +69,62 @@ describe('FrustumGraphics', () => {
     expect(graphics.fill.getValue(JulianDate.now())).toBe(true);
     expect(graphics.fillOpacity.getValue(JulianDate.now())).toBe(0.5);
     expect(graphics.outline.getValue(JulianDate.now())).toBe(true);
+  });
+});
+
+describe('FrustumPrimitive', () => {
+  it('should create primitive with entity and graphics', () => {
+    const viewer = createMockViewer();
+    const entity = new Entity({
+      position: Cartesian3.fromDegrees(120, 30, 2000),
+    });
+    const graphics = new FrustumGraphics({
+      fov: 60,
+      far: 1000,
+    });
+
+    const primitive = new FrustumPrimitive({
+      entity,
+      graphics,
+      scene: viewer.scene,
+    });
+
+    expect(primitive.entity).toBe(entity);
+    expect(primitive.graphics).toBe(graphics);
+    expect(primitive.isDestroyed).toBe(false);
+  });
+
+  it('should update primitive on time change', () => {
+    const viewer = createMockViewer();
+    const entity = new Entity({
+      position: Cartesian3.fromDegrees(120, 30, 2000),
+    });
+    const graphics = new FrustumGraphics();
+
+    const primitive = new FrustumPrimitive({
+      entity,
+      graphics,
+      scene: viewer.scene,
+    });
+
+    primitive.update(JulianDate.now());
+    expect(primitive.primitiveCollection.show).toBe(true);
+  });
+
+  it('should destroy primitive and remove from scene', () => {
+    const viewer = createMockViewer();
+    const entity = new Entity({
+      position: Cartesian3.fromDegrees(120, 30, 2000),
+    });
+    const graphics = new FrustumGraphics();
+
+    const primitive = new FrustumPrimitive({
+      entity,
+      graphics,
+      scene: viewer.scene,
+    });
+
+    primitive.destroy();
+    expect(primitive.isDestroyed).toBe(true);
   });
 });
