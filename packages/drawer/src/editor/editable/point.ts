@@ -1,4 +1,4 @@
-import { Cartesian3 } from 'cesium';
+import { Cartesian3, ConstantPositionProperty } from 'cesium';
 import type { Entity } from 'cesium';
 import { ControlPointType } from '../typings';
 import type { EditingParams } from '../typings';
@@ -17,7 +17,7 @@ export class EditablePoint extends EditableShape {
   }
 
   onDrag(_controlPointEntity: Entity, newPosition: Cartesian3): void {
-    this._entity.position = newPosition as any;
+    this._entity.position = new ConstantPositionProperty(newPosition);
     this._viewer.scene.requestRender();
   }
 

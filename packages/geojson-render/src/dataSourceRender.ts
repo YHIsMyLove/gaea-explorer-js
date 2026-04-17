@@ -37,6 +37,7 @@ export const dataSourceRender = async (
   style: EntityStyle,
 ) => {
   const entities = dataSource.entities.values;
+  const now = JulianDate.now();
   const { label, paint, type, custom } = style;
 
   entities.forEach((entity) => {
@@ -104,9 +105,7 @@ export const dataSourceRender = async (
         break;
       case 'polygon':
         const height = customStyle?.extrudedHeight;
-        const polygonHierarchy = entity.polygon?.hierarchy?.getValue(
-          JulianDate.now(),
-        );
+        const polygonHierarchy = entity.polygon?.hierarchy?.getValue(now);
         entity.polygon = new PolygonGraphics({
           hierarchy: entity.polygon?.hierarchy,
           ...paint,
@@ -153,9 +152,7 @@ export const dataSourceRender = async (
         });
 
         if (entity.polygon) {
-          const mixPolygonHierarchy = entity.polygon?.hierarchy?.getValue(
-            JulianDate.now(),
-          );
+          const mixPolygonHierarchy = entity.polygon?.hierarchy?.getValue(now);
           entity.polygon = new PolygonGraphics({
             hierarchy: entity.polygon?.hierarchy,
             material: paint.fill,
@@ -309,16 +306,19 @@ function dataSourceCluster(
     );
 }
 
-function updateEntityPosition(entity: Entity) {
+function updateEntityPosition(
+  entity: Entity,
+  now: JulianDate = JulianDate.now(),
+) {
   if (entity.polygon) {
-    const hierarchy = entity.polygon?.hierarchy?.getValue(JulianDate.now());
+    const hierarchy = entity.polygon?.hierarchy?.getValue(now);
     if (!hierarchy?.positions) return;
     const center = getPositionsCenter(hierarchy.positions).cartesian3;
     entity.position = new ConstantPositionProperty(center);
     return;
   }
   if (entity.polyline) {
-    const positions = entity.polyline.positions?.getValue(JulianDate.now());
+    const positions = entity.polyline.positions?.getValue(now);
     if (!positions || positions.length === 0) return;
     const center = positions[Math.floor(positions.length / 2)];
     entity.position = new ConstantPositionProperty(center);
@@ -328,8 +328,9 @@ function updateEntityPosition(entity: Entity) {
 
 export function updateDataSourcePosition(dataSource: DataSource) {
   const entities = dataSource.entities.values;
+  const now = JulianDate.now();
   for (let i = 0; i < entities.length; i += 1) {
     const entity = entities[i];
-    updateEntityPosition(entity);
+    updateEntityPosition(entity, now);
   }
 }
