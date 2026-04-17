@@ -257,14 +257,13 @@ const Map: React.FC = () => {
   };
 
   return (
-    <>
+    <div id="cesiumContainer">
       <FrustumControlPanel
         config={config}
         onChange={handleConfigChange}
         onReset={handleReset}
       />
-      <div id="cesiumContainer" />
-    </>
+    </div>
   );
 };
 
