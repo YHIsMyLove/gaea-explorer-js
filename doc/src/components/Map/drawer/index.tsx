@@ -13,7 +13,7 @@ const Map: React.FC<MapProps> = () => {
   const DrawerTool = useRef<Drawer>();
 
   useEffect(() => {
-    viewer.current = initMap('cesiumContainer');
+    viewer.current = initMap('cesiumContainer-drawer');
     DrawerTool.current = new Drawer(viewer.current, {
       tips: {
         init: '点击绘制',
@@ -75,7 +75,7 @@ const Map: React.FC<MapProps> = () => {
   ];
 
   return (
-    <div id="cesiumContainer">
+    <div id="cesiumContainer-drawer" className="drawer-container">
       <div className="draw-tools">
         {operations.map((op) => (
           <button key={op.type} onClick={() => startDraw(op.type)}>

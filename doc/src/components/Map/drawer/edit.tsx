@@ -25,7 +25,7 @@ const Map: React.FC = () => {
   const [isSelectMode, setIsSelectMode] = useState(false);
 
   useEffect(() => {
-    viewer.current = initMap('cesiumContainer');
+    viewer.current = initMap('cesiumContainer-drawer-edit');
     drawerTool.current = new Drawer(viewer.current, {
       tips: {
         init: '点击绘制',
@@ -118,7 +118,7 @@ const Map: React.FC = () => {
   }, [resetEditorState, exitSelectMode]);
 
   return (
-    <div id="cesiumContainer">
+    <div id="cesiumContainer-drawer-edit" className="drawer-container">
       <div className="draw-tools">
         {DRAW_OPERATIONS.map((op) => (
           <button key={op.type} onClick={() => startDraw(op.type)}>
