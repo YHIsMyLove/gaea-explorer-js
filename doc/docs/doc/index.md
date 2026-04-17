@@ -34,11 +34,12 @@ gaea-explorer-js 提供了以下功能：
 - 绘图工具 `@gaea-explorer/drawer`
 - 测量工具 `@gaea-explorer/measure`
 - 双屏联动工具 `@gaea-explorer/sync-viewer`
-- 鹰眼小地图 `@gaea-explorer/eagle-eye`
+- 无人机视角 `@gaea-explorer/uav`
 - 热力图 `@gaea-explorer/heat`
-- ...
+- 自定义 Graphics 扩展（视锥体等） `@gaea-explorer/graphics-extends`
+- 公共工具 `@gaea-explorer/common`
 
-详细信息及 demo，请参阅 [API 文档](https://extends.opendde.com/)。
+详细信息及 demo，请参阅 [API 文档](https://yhismylove.github.io/gaea-explorer-js/)。
 
 ## 示例
 
