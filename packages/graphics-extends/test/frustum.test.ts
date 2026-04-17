@@ -1,5 +1,12 @@
 import { describe, expect, it, vi } from 'vitest';
-import { ConstantProperty, CallbackProperty, Color, JulianDate, Cartesian3, Entity } from 'cesium';
+import {
+  ConstantProperty,
+  CallbackProperty,
+  Color,
+  JulianDate,
+  Cartesian3,
+  Entity,
+} from 'cesium';
 import { FrustumGraphics } from '../src/frustum/FrustumGraphics';
 import { FrustumPrimitive } from '../src/frustum/FrustumPrimitive';
 import { FrustumVisualizer } from '../src/frustum/FrustumVisualizer';

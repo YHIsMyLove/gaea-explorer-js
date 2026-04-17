@@ -223,8 +223,12 @@ export class FrustumPrimitive {
   destroy(): void {
     if (this._isDestroyed) return;
 
-    this._scene.primitives.remove(this._primitiveCollection);
-    this._primitiveCollection.removeAll();
+    if (!this._primitiveCollection.isDestroyed) {
+      this._primitiveCollection.removeAll();
+    }
+    if (!this._primitiveCollection.isDestroyed) {
+      this._scene.primitives.remove(this._primitiveCollection);
+    }
     this._isDestroyed = true;
   }
 }

@@ -29,14 +29,16 @@ function createMockCollectionChanged() {
   };
 }
 
-export type MockCollectionChanged = ReturnType<typeof createMockCollectionChanged>;
+export type MockCollectionChanged = ReturnType<
+  typeof createMockCollectionChanged
+>;
 
 /**
  * Create a standalone mock EntityCollection with event support.
  * Useful for FrustumVisualizer tests where we need collectionChanged events.
  */
 export function createMockEntityCollection(
-  initialEntities: Entity[] = []
+  initialEntities: Entity[] = [],
 ): EntityCollection & { _collectionChanged: MockCollectionChanged } {
   const entities: Entity[] = [...initialEntities];
   const _collectionChanged = createMockCollectionChanged();

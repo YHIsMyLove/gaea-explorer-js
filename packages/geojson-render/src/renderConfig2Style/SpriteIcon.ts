@@ -34,6 +34,8 @@ export const reColorCanvas = (image: HTMLCanvasElement, color?: string) => {
 };
 
 export default class SpriteIcon {
+  private static _optionsCache: Record<string, SpriteOptins> = {};
+
   private _options: SpriteOptins | undefined;
   private _ready: boolean;
   readyPromise: Promise<SpriteOptins | undefined>;
@@ -61,7 +63,7 @@ export default class SpriteIcon {
 
     const key = sprite.url + sprite.params;
     let options: SpriteOptins;
-    if (optionsCache[key]) options = optionsCache[key];
+    if (SpriteIcon._optionsCache[key]) options = SpriteIcon._optionsCache[key];
     else {
       options = {
         spriteImage: await loadImage(
@@ -73,7 +75,7 @@ export default class SpriteIcon {
           sprite.params,
         ),
       };
-      optionsCache[key] = options;
+      SpriteIcon._optionsCache[key] = options;
     }
     this._options = options;
     return this._options;
