@@ -1,3 +1,16 @@
+# @gaea-explorer/popup 1.0.0 (2026-04-16)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/YHIsMyLove/gaea-explorer-js/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+* replace wgs84ToWindowCoordinates [#27](https://github.com/YHIsMyLove/gaea-explorer-js/issues/27) ([0d7b68a](https://github.com/YHIsMyLove/gaea-explorer-js/commit/0d7b68adb6c3244416792fdaef860e86ba3f6f9b))
+
+
+### Features
+
+* popup ([1918533](https://github.com/YHIsMyLove/gaea-explorer-js/commit/19185331b617bb068e9697fac334af7dd0cee0d8))
+
 ## @gaea/popup [1.0.2](https://github.com/hongfaqiu/gaea-explorer-js/compare/@gaea/popup@1.0.1...@gaea/popup@1.0.2) (2024-11-25)
 
 ### Bug Fixes

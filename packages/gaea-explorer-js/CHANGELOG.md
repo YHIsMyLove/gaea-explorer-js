@@ -1,3 +1,33 @@
+## @gaea-explorer/gaea-explorer-js [1.0.1](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/gaea-explorer-js@1.0.0...@gaea-explorer/gaea-explorer-js@1.0.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* add [@gaea-explorer](https://github.com/gaea-explorer) scope to gaea-explorer-js package ([9444aab](https://github.com/YHIsMyLove/gaea-explorer-js/commit/9444aab19ba59149418fa12553e4e8886e9099bc))
+* add trailing newline to gaea-explorer-js package.json ([25233e8](https://github.com/YHIsMyLove/gaea-explorer-js/commit/25233e8882d421e658560f08c2e7ec82fe8ab4c0))
+* add trailing newline to package.json files ([cddd7fe](https://github.com/YHIsMyLove/gaea-explorer-js/commit/cddd7fe085b5b6164be4212dfd6f08f554042a31))
+* lint formatting issues in package.json files ([f8c7085](https://github.com/YHIsMyLove/gaea-explorer-js/commit/f8c708554759d8bf91b38931f87269c264d3ea3c))
+* merge master and update .npmrc for npm publishing ([0113c33](https://github.com/YHIsMyLove/gaea-explorer-js/commit/0113c334037f688b121a64a956b1aabfec11877d))
+* merge master release commits, keep [@gaea-explorer](https://github.com/gaea-explorer) scope ([276750b](https://github.com/YHIsMyLove/gaea-explorer-js/commit/276750b51c196561d879aef3c4233b21eb60c88a))
+
+
+
+
+
+### Dependencies
+
+* **@gaea-explorer/compass:** upgraded to 1.0.0
+* **@gaea-explorer/drawer:** upgraded to 1.0.0
+* **@gaea-explorer/geojson-render:** upgraded to 1.0.0
+* **@gaea-explorer/heat:** upgraded to 1.0.0
+* **@gaea-explorer/measure:** upgraded to 1.0.0
+* **@gaea-explorer/popup:** upgraded to 1.0.0
+* **@gaea-explorer/primitive-geojson:** upgraded to 1.0.0
+* **@gaea-explorer/subscriber:** upgraded to 1.0.0
+* **@gaea-explorer/sync-viewer:** upgraded to 1.0.0
+* **@gaea-explorer/tooltip:** upgraded to 1.0.0
+* **@gaea-explorer/zoom-control:** upgraded to 1.0.0
+
 # @gaea-explorer/gaea-explorer-js 1.0.0 (2026-04-16)
 
 
