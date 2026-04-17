@@ -4,7 +4,7 @@ Dumi 文档站，展示所有包的交互式示例。包含各组件的 demo 场
 
 ## Structure
 
-- `src/components/Map/` — 各功能的 demo 组件：simple, compass, drawer, heat, measure, popup, subscriber, sync-viewer, zoomControl, frustum, frustum-demo, eagle-eye 等
+- `src/components/Map/` — 各功能的 demo 组件：simple, compass, drawer, heat, measure, popup, subscriber, sync-viewer, zoomControl, frustum, frustum-demo, uav 等
 - `src/components/Map/geojson-render/` — GeoJSON 渲染示例：bubble-auto, bubble-cluster, point-height, point-value, polygon-height, single-sprite
 - `src/components/Map/frustum/` — Frustum 视锥体 demo 样式
 - `src/utils/initMap.ts` — Cesium viewer 初始化工具
