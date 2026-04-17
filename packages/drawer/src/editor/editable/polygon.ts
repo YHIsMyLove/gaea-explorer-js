@@ -1,6 +1,7 @@
 import {
   CallbackProperty,
   Cartesian3,
+  ConstantProperty,
   Entity,
   JulianDate,
   PolygonHierarchy,
@@ -33,14 +34,14 @@ export class EditablePolygon extends EditablePolyline {
     polygon.hierarchy = new CallbackProperty(
       () => new PolygonHierarchy(this._positions),
       false,
-    ) as any;
+    );
 
     // 如果有 polyline（边框），也同步更新
     if (this._entity.polyline) {
       this._entity.polyline.positions = new CallbackProperty(
         () => [...this._positions, this._positions[0]],
         false,
-      ) as any;
+      );
     }
 
     // 创建顶点控制点
@@ -129,15 +130,15 @@ export class EditablePolygon extends EditablePolyline {
 
   finalize(): void {
     if (this._entity.polygon) {
-      this._entity.polygon.hierarchy = new PolygonHierarchy([
-        ...this._positions,
-      ]) as any;
+      this._entity.polygon.hierarchy = new ConstantProperty(
+        new PolygonHierarchy([...this._positions]),
+      );
     }
     if (this._entity.polyline) {
-      this._entity.polyline.positions = [
+      this._entity.polyline.positions = new ConstantProperty([
         ...this._positions,
         this._positions[0],
-      ] as any;
+      ]);
     }
   }
 

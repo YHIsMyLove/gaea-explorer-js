@@ -1,4 +1,9 @@
-import { CallbackProperty, Cartesian3, JulianDate } from 'cesium';
+import {
+  CallbackProperty,
+  Cartesian3,
+  ConstantProperty,
+  JulianDate,
+} from 'cesium';
 import type { Entity } from 'cesium';
 import { ControlPointType } from '../typings';
 import type { EditingParams } from '../typings';
@@ -21,10 +26,7 @@ export class EditablePolyline extends EditableShape {
     // polyline 已通过上面的 null 检查
     const polyline = this._entity.polyline;
     if (!polyline) return [];
-    polyline.positions = new CallbackProperty(
-      () => this._positions,
-      false,
-    ) as any;
+    polyline.positions = new CallbackProperty(() => this._positions, false);
 
     // 创建顶点控制点
     for (let i = 0; i < this._positions.length; i++) {
@@ -155,7 +157,9 @@ export class EditablePolyline extends EditableShape {
 
   finalize(): void {
     if (this._entity.polyline) {
-      this._entity.polyline.positions = [...this._positions] as any;
+      this._entity.polyline.positions = new ConstantProperty([
+        ...this._positions,
+      ]);
     }
   }
 
