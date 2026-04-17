@@ -1,22 +1,27 @@
 import {
   Cartesian2,
   Cartesian3,
+  Cartographic,
   Color,
+  HeadingPitchRoll,
   ImageryLayer,
   Math as CMath,
+  Quaternion,
   SceneMode,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
+  Transforms,
   Viewer,
 } from 'cesium';
 
 import SyncViewer from '@gaea-explorer/sync-viewer';
 import { DomUtil, Widget } from '@gaea-explorer/common';
+import { FrustumGraphics } from '@gaea-explorer/graphics-extends';
 
 import { ViewRect } from './ViewRect';
 import './styles/eagle-eye.scss';
 
-import type { EagleEyeOptions, EagleEyePosition } from './typings';
+import type { EagleEyeOptions, EagleEyePosition, SyncEntityViewOptions, SyncFrustumViewOptions } from './typings';
 
 const DEFAULT_WIDTH = 150;
 const DEFAULT_HEIGHT = 150;
@@ -37,6 +42,8 @@ interface InternalOptions {
   percentageChanged: number;
   flyDuration: number;
   container: Element;
+  syncEntityView?: SyncEntityViewOptions;
+  syncFrustumView?: SyncFrustumViewOptions;
 }
 
 /**
@@ -74,6 +81,8 @@ export class EagleEyeWidget extends Widget {
       percentageChanged: options.percentageChanged ?? 0.01,
       flyDuration: options.flyDuration ?? DEFAULT_FLY_DURATION,
       container: options.container ?? viewer.container,
+      syncEntityView: options.syncEntityView,
+      syncFrustumView: options.syncFrustumView,
     };
 
     this._applyStyle();
@@ -159,6 +168,11 @@ export class EagleEyeWidget extends Widget {
     imageryLayers.layerRemoved.addEventListener(this._onLayerRemoved);
     imageryLayers.layerMoved.addEventListener(this._onLayerMoved);
 
+    // 注册视角同步监听器
+    if (this._options.syncEntityView || this._options.syncFrustumView) {
+      this._eagleViewer.scene.preRender.addEventListener(this._syncEntityView);
+    }
+
     this._ready = true;
     this._applyCustomOrientation();
   }
@@ -215,6 +229,11 @@ export class EagleEyeWidget extends Widget {
     imageryLayers.layerAdded.removeEventListener(this._onLayerAdded);
     imageryLayers.layerRemoved.removeEventListener(this._onLayerRemoved);
     imageryLayers.layerMoved.removeEventListener(this._onLayerMoved);
+
+    // 移除视角同步监听器
+    if (this._eagleViewer) {
+      this._eagleViewer.scene.preRender.removeEventListener(this._syncEntityView);
+    }
 
     if (this._eagleHandler) {
       this._eagleHandler.destroy();
@@ -305,6 +324,107 @@ export class EagleEyeWidget extends Widget {
     const eagleLayers = this._eagleViewer.scene.imageryLayers;
     // 简单处理：保持相同的长度和相对顺序
     // 实际实现可能需要更复杂的逻辑
+  };
+
+  /** 同步 Entity 视角 */
+  private _syncEntityView = (): void => {
+    // 优先处理 syncFrustumView
+    if (this._options.syncFrustumView) {
+      this._syncFrustumView();
+      return;
+    }
+
+    if (!this._eagleViewer || !this._options.syncEntityView) return;
+
+    const { entity, followOrientation = true, heightOffset = 0 } = this._options.syncEntityView;
+    const time = this._eagleViewer.clock.currentTime;
+
+    // 获取 Entity 当前位置
+    const position = entity.position?.getValue(time);
+    if (!position) return;
+
+    // 调整高度
+    const cartographic = Cartographic.fromCartesian(position);
+    const adjustedPosition = Cartesian3.fromRadians(
+      cartographic.longitude,
+      cartographic.latitude,
+      cartographic.height + heightOffset,
+    );
+
+    // 同步朝向
+    if (followOrientation && entity.orientation) {
+      const orientation = entity.orientation.getValue(time);
+      if (orientation) {
+        const hpr = HeadingPitchRoll.fromQuaternion(orientation);
+        this._eagleViewer.camera.setView({
+          destination: adjustedPosition,
+          orientation: {
+            heading: hpr.heading,
+            pitch: hpr.pitch,
+            roll: hpr.roll,
+          },
+        });
+      }
+    } else {
+      this._eagleViewer.camera.setView({
+        destination: adjustedPosition,
+      });
+    }
+  };
+
+  /** 同步 Frustum 视角 */
+  private _syncFrustumView = (): void => {
+    if (!this._eagleViewer || !this._options.syncFrustumView) return;
+
+    const { entity } = this._options.syncFrustumView;
+    const time = this._eagleViewer.clock.currentTime;
+
+    // 检查 entity 是否有 frustum 属性
+    const frustum = entity.frustum;
+    if (!(frustum instanceof FrustumGraphics)) return;
+
+    // 获取位置
+    const position = entity.position?.getValue(time);
+    if (!position) return;
+
+    // 获取朝向
+    const orientation = entity.orientation?.getValue(time);
+
+    // 获取 Frustum 参数
+    const fov = frustum.fov?.getValue(time);
+    const near = frustum.near?.getValue(time);
+    const far = frustum.far?.getValue(time);
+
+    // 同步相机位置和朝向
+    if (orientation) {
+      const hpr = HeadingPitchRoll.fromQuaternion(orientation);
+      this._eagleViewer.camera.setView({
+        destination: position,
+        orientation: {
+          heading: hpr.heading,
+          pitch: hpr.pitch,
+          roll: hpr.roll,
+        },
+      });
+    } else {
+      this._eagleViewer.camera.setView({
+        destination: position,
+      });
+    }
+
+    // 同步 frustum 参数到相机
+    const frustumCamera = this._eagleViewer.camera.frustum;
+    if (frustumCamera) {
+      if ('fov' in frustumCamera && fov !== undefined) {
+        frustumCamera.fov = CMath.toRadians(fov);
+      }
+      if ('near' in frustumCamera && near !== undefined) {
+        frustumCamera.near = near;
+      }
+      if ('far' in frustumCamera && far !== undefined) {
+        frustumCamera.far = far;
+      }
+    }
   };
 
   get eagleViewer(): Viewer | null {

@@ -1,0 +1,37 @@
+{
+  "name": "@gaea-explorer/eagle-eye",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch"
+  },
+  "keywords": [
+    "cesium",
+    "widget",
+    "eagle-eye",
+    "overview-map"
+  ],
+  "author": "hongfaqiu",
+  "license": "MIT",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "cesium": "^1.125.0"
+  },
+  "dependencies": {
+    "@gaea-explorer/common": "1.0.0",
+    "@gaea-explorer/graphics-extends": "workspace:*",
+    "@gaea-explorer/sync-viewer": "1.0.1"
+  }
+}
