@@ -3,14 +3,14 @@ import {
   Cartesian3,
   Cartographic,
   Color,
+  Entity,
   HeadingPitchRoll,
   ImageryLayer,
+  JulianDate,
   Math as CMath,
-  Quaternion,
   SceneMode,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
-  Transforms,
   Viewer,
 } from 'cesium';
 
@@ -326,6 +326,52 @@ export class EagleEyeWidget extends Widget {
     // 实际实现可能需要更复杂的逻辑
   };
 
+  /** 上一次同步的位置（用于变更检测） */
+  private _lastSyncPosition: Cartesian3 | null = null;
+
+  /** 统一的相机同步方法 */
+  private _syncCameraView(
+    entity: Entity,
+    time: JulianDate,
+    heightOffset: number = 0,
+  ): boolean {
+    if (!this._eagleViewer) return false;
+
+    const position = entity.position?.getValue(time);
+    if (!position) return false;
+
+    // 变更检测：位置变化小于阈值时跳过
+    if (
+      this._lastSyncPosition &&
+      Cartesian3.equalsEpsilon(position, this._lastSyncPosition, 0.001)
+    ) {
+      return false;
+    }
+    this._lastSyncPosition = Cartesian3.clone(position);
+
+    // 计算目标位置
+    const cartographic = Cartographic.fromCartesian(position);
+    const targetPosition = Cartesian3.fromRadians(
+      cartographic.longitude,
+      cartographic.latitude,
+      cartographic.height + heightOffset,
+    );
+
+    // 设置相机位置和朝向
+    const orientation = entity.orientation?.getValue(time);
+    if (orientation) {
+      const hpr = HeadingPitchRoll.fromQuaternion(orientation);
+      this._eagleViewer.camera.setView({
+        destination: targetPosition,
+        orientation: { heading: hpr.heading, pitch: hpr.pitch, roll: hpr.roll },
+      });
+    } else {
+      this._eagleViewer.camera.setView({ destination: targetPosition });
+    }
+
+    return true;
+  }
+
   /** 同步 Entity 视角 */
   private _syncEntityView = (): void => {
     // 优先处理 syncFrustumView
@@ -336,40 +382,8 @@ export class EagleEyeWidget extends Widget {
 
     if (!this._eagleViewer || !this._options.syncEntityView) return;
 
-    const { entity, followOrientation = true, heightOffset = 0 } = this._options.syncEntityView;
-    const time = this._eagleViewer.clock.currentTime;
-
-    // 获取 Entity 当前位置
-    const position = entity.position?.getValue(time);
-    if (!position) return;
-
-    // 调整高度
-    const cartographic = Cartographic.fromCartesian(position);
-    const adjustedPosition = Cartesian3.fromRadians(
-      cartographic.longitude,
-      cartographic.latitude,
-      cartographic.height + heightOffset,
-    );
-
-    // 同步朝向
-    if (followOrientation && entity.orientation) {
-      const orientation = entity.orientation.getValue(time);
-      if (orientation) {
-        const hpr = HeadingPitchRoll.fromQuaternion(orientation);
-        this._eagleViewer.camera.setView({
-          destination: adjustedPosition,
-          orientation: {
-            heading: hpr.heading,
-            pitch: hpr.pitch,
-            roll: hpr.roll,
-          },
-        });
-      }
-    } else {
-      this._eagleViewer.camera.setView({
-        destination: adjustedPosition,
-      });
-    }
+    const { entity, heightOffset = 0 } = this._options.syncEntityView;
+    this._syncCameraView(entity, this._eagleViewer.clock.currentTime, heightOffset);
   };
 
   /** 同步 Frustum 视角 */
@@ -383,38 +397,16 @@ export class EagleEyeWidget extends Widget {
     const frustum = entity.frustum;
     if (!(frustum instanceof FrustumGraphics)) return;
 
-    // 获取位置
-    const position = entity.position?.getValue(time);
-    if (!position) return;
-
-    // 获取朝向
-    const orientation = entity.orientation?.getValue(time);
-
-    // 获取 Frustum 参数
-    const fov = frustum.fov?.getValue(time);
-    const near = frustum.near?.getValue(time);
-    const far = frustum.far?.getValue(time);
-
-    // 同步相机位置和朝向
-    if (orientation) {
-      const hpr = HeadingPitchRoll.fromQuaternion(orientation);
-      this._eagleViewer.camera.setView({
-        destination: position,
-        orientation: {
-          heading: hpr.heading,
-          pitch: hpr.pitch,
-          roll: hpr.roll,
-        },
-      });
-    } else {
-      this._eagleViewer.camera.setView({
-        destination: position,
-      });
-    }
+    // 同步相机位置
+    this._syncCameraView(entity, time, 0);
 
     // 同步 frustum 参数到相机
     const frustumCamera = this._eagleViewer.camera.frustum;
     if (frustumCamera) {
+      const fov = frustum.fov?.getValue(time);
+      const near = frustum.near?.getValue(time);
+      const far = frustum.far?.getValue(time);
+
       if ('fov' in frustumCamera && fov !== undefined) {
         frustumCamera.fov = CMath.toRadians(fov);
       }

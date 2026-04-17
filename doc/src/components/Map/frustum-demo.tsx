@@ -12,7 +12,7 @@ import {
   Transforms,
   Viewer,
 } from 'cesium';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 import {
   EagleEyeWidget,
@@ -27,11 +27,11 @@ import './frustum/index.less';
  * 无人机飞行路线点（北京本地短距离路线，约20km）
  */
 const WAYPOINTS = [
-  { lon: 116.39, lat: 39.9, height: 500 },   // 起点：北京市中心
-  { lon: 116.42, lat: 39.92, height: 500 },  // 中间点1
-  { lon: 116.45, lat: 39.95, height: 500 },  // 中间点2
-  { lon: 116.48, lat: 39.98, height: 500 },  // 中间点3
-  { lon: 116.5, lat: 40.0, height: 500 },    // 终点：郊区
+  { lon: 116.39, lat: 39.9, height: 500 },
+  { lon: 116.42, lat: 39.92, height: 500 },
+  { lon: 116.45, lat: 39.95, height: 500 },
+  { lon: 116.48, lat: 39.98, height: 500 },
+  { lon: 116.5, lat: 40.0, height: 500 },
 ];
 
 /**
@@ -145,35 +145,22 @@ const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
         <div className="group-title">动画进度</div>
         <div className="param-row">
           <label>进度</label>
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-            <div
-              style={{
-                width: '100%',
-                height: '8px',
-                background: '#ddd',
-                borderRadius: '4px',
-                overflow: 'hidden'
-              }}
-            >
+          <div className="progress-bar-container">
+            <div className="progress-bar-track">
               <div
-                style={{
-                  width: `${progress}%`,
-                  height: '100%',
-                  background: '#1890ff',
-                  transition: 'width 0.1s'
-                }}
+                className="progress-bar-fill"
+                style={{ width: `${progress}%` }}
               />
             </div>
-            <span style={{ marginLeft: '8px', minWidth: '40px' }}>{Math.round(progress)}%</span>
+            <span className="progress-text">{Math.round(progress)}%</span>
           </div>
         </div>
 
         <div className="group-title">控制</div>
-        <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+        <div className="control-buttons">
           <button
-            className="reset-btn"
+            className={`reset-btn ${isPlaying ? 'pause-btn' : 'play-btn'}`}
             onClick={isPlaying ? onPause : onPlay}
-            style={{ background: isPlaying ? '#ff4d4f' : '#1890ff', color: 'white', borderColor: isPlaying ? '#ff4d4f' : '#1890ff' }}
           >
             {isPlaying ? '暂停' : '播放'}
           </button>
@@ -198,6 +185,11 @@ const Map: React.FC = () => {
 
   const startTimeRef = useRef<JulianDate>();
   const endTimeRef = useRef<JulianDate>();
+  const isPlayingRef = useRef(isPlaying);
+  const lastProgressRef = useRef(0);
+
+  // 同步 ref 和 state
+  isPlayingRef.current = isPlaying;
 
   useEffect(() => {
     const viewer = initMap('cesiumContainer', {
@@ -287,7 +279,7 @@ const Map: React.FC = () => {
     const onPreRender = () => {
       visualizer.update(JulianDate.now(scratchDate));
 
-      // 更新进度
+      // 更新进度（仅当变化超过1%时更新，避免频繁 React re-render）
       const currentTime = viewer.clock.currentTime;
       const startTime = startTimeRef.current!;
       const endTime = endTimeRef.current!;
@@ -296,11 +288,14 @@ const Map: React.FC = () => {
       const elapsedSeconds = JulianDate.secondsDifference(currentTime, startTime);
 
       const progressPercent = Math.max(0, Math.min(100, (elapsedSeconds / totalSeconds) * 100));
-      setProgress(progressPercent);
+      if (Math.abs(progressPercent - lastProgressRef.current) > 1) {
+        lastProgressRef.current = progressPercent;
+        setProgress(progressPercent);
+      }
 
-      // 循环播放
-      if (elapsedSeconds >= totalSeconds && isPlaying) {
-        viewer.clock.currentTime = startTime.clone();
+      // 循环播放（使用 ref 避免 stale closure）
+      if (elapsedSeconds >= totalSeconds && isPlayingRef.current) {
+        JulianDate.clone(startTime, viewer.clock.currentTime);
       }
     };
     viewer.scene.preRender.addEventListener(onPreRender);
@@ -341,7 +336,8 @@ const Map: React.FC = () => {
 
   const handleReset = () => {
     if (viewerRef.current && startTimeRef.current) {
-      viewerRef.current.clock.currentTime = startTimeRef.current.clone();
+      JulianDate.clone(startTimeRef.current, viewerRef.current.clock.currentTime);
+      lastProgressRef.current = 0;
       setProgress(0);
       setIsPlaying(true);
     }
