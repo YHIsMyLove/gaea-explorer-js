@@ -2,6 +2,7 @@ import {
   Cartesian3,
   Color,
   ConstantPositionProperty,
+  ConstantProperty,
   Entity,
   HeadingPitchRoll,
   JulianDate,
@@ -231,12 +232,14 @@ const Map: React.FC = () => {
     const position = Cartesian3.fromDegrees(config.lon, config.lat, config.height);
     entity.position = new ConstantPositionProperty(position);
 
-    entity.orientation = Transforms.headingPitchRollQuaternion(
-      position,
-      new HeadingPitchRoll(
-        CMath.toRadians(config.heading),
-        CMath.toRadians(config.pitch),
-        0,
+    entity.orientation = new ConstantProperty(
+      Transforms.headingPitchRollQuaternion(
+        position,
+        new HeadingPitchRoll(
+          CMath.toRadians(config.heading),
+          CMath.toRadians(config.pitch),
+          0,
+        ),
       ),
     );
 
