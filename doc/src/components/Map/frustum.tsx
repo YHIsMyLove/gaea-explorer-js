@@ -1,6 +1,8 @@
 import {
   Cartesian3,
   Color,
+  ConstantPositionProperty,
+  Entity,
   HeadingPitchRoll,
   JulianDate,
   Math as CMath,
@@ -73,22 +75,104 @@ const GEOMETRY_PARAMS: ParamMeta[] = [
 
 const scratchDate = new JulianDate();
 
+interface FrustumControlPanelProps {
+  config: FrustumConfig;
+  onChange: (key: keyof FrustumConfig, value: number) => void;
+  onReset: () => void;
+}
+
+const FrustumControlPanel: React.FC<FrustumControlPanelProps> = ({
+  config,
+  onChange,
+  onReset,
+}) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const renderParamRow = (meta: ParamMeta) => {
+    const min = typeof meta.min === 'function' ? meta.min(config) : meta.min;
+    const max = typeof meta.max === 'function' ? meta.max(config) : meta.max;
+    const value = config[meta.key];
+
+    const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(meta.key, parseFloat(e.target.value));
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = parseFloat(e.target.value);
+      if (!isNaN(newValue)) {
+        const clamped = Math.max(min, Math.min(max, newValue));
+        onChange(meta.key, clamped);
+      }
+    };
+
+    return (
+      <div className="param-row" key={meta.key}>
+        <label>{meta.label}</label>
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={meta.step}
+          value={value}
+          onChange={handleSliderChange}
+        />
+        <input
+          type="number"
+          min={min}
+          max={max}
+          step={meta.step}
+          value={value}
+          onChange={handleInputChange}
+        />
+      </div>
+    );
+  };
+
+  return (
+    <div className={`frustum-panel ${collapsed ? 'collapsed' : ''}`}>
+      <div className="panel-header">
+        <button
+          className="collapse-btn"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          {collapsed ? '▶' : '◀'}
+        </button>
+        {!collapsed && <span className="panel-title">视锥体参数</span>}
+      </div>
+      {!collapsed && (
+        <div className="panel-body">
+          <div className="group-title">位置</div>
+          {POSITION_PARAMS.map(renderParamRow)}
+          <div className="group-title">姿态</div>
+          {ATTITUDE_PARAMS.map(renderParamRow)}
+          <div className="group-title">几何</div>
+          {GEOMETRY_PARAMS.map(renderParamRow)}
+          <button className="reset-btn" onClick={onReset}>
+            重置
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Map: React.FC = () => {
   const viewerRef = useRef<Viewer>();
   const visualizerRef = useRef<FrustumVisualizer>();
-  const configRef = useRef<FrustumConfig>(INITIAL_CONFIG);
+  const entityRef = useRef<Entity>();
+  const [config, setConfig] = useState<FrustumConfig>(INITIAL_CONFIG);
 
+  // 初始化 Viewer 和 Entity
   useEffect(() => {
     const viewer = initMap('cesiumContainer', {
       home: [116.39, 39.9, 5000],
     });
     viewerRef.current = viewer;
 
-    const config = configRef.current;
     const position = Cartesian3.fromDegrees(config.lon, config.lat, config.height);
 
     // 创建视锥体 entity
-    viewer.entities.add({
+    const entity = viewer.entities.add({
       position,
       orientation: Transforms.headingPitchRollQuaternion(
         position,
@@ -110,6 +194,7 @@ const Map: React.FC = () => {
         outlineColor: Color.WHITE,
       }),
     });
+    entityRef.current = entity;
 
     // 创建 FrustumVisualizer 并绑定到渲染循环
     const visualizer = new FrustumVisualizer(viewer.entities, viewer.scene);
@@ -138,7 +223,49 @@ const Map: React.FC = () => {
     };
   }, []);
 
-  return <div id="cesiumContainer" />;
+  // 实时更新 Entity 属性
+  useEffect(() => {
+    const entity = entityRef.current;
+    if (!entity) return;
+
+    const position = Cartesian3.fromDegrees(config.lon, config.lat, config.height);
+    entity.position = new ConstantPositionProperty(position);
+
+    entity.orientation = Transforms.headingPitchRollQuaternion(
+      position,
+      new HeadingPitchRoll(
+        CMath.toRadians(config.heading),
+        CMath.toRadians(config.pitch),
+        0,
+      ),
+    );
+
+    if (entity.frustum) {
+      entity.frustum.fov = config.fov;
+      entity.frustum.near = config.near;
+      entity.frustum.far = config.far;
+      entity.frustum.aspectRatio = config.aspectRatio;
+    }
+  }, [config]);
+
+  const handleConfigChange = (key: keyof FrustumConfig, value: number) => {
+    setConfig((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleReset = () => {
+    setConfig(INITIAL_CONFIG);
+  };
+
+  return (
+    <>
+      <FrustumControlPanel
+        config={config}
+        onChange={handleConfigChange}
+        onReset={handleReset}
+      />
+      <div id="cesiumContainer" />
+    </>
+  );
 };
 
 export default Map;
