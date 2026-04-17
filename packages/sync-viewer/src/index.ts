@@ -26,7 +26,7 @@ export default class SyncViewer {
   private _destroyed = false;
   synchronous: boolean;
 
-  get isDestory() {
+  get isDestroyed() {
     return this._destroyed;
   }
 
