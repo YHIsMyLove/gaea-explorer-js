@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "dev": "turbo dev --concurrency 16",
+    "dev": "turbo dev --concurrency 20",
     "build": "turbo build --filter=!doc --filter=!example",
     "build:doc": "turbo build --filter=doc",
     "clean": "turbo clean",

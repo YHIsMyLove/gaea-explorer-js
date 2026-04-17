@@ -11,10 +11,13 @@
     "resolveJsonModule": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
+    "rootDir": "src",
     "outDir": "./dist",
     "declaration": true,
+    "declarationMap": true,
     "inlineSourceMap": true,
     "types": ["node"]
   },
-  "exclude": ["**/dist/**"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

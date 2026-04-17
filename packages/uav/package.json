@@ -1,5 +1,5 @@
 {
-  "name": "@gaea-explorer/eagle-eye",
+  "name": "@gaea-explorer/uav",
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,11 +17,12 @@
   },
   "keywords": [
     "cesium",
-    "widget",
-    "eagle-eye",
-    "overview-map"
+    "uav",
+    "pov",
+    "first-person-view",
+    "drone"
   ],
-  "author": "hongfaqiu",
+  "author": "",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
@@ -31,7 +32,6 @@
   },
   "dependencies": {
     "@gaea-explorer/common": "1.0.0",
-    "@gaea-explorer/graphics-extends": "workspace:*",
-    "@gaea-explorer/sync-viewer": "1.0.1"
+    "@gaea-explorer/graphics-extends": "workspace:*"
   }
 }
