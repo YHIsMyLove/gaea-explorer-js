@@ -63,7 +63,7 @@ const POSITION_PARAMS: ParamMeta[] = [
 
 const ATTITUDE_PARAMS: ParamMeta[] = [
   { key: 'heading', label: '航向(°)', min: 0, max: 360, step: 1 },
-  { key: 'pitch', label: '俯仰(°)', min: -90, max: 90, step: 1 },
+  { key: 'pitch', label: '俯仰(°)', min: -180, max: 180, step: 1 },
 ];
 
 const GEOMETRY_PARAMS: ParamMeta[] = [
