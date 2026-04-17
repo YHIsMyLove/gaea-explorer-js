@@ -1,0 +1,34 @@
+{
+  "name": "@gaea-explorer/graphics-extends",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch",
+    "test": "vitest"
+  },
+  "keywords": [
+    "cesium",
+    "graphics",
+    "frustum",
+    "entity"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "@gaea-explorer/subscriber": "workspace:*",
+    "cesium": "^1.125.0"
+  }
+}

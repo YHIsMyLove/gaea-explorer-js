@@ -1,6 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import { GeoJsonRenderConfig } from 'gaea-explorer-js';
+import { GeoJsonRenderConfig } from '@gaea-explorer/gaea-explorer-js';
 
 import { initMap } from '@/utils/initMap';
 import { addGeojsonByDataSource, addGeojsonByPrimitive } from './bubble-auto';

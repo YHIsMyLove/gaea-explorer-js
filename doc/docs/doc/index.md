@@ -34,6 +34,7 @@ gaea-explorer-js 提供了以下功能：
 - 绘图工具 `@gaea-explorer/drawer`
 - 测量工具 `@gaea-explorer/measure`
 - 双屏联动工具 `@gaea-explorer/sync-viewer`
+- 鹰眼小地图 `@gaea-explorer/eagle-eye`
 - 热力图 `@gaea-explorer/heat`
 - ...
 

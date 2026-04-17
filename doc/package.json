@@ -16,12 +16,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.2.6",
-    "dumi": "^2.4.7"
+    "dumi": "^2.4.23"
   },
   "dependencies": {
+    "@gaea-explorer/gaea-explorer-js": "workspace:*",
     "@vercel/analytics": "^1.5.0",
     "cesium": "^1.125.0",
-    "@gaea-explorer/gaea-explorer-js": "workspace:*",
+    "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

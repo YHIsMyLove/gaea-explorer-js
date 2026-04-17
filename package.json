@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "dev": "turbo dev --concurrency 16",
+    "dev": "turbo dev --concurrency 20",
     "build": "turbo build --filter=!doc --filter=!example",
     "build:doc": "turbo build --filter=doc",
     "clean": "turbo clean",
@@ -20,6 +20,7 @@
     "lint:fix": "biome check --write --unsafe packages",
     "coverage": "vitest run --coverage",
     "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
+    "precheck": "pnpm lint && pnpm build && pnpm test",
     "prepare": "husky install",
     "postinstall": "pnpm run build"
   },

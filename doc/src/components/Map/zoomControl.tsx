@@ -1,6 +1,6 @@
 import { Cartesian3, Viewer } from 'cesium';
 import React, { useEffect, useRef } from 'react';
-import { ZoomControl } from 'gaea-explorer-js';
+import { ZoomControl } from '@gaea-explorer/gaea-explorer-js';
 
 import { initMap } from '../../utils/initMap';
 

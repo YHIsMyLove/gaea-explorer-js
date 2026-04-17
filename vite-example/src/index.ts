@@ -15,7 +15,7 @@ import {
   renderGeoJson,
   GeoJsonPrimitiveLayer,
   renderPrimitiveGeoJson,
-} from 'gaea-explorer-js';
+} from '@gaea-explorer/gaea-explorer-js';
 
 /**
  * 初始化地图

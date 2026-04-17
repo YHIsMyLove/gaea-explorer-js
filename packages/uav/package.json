@@ -1,0 +1,37 @@
+{
+  "name": "@gaea-explorer/uav",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch"
+  },
+  "keywords": [
+    "cesium",
+    "uav",
+    "pov",
+    "first-person-view",
+    "drone"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "cesium": "^1.125.0"
+  },
+  "dependencies": {
+    "@gaea-explorer/common": "1.0.0",
+    "@gaea-explorer/graphics-extends": "workspace:*"
+  }
+}

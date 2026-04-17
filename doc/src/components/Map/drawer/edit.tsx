@@ -2,7 +2,7 @@ import { ScreenSpaceEventHandler, ScreenSpaceEventType, Viewer } from 'cesium';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { initMap } from '@/utils/initMap';
-import { Drawer, Editor, StartOption } from 'gaea-explorer-js';
+import { Drawer, Editor, StartOption } from '@gaea-explorer/gaea-explorer-js';
 import './index.less';
 
 const DRAW_OPERATIONS: {
@@ -25,7 +25,7 @@ const Map: React.FC = () => {
   const [isSelectMode, setIsSelectMode] = useState(false);
 
   useEffect(() => {
-    viewer.current = initMap('cesiumContainer');
+    viewer.current = initMap('cesiumContainer-drawer-edit');
     drawerTool.current = new Drawer(viewer.current, {
       tips: {
         init: '点击绘制',
@@ -118,7 +118,7 @@ const Map: React.FC = () => {
   }, [resetEditorState, exitSelectMode]);
 
   return (
-    <div id="cesiumContainer">
+    <div id="cesiumContainer-drawer-edit" className="drawer-container">
       <div className="draw-tools">
         {DRAW_OPERATIONS.map((op) => (
           <button key={op.type} onClick={() => startDraw(op.type)}>

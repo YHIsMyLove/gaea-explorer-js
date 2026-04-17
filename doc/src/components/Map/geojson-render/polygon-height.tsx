@@ -4,7 +4,7 @@ import {
   GeoJsonPrimitiveLayer,
   renderPrimitiveGeoJson,
   GeoJsonRenderConfig,
-} from 'gaea-explorer-js';
+} from '@gaea-explorer/gaea-explorer-js';
 
 import { initMap } from '@/utils/initMap';
 

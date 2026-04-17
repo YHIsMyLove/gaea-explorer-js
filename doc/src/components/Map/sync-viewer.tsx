@@ -1,6 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect, useRef } from 'react';
-import { SyncViewer } from 'gaea-explorer-js';
+import { SyncViewer } from '@gaea-explorer/gaea-explorer-js';
 
 import { initMap } from '../../utils/initMap';
 

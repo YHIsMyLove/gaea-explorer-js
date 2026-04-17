@@ -40,11 +40,21 @@ drawer.start({
 
 ## 示例
 
-你可以通过下面的示例体验点线面多边形的绘制
+### 绘制
+
+下面的示例展示点、线、多边形、圆、矩形等图形的绘制操作。
 
 <code src="@/components/Map/drawer/index.tsx"></code>
 
-## 编辑示例
+### 编辑
+
+下面的示例在绘制的基础上集成了编辑功能：绘制完成后自动进入编辑模式，也可以点击「编辑」按钮选择已有图形进行编辑。
+
+<code src="@/components/Map/drawer/edit.tsx"></code>
+
+## API 参考
+
+### Editor
 
 `@gaea-explorer/drawer` 提供了 `Editor` 类，支持对已绘制的图形进行编辑，包括拖拽顶点、中点插入、调整半径等操作。
 
@@ -80,8 +90,6 @@ editor.stopEdit();
 // 销毁
 editor.destroy();
 ```
-
-<code src="@/components/Map/drawer/edit.tsx"></code>
 
 ### EditorOptions
 
@@ -146,7 +154,7 @@ editor.destroy();
 | `onPointsChange` | `(points: Cartesian3[]) => void`                            | -           | 点改变的回调函数                 |
 | `onEnd`          | `(entity: Entity, positions: Cartesian3[]) => void`         | -           | 结束绘制的回调函数               |
 
-## 实例方法
+### 实例方法
 
 | 方法名                                                          | 描述             |
 | --------------------------------------------------------------- | ---------------- |
