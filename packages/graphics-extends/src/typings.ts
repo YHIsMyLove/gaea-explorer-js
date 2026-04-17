@@ -16,6 +16,3 @@ declare module 'cesium' {
     frustum?: FrustumGraphics | FrustumGraphicsConstructorOptions;
   }
 }
-
-// 导出空对象，使文件成为模块
-export {};

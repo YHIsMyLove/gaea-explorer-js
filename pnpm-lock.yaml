@@ -86,6 +86,9 @@ importers:
       cesium:
         specifier: 1.140.0
         version: 1.140.0
+      nprogress:
+        specifier: ^0.2.0
+        version: 0.2.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -132,6 +135,19 @@ importers:
         specifier: 1.140.0
         version: 1.140.0
 
+  packages/eagle-eye:
+    dependencies:
+      '@gaea-explorer/common':
+        specifier: 1.0.0
+        version: link:../common
+      '@gaea-explorer/sync-viewer':
+        specifier: 1.0.1
+        version: link:../sync-viewer
+    devDependencies:
+      cesium:
+        specifier: 1.140.0
+        version: 1.140.0
+
   packages/gaea-explorer-js:
     dependencies:
       '@gaea-explorer/compass':
@@ -140,6 +156,9 @@ importers:
       '@gaea-explorer/drawer':
         specifier: workspace:*
         version: link:../drawer
+      '@gaea-explorer/eagle-eye':
+        specifier: workspace:*
+        version: link:../eagle-eye
       '@gaea-explorer/geojson-render':
         specifier: workspace:*
         version: link:../geojson-render
@@ -14457,7 +14476,6 @@ packages:
 
   /nprogress@0.2.0:
     resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
-    dev: true
 
   /nth-check@1.0.2:
     resolution: {integrity: sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg==}

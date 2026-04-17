@@ -1,7 +1,27 @@
-// packages/graphics-extends/src/frustum/typings.ts
-
-import type { Property, Color, Entity, Scene } from 'cesium';
+import type {
+  Property,
+  Color,
+  Entity,
+  Scene,
+  Cartesian3,
+  Quaternion,
+} from 'cesium';
 import type { FrustumGraphics } from './FrustumGraphics';
+
+/** 视锥体状态快照，用于变更检测和重建 */
+export interface FrustumState {
+  position: Cartesian3;
+  orientation: Quaternion | undefined;
+  fov: number;
+  near: number;
+  far: number;
+  aspectRatio: number;
+  fill: boolean;
+  fillColor: Color;
+  fillOpacity: number;
+  outline: boolean;
+  outlineColor: Color;
+}
 
 /**
  * FrustumGraphics 构造选项
@@ -44,6 +64,6 @@ export interface FrustumGraphicsConstructorOptions {
  */
 export interface FrustumPrimitiveOptions {
   entity: Entity;
-  graphics: FrustumGraphics;  // 将在后续 Task 定义
+  graphics: FrustumGraphics;
   scene: Scene;
 }

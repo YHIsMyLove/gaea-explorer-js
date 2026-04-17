@@ -10,13 +10,12 @@ import {
   Transforms,
   Viewer,
 } from 'cesium';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import {
   FrustumGraphics,
   FrustumVisualizer,
 } from '@gaea-explorer/gaea-explorer-js';
-import type { FrustumGraphicsConstructorOptions } from '@gaea-explorer/gaea-explorer-js';
 import { initMap } from '../../utils/initMap';
 import './index.less';
 import './frustum/index.less';
@@ -163,7 +162,6 @@ const Map: React.FC = () => {
   const entityRef = useRef<Entity>();
   const [config, setConfig] = useState<FrustumConfig>(INITIAL_CONFIG);
 
-  // 初始化 Viewer 和 Entity
   useEffect(() => {
     const viewer = initMap('cesiumContainer', {
       home: [116.39, 39.9, 5000],
@@ -172,7 +170,6 @@ const Map: React.FC = () => {
 
     const position = Cartesian3.fromDegrees(config.lon, config.lat, config.height);
 
-    // 创建视锥体 entity
     const entity = viewer.entities.add({
       position,
       orientation: Transforms.headingPitchRollQuaternion(
@@ -197,7 +194,6 @@ const Map: React.FC = () => {
     });
     entityRef.current = entity;
 
-    // 创建 FrustumVisualizer 并绑定到渲染循环
     const visualizer = new FrustumVisualizer(viewer.entities, viewer.scene);
     visualizerRef.current = visualizer;
 
@@ -206,7 +202,6 @@ const Map: React.FC = () => {
     };
     viewer.scene.preRender.addEventListener(onPreRender);
 
-    // 飞到更好的观察角度
     viewer.camera.flyTo({
       destination: Cartesian3.fromDegrees(116.39, 39.87, 4000),
       orientation: {
@@ -224,7 +219,6 @@ const Map: React.FC = () => {
     };
   }, []);
 
-  // 实时更新 Entity 属性
   useEffect(() => {
     const entity = entityRef.current;
     if (!entity) return;

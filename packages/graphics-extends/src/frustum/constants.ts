@@ -1,5 +1,3 @@
-// packages/graphics-extends/src/frustum/constants.ts
-
 import { Color } from 'cesium';
 
 export const DEFAULT_FRUSTUM_OPTIONS = {

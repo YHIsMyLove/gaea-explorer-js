@@ -28,6 +28,7 @@
   "dependencies": {
     "@gaea-explorer/compass": "workspace:*",
     "@gaea-explorer/drawer": "workspace:*",
+    "@gaea-explorer/eagle-eye": "workspace:*",
     "@gaea-explorer/geojson-render": "workspace:*",
     "@gaea-explorer/graphics-extends": "workspace:*",
     "@gaea-explorer/heat": "workspace:*",

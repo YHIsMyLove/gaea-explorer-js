@@ -16,43 +16,40 @@ import {
 import type { Entity, Scene } from 'cesium';
 
 import { FrustumGraphics } from './FrustumGraphics';
-import type { FrustumPrimitiveOptions } from './typings';
+import type { FrustumPrimitiveOptions, FrustumState } from './typings';
 
-/** 单位四元数（无旋转），当 Entity 未提供 orientation 时使用 */
 const IDENTITY_QUATERNION = Quaternion.IDENTITY;
 
 export class FrustumPrimitive {
   private _entity: Entity;
   private _graphics: FrustumGraphics;
   private _scene: Scene;
-
-  private _fillPrimitive: Primitive | undefined;
-  private _outlinePrimitive: Primitive | undefined;
   private _primitiveCollection: PrimitiveCollection;
 
-  private _lastPosition: Cartesian3 | undefined;
-  private _lastOrientation: Quaternion | undefined;
-  private _lastFov: number | undefined;
-  private _lastNear: number | undefined;
-  private _lastFar: number | undefined;
-  private _lastAspectRatio: number | undefined;
-
+  private _lastState: FrustumState | undefined;
   private _isDestroyed: boolean = false;
+  private _initialized: boolean = false;
 
   constructor(options: FrustumPrimitiveOptions) {
     this._entity = options.entity;
     this._graphics = options.graphics;
     this._scene = options.scene;
     this._primitiveCollection = new PrimitiveCollection();
-
-    this._update(JulianDate.now());
     this._scene.primitives.add(this._primitiveCollection);
   }
 
-  get entity(): Entity { return this._entity; }
-  get graphics(): FrustumGraphics { return this._graphics; }
-  get isDestroyed(): boolean { return this._isDestroyed; }
-  get primitiveCollection(): PrimitiveCollection { return this._primitiveCollection; }
+  get entity(): Entity {
+    return this._entity;
+  }
+  get graphics(): FrustumGraphics {
+    return this._graphics;
+  }
+  get isDestroyed(): boolean {
+    return this._isDestroyed;
+  }
+  get primitiveCollection(): PrimitiveCollection {
+    return this._primitiveCollection;
+  }
 
   update(time: JulianDate): void {
     this._update(time);
@@ -67,141 +64,159 @@ export class FrustumPrimitive {
     const position = this._entity.position?.getValue(time);
     if (!position) return;
 
-    const orientation = this._entity.orientation?.getValue(time);
+    const state: FrustumState = {
+      position,
+      orientation: this._entity.orientation?.getValue(time),
+      fov: this._graphics.fov.getValue(time),
+      near: this._graphics.near.getValue(time),
+      far: this._graphics.far.getValue(time),
+      aspectRatio: this._graphics.aspectRatio.getValue(time),
+      fill: this._graphics.fill.getValue(time),
+      fillColor: this._graphics.fillColor.getValue(time),
+      fillOpacity: this._graphics.fillOpacity.getValue(time),
+      outline: this._graphics.outline.getValue(time),
+      outlineColor: this._graphics.outlineColor.getValue(time),
+    };
 
-    const fov = this._graphics.fov.getValue(time);
-    const near = this._graphics.near.getValue(time);
-    const far = this._graphics.far.getValue(time);
-    const aspectRatio = this._graphics.aspectRatio.getValue(time);
-    const fill = this._graphics.fill.getValue(time);
-    const fillColor = this._graphics.fillColor.getValue(time);
-    const fillOpacity = this._graphics.fillOpacity.getValue(time);
-    const outline = this._graphics.outline.getValue(time);
-    const outlineColor = this._graphics.outlineColor.getValue(time);
-
-    const needsRebuild = this._needsRebuild(
-      position, orientation, fov, near, far, aspectRatio
-    );
-
-    if (needsRebuild) {
-      this._rebuild(
-        position, orientation, fov, near, far, aspectRatio,
-        fill, fillColor, fillOpacity, outline, outlineColor
-      );
-
-      this._lastPosition = Cartesian3.clone(position, this._lastPosition);
-      if (orientation) {
-        this._lastOrientation = Quaternion.clone(orientation, this._lastOrientation);
-      }
-      this._lastFov = fov;
-      this._lastNear = near;
-      this._lastFar = far;
-      this._lastAspectRatio = aspectRatio;
+    if (this._needsRebuild(state)) {
+      this._rebuild(state);
+      this._lastState = this._cloneState(state, this._lastState);
+      this._initialized = true;
     }
   }
 
-  private _needsRebuild(
-    position: Cartesian3,
-    orientation: Quaternion | undefined,
-    fov: number,
-    near: number,
-    far: number,
-    aspectRatio: number
-  ): boolean {
-    if (!this._lastPosition) return true;
+  private _cloneState(
+    state: FrustumState,
+    result: FrustumState | undefined,
+  ): FrustumState {
+    if (!result) {
+      result = {
+        position: Cartesian3.clone(state.position),
+        orientation: state.orientation
+          ? Quaternion.clone(state.orientation)
+          : undefined,
+        fov: state.fov,
+        near: state.near,
+        far: state.far,
+        aspectRatio: state.aspectRatio,
+        fill: state.fill,
+        fillColor: Color.clone(state.fillColor),
+        fillOpacity: state.fillOpacity,
+        outline: state.outline,
+        outlineColor: Color.clone(state.outlineColor),
+      };
+    } else {
+      Cartesian3.clone(state.position, result.position);
+      result.orientation = state.orientation
+        ? Quaternion.clone(state.orientation, result.orientation)
+        : undefined;
+      result.fov = state.fov;
+      result.near = state.near;
+      result.far = state.far;
+      result.aspectRatio = state.aspectRatio;
+      result.fill = state.fill;
+      Color.clone(state.fillColor, result.fillColor);
+      result.fillOpacity = state.fillOpacity;
+      result.outline = state.outline;
+      Color.clone(state.outlineColor, result.outlineColor);
+    }
+    return result;
+  }
 
+  private _needsRebuild(state: FrustumState): boolean {
+    if (!this._initialized || !this._lastState) return true;
+
+    const last = this._lastState;
     return (
-      !Cartesian3.equals(position, this._lastPosition) ||
-      (orientation && this._lastOrientation && !Quaternion.equals(orientation, this._lastOrientation)) ||
-      fov !== this._lastFov ||
-      near !== this._lastNear ||
-      far !== this._lastFar ||
-      aspectRatio !== this._lastAspectRatio
+      !Cartesian3.equals(state.position, last.position) ||
+      this._orientationChanged(state.orientation, last.orientation) ||
+      state.fov !== last.fov ||
+      state.near !== last.near ||
+      state.far !== last.far ||
+      state.aspectRatio !== last.aspectRatio ||
+      state.fill !== last.fill ||
+      !Color.equals(state.fillColor, last.fillColor) ||
+      state.fillOpacity !== last.fillOpacity ||
+      state.outline !== last.outline ||
+      !Color.equals(state.outlineColor, last.outlineColor)
     );
   }
 
-  private _rebuild(
-    position: Cartesian3,
-    orientation: Quaternion | undefined,
-    fov: number,
-    near: number,
-    far: number,
-    aspectRatio: number,
-    fill: boolean,
-    fillColor: Color,
-    fillOpacity: number,
-    outline: boolean,
-    outlineColor: Color
-  ): void {
-    this._primitiveCollection.removeAll();
-    this._fillPrimitive = undefined;
-    this._outlinePrimitive = undefined;
+  private _orientationChanged(
+    current: Quaternion | undefined,
+    last: Quaternion | undefined,
+  ): boolean {
+    if (!current && !last) return false;
+    if (!current || !last) return true;
+    return !Quaternion.equals(current, last);
+  }
 
-    const effectiveOrientation = orientation ?? IDENTITY_QUATERNION;
+  private _rebuild(state: FrustumState): void {
+    this._primitiveCollection.removeAll();
+
+    const effectiveOrientation = state.orientation ?? IDENTITY_QUATERNION;
 
     const frustum = new PerspectiveFrustum({
-      fov: CesiumMath.toRadians(fov),
-      aspectRatio: aspectRatio,
-      near: near,
-      far: far,
+      fov: CesiumMath.toRadians(state.fov),
+      aspectRatio: state.aspectRatio,
+      near: state.near,
+      far: state.far,
     });
 
-    if (fill) {
-      const fillGeometry = new FrustumGeometry({
-        frustum: frustum,
-        origin: position,
-        orientation: effectiveOrientation,
-        vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT,
-      });
-
-      const fillInstance = new GeometryInstance({
-        geometry: fillGeometry,
-        id: this._entity,
-        attributes: {
-          color: ColorGeometryInstanceAttribute.fromColor(
-            fillColor.withAlpha(fillOpacity)
-          ),
-        },
-      });
-
-      this._fillPrimitive = new Primitive({
-        geometryInstances: [fillInstance],
-        appearance: new PerInstanceColorAppearance({
-          closed: true,
-          flat: true,
-          translucent: true,
+    if (state.fill) {
+      this._primitiveCollection.add(
+        new Primitive({
+          geometryInstances: [
+            new GeometryInstance({
+              geometry: new FrustumGeometry({
+                frustum,
+                origin: state.position,
+                orientation: effectiveOrientation,
+                vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT,
+              }),
+              id: this._entity,
+              attributes: {
+                color: ColorGeometryInstanceAttribute.fromColor(
+                  state.fillColor.withAlpha(state.fillOpacity),
+                ),
+              },
+            }),
+          ],
+          appearance: new PerInstanceColorAppearance({
+            closed: true,
+            flat: true,
+            translucent: true,
+          }),
+          asynchronous: false,
         }),
-        asynchronous: false,
-      });
-
-      this._primitiveCollection.add(this._fillPrimitive);
+      );
     }
 
-    if (outline) {
-      const outlineGeometry = new FrustumOutlineGeometry({
-        frustum: frustum,
-        origin: position,
-        orientation: effectiveOrientation,
-      });
-
-      const outlineInstance = new GeometryInstance({
-        geometry: outlineGeometry,
-        id: this._entity,
-        attributes: {
-          color: ColorGeometryInstanceAttribute.fromColor(outlineColor),
-        },
-      });
-
-      this._outlinePrimitive = new Primitive({
-        geometryInstances: [outlineInstance],
-        appearance: new PerInstanceColorAppearance({
-          flat: true,
-          translucent: false,
+    if (state.outline) {
+      this._primitiveCollection.add(
+        new Primitive({
+          geometryInstances: [
+            new GeometryInstance({
+              geometry: new FrustumOutlineGeometry({
+                frustum,
+                origin: state.position,
+                orientation: effectiveOrientation,
+              }),
+              id: this._entity,
+              attributes: {
+                color: ColorGeometryInstanceAttribute.fromColor(
+                  state.outlineColor,
+                ),
+              },
+            }),
+          ],
+          appearance: new PerInstanceColorAppearance({
+            flat: true,
+            translucent: false,
+          }),
+          asynchronous: false,
         }),
-        asynchronous: false,
-      });
-
-      this._primitiveCollection.add(this._outlinePrimitive);
+      );
     }
   }
 
@@ -210,8 +225,6 @@ export class FrustumPrimitive {
 
     this._scene.primitives.remove(this._primitiveCollection);
     this._primitiveCollection.removeAll();
-    this._fillPrimitive = undefined;
-    this._outlinePrimitive = undefined;
     this._isDestroyed = true;
   }
 }

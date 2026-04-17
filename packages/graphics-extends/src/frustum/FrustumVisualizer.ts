@@ -48,13 +48,8 @@ export class FrustumVisualizer {
       this._onCollectionChanged,
     );
 
-    // Initialize existing entities in the collection
-    const existingEntities =
-      (this._entityCollection as any).values as Entity[] | undefined;
-    if (existingEntities) {
-      for (const entity of existingEntities) {
-        this._onEntityAdded(entity);
-      }
+    for (const entity of this._entityCollection.values) {
+      this._onEntityAdded(entity);
     }
   }
 
@@ -88,7 +83,7 @@ export class FrustumVisualizer {
   private _onEntityAdded(entity: Entity): void {
     if (this._primitives.has(entity)) return;
 
-    const graphics = (entity as any).frustum;
+    const graphics = entity.frustum;
     if (graphics instanceof FrustumGraphics) {
       const primitive = new FrustumPrimitive({
         entity,
@@ -109,11 +104,10 @@ export class FrustumVisualizer {
 
   private _onEntityChanged(entity: Entity): void {
     const existing = this._primitives.get(entity);
-    const currentGraphics = (entity as any).frustum;
+    const currentGraphics = entity.frustum;
 
     if (existing) {
       if (currentGraphics instanceof FrustumGraphics) {
-        // Graphics instance was replaced with a different one
         if (currentGraphics !== existing.graphics) {
           existing.destroy();
           const primitive = new FrustumPrimitive({
@@ -123,14 +117,11 @@ export class FrustumVisualizer {
           });
           this._primitives.set(entity, primitive);
         }
-        // Same graphics instance - no action needed
       } else {
-        // Frustum property was removed entirely
         existing.destroy();
         this._primitives.delete(entity);
       }
     } else {
-      // No existing primitive - entity may have gained a frustum property
       if (currentGraphics instanceof FrustumGraphics) {
         const primitive = new FrustumPrimitive({
           entity,

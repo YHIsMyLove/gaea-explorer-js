@@ -1,9 +1,4 @@
-import {
-  Property,
-  ConstantProperty,
-  Color,
-  defined,
-} from 'cesium';
+import { Property, ConstantProperty, Color, defined } from 'cesium';
 
 import type { FrustumGraphicsConstructorOptions } from './typings';
 import { DEFAULT_FRUSTUM_OPTIONS } from './constants';
@@ -31,56 +26,96 @@ export class FrustumGraphics {
     this._far = createProperty(options.far, DEFAULT_FRUSTUM_OPTIONS.far);
     this._aspectRatio = createProperty(
       options.aspectRatio,
-      DEFAULT_FRUSTUM_OPTIONS.aspectRatio
+      DEFAULT_FRUSTUM_OPTIONS.aspectRatio,
     );
     this._fill = createProperty(options.fill, DEFAULT_FRUSTUM_OPTIONS.fill);
     this._fillColor = createProperty(
       options.fillColor,
-      DEFAULT_FRUSTUM_OPTIONS.fillColor
+      DEFAULT_FRUSTUM_OPTIONS.fillColor,
     );
     this._fillOpacity = createProperty(
       options.fillOpacity,
-      DEFAULT_FRUSTUM_OPTIONS.fillOpacity
+      DEFAULT_FRUSTUM_OPTIONS.fillOpacity,
     );
     this._outline = createProperty(
       options.outline,
-      DEFAULT_FRUSTUM_OPTIONS.outline
+      DEFAULT_FRUSTUM_OPTIONS.outline,
     );
     this._outlineColor = createProperty(
       options.outlineColor,
-      DEFAULT_FRUSTUM_OPTIONS.outlineColor
+      DEFAULT_FRUSTUM_OPTIONS.outlineColor,
     );
   }
 
-  get show(): Property { return this._show; }
-  set show(value: boolean | Property) { this._show = createProperty(value); }
+  get show(): Property {
+    return this._show;
+  }
+  set show(value: boolean | Property) {
+    this._show = createProperty(value);
+  }
 
-  get fov(): Property { return this._fov; }
-  set fov(value: number | Property) { this._fov = createProperty(value); }
+  get fov(): Property {
+    return this._fov;
+  }
+  set fov(value: number | Property) {
+    this._fov = createProperty(value);
+  }
 
-  get near(): Property { return this._near; }
-  set near(value: number | Property) { this._near = createProperty(value); }
+  get near(): Property {
+    return this._near;
+  }
+  set near(value: number | Property) {
+    this._near = createProperty(value);
+  }
 
-  get far(): Property { return this._far; }
-  set far(value: number | Property) { this._far = createProperty(value); }
+  get far(): Property {
+    return this._far;
+  }
+  set far(value: number | Property) {
+    this._far = createProperty(value);
+  }
 
-  get aspectRatio(): Property { return this._aspectRatio; }
-  set aspectRatio(value: number | Property) { this._aspectRatio = createProperty(value); }
+  get aspectRatio(): Property {
+    return this._aspectRatio;
+  }
+  set aspectRatio(value: number | Property) {
+    this._aspectRatio = createProperty(value);
+  }
 
-  get fill(): Property { return this._fill; }
-  set fill(value: boolean | Property) { this._fill = createProperty(value); }
+  get fill(): Property {
+    return this._fill;
+  }
+  set fill(value: boolean | Property) {
+    this._fill = createProperty(value);
+  }
 
-  get fillColor(): Property { return this._fillColor; }
-  set fillColor(value: Color | Property) { this._fillColor = createProperty(value); }
+  get fillColor(): Property {
+    return this._fillColor;
+  }
+  set fillColor(value: Color | Property) {
+    this._fillColor = createProperty(value);
+  }
 
-  get fillOpacity(): Property { return this._fillOpacity; }
-  set fillOpacity(value: number | Property) { this._fillOpacity = createProperty(value); }
+  get fillOpacity(): Property {
+    return this._fillOpacity;
+  }
+  set fillOpacity(value: number | Property) {
+    this._fillOpacity = createProperty(value);
+  }
 
-  get outline(): Property { return this._outline; }
-  set outline(value: boolean | Property) { this._outline = createProperty(value); }
+  get outline(): Property {
+    return this._outline;
+  }
+  set outline(value: boolean | Property) {
+    this._outline = createProperty(value);
+  }
 
-  get outlineColor(): Property { return this._outlineColor; }
-  set outlineColor(value: Color | Property) { this._outlineColor = createProperty(value); }
+  get outlineColor(): Property {
+    return this._outlineColor;
+  }
+  set outlineColor(value: Color | Property) {
+    this._outlineColor = createProperty(value);
+  }
 }
 
 function isProperty(value: unknown): value is Property {
@@ -89,7 +124,7 @@ function isProperty(value: unknown): value is Property {
 
 function createProperty<T>(
   value: T | Property | undefined,
-  defaultValue?: T
+  defaultValue?: T,
 ): Property {
   if (isProperty(value)) return value;
   if (defined(value)) return new ConstantProperty(value);
