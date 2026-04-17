@@ -1,5 +1,5 @@
-[![npm version](https://img.shields.io/npm/v/gaea-explorer-js.svg)](https://www.npmjs.com/package/gaea-explorer-js)
-[![license](https://img.shields.io/npm/l/gaea-explorer-js)](https://github.com/YHIsMyLove/gaea-explorer-js/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@gaea-explorer/gaea-explorer-js.svg)](https://www.npmjs.com/package/@gaea-explorer/gaea-explorer-js)
+[![license](https://img.shields.io/npm/l/@gaea-explorer/gaea-explorer-js)](https://github.com/YHIsMyLove/gaea-explorer-js/blob/master/LICENSE)
 [![CI](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/ci.yml/badge.svg)](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/ci.yml)
 [![Release](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/release.yml/badge.svg)](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/release.yml)
 [![Deploy Docs](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/YHIsMyLove/gaea-explorer-js/actions/workflows/deploy-docs.yml)
@@ -13,14 +13,14 @@ gaea-explorer-js 是一个从 [DDE-Earth](https://alpha.deep-time.org/map/#/) �
 ## 链接
 
 - **文档与 Demo**: [GitHub Pages](https://yhismylove.github.io/gaea-explorer-js/)
-- **npm 主包**: [gaea-explorer-js](https://www.npmjs.com/package/gaea-explorer-js)
+- **npm 主包**: [@gaea-explorer/gaea-explorer-js](https://www.npmjs.com/package/@gaea-explorer/gaea-explorer-js)
 
 ## 安装
 
 使用 npm 安装：
 
 ```bash
-npm install gaea-explorer-js --save
+npm install @gaea-explorer/gaea-explorer-js --save
 ```
 
 ## 功能

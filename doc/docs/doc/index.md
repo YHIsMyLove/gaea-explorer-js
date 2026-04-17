@@ -17,7 +17,7 @@ gaea-explorer-js 是一个从[DDE-Earth](https://alpha.deep-time.org/map/#/)中�
 使用 npm 安装：
 
 ```bash
-npm install gaea-explorer-js --save
+npm install @gaea-explorer/gaea-explorer-js --save
 ```
 
 ## 功能
