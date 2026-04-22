@@ -1,4 +1,5 @@
 import type { Cartesian2, Cartesian3, HeightReference, Viewer } from 'cesium';
+import { pickCartesian3 as pickFromDrawer } from '@gaea-explorer/drawer';
 import { MeasureUnits } from './Measure';
 
 export type PickResult = {
@@ -9,16 +10,14 @@ export type PickResult = {
   altitudeMode: HeightReference;
 };
 
-export function pickCartesian3(
+/**
+ * Measure 包专用拾取函数，强制启用 terrain 模式以确保地形上的精确拾取。
+ * 使用 globe.pick（基于 ray）而非 pickEllipsoid，适配测量场景的精度需求。
+ */
+export const pickCartesian3 = (
   viewer: Viewer,
   position: Cartesian2,
-): Cartesian3 | undefined {
-  // We use `viewer.scene.pickPosition` here instead of `viewer.camera.pickEllipsoid` so that
-  // we get the correct point when mousing over terrain.
-  const ray = viewer.camera.getPickRay(position);
-  if (ray) return viewer.scene.globe.pick(ray, viewer.scene);
-  return undefined;
-}
+): Cartesian3 | undefined => pickFromDrawer(viewer, position, true);
 
 export function getBounds(points: Cartesian2[]): number[] {
   const left = Math.min(...points.map((item) => item.x));
