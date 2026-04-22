@@ -6,7 +6,7 @@ import {
   GeoJsonRenderConfig,
 } from '@gaea-explorer/gaea-explorer-js';
 
-import { initMap } from '@/utils/initMap';
+import { initMap, PUBLIC_BASE } from '@/utils/initMap';
 
 const config: GeoJsonRenderConfig = {
   type: 'polygon',
@@ -60,7 +60,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cesiumContainer2');
-    addGeojsonByPrimitive(viewer, '/California_heat.geojson', config);
+    addGeojsonByPrimitive(viewer, `${PUBLIC_BASE}California_heat.geojson`, config);
 
     viewer.camera.setView({
       destination: Cartesian3.fromDegrees(-126, 31, 1000000),

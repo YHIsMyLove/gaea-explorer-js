@@ -10,7 +10,7 @@ import {
 } from '@gaea-explorer/gaea-explorer-js';
 import { GeoJsonDataSource } from 'cesium';
 
-import { initMap } from '@/utils/initMap';
+import { initMap, PUBLIC_BASE } from '@/utils/initMap';
 
 const config: GeoJsonRenderConfig = {
   type: 'point',
@@ -72,7 +72,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cesiumContainer');
-    addGeojsonByPrimitive(viewer, '/earthquack.geojson', config);
+    addGeojsonByPrimitive(viewer, `${PUBLIC_BASE}earthquack.geojson`, config);
 
     return () => {
       viewer?.destroy();
