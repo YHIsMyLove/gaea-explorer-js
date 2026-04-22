@@ -4,7 +4,7 @@
 
 ## Structure
 
-- `src/index.ts` — 纯 re-export，导出 Drawer, Popup, Compass, ZoomControl, SyncViewer, HeatMapLayer, POVWidget 等
+- `src/index.ts` — 纯 re-export，导出 Drawer, Popup, Compass, ZoomControl, SyncViewer, HeatMapLayer, POVWidget, UAVLine, UAVLineDrawer, EditableUAVLine 等
 
 ## Notes
 
