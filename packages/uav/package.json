@@ -32,6 +32,9 @@
   },
   "dependencies": {
     "@gaea-explorer/common": "1.0.0",
-    "@gaea-explorer/graphics-extends": "workspace:*"
+    "@gaea-explorer/drawer": "workspace:*",
+    "@gaea-explorer/graphics-extends": "workspace:*",
+    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/tooltip": "workspace:*"
   }
 }
