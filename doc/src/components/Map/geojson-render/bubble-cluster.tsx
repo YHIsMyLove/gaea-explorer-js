@@ -2,7 +2,7 @@ import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
 import { GeoJsonRenderConfig } from '@gaea-explorer/gaea-explorer-js';
 
-import { initMap } from '@/utils/initMap';
+import { initMap, PUBLIC_BASE } from '@/utils/initMap';
 import { addGeojsonByDataSource } from './bubble-auto';
 
 const config: GeoJsonRenderConfig = {
@@ -46,7 +46,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cluster');
-    addGeojsonByDataSource(viewer, '/earthquack.geojson', config);
+    addGeojsonByDataSource(viewer, `${PUBLIC_BASE}earthquack.geojson`, config);
 
     return () => {
       viewer?.destroy();

@@ -37,6 +37,7 @@ export const dataSourceRender = async (
   style: EntityStyle,
 ) => {
   const entities = dataSource.entities.values;
+  const now = JulianDate.now();
   const { label, paint, type, custom } = style;
 
   entities.forEach((entity) => {
@@ -104,6 +105,7 @@ export const dataSourceRender = async (
         break;
       case 'polygon':
         const height = customStyle?.extrudedHeight;
+        const polygonHierarchy = entity.polygon?.hierarchy?.getValue(now);
         entity.polygon = new PolygonGraphics({
           hierarchy: entity.polygon?.hierarchy,
           ...paint,
@@ -111,13 +113,15 @@ export const dataSourceRender = async (
           extrudedHeight: height ? height * 1000 : undefined,
           arcType: ArcType.RHUMB,
         });
-        entity.polyline = new PolylineGraphics({
-          positions: (entity.polygon.hierarchy as any)?._value.positions,
-          width: paint.outlineWidth,
-          material: paint.outlineColor,
-          clampToGround: true,
-          arcType: ArcType.RHUMB,
-        });
+        if (polygonHierarchy?.positions) {
+          entity.polyline = new PolylineGraphics({
+            positions: polygonHierarchy.positions,
+            width: paint.outlineWidth,
+            material: paint.outlineColor,
+            clampToGround: true,
+            arcType: ArcType.RHUMB,
+          });
+        }
         break;
       case 'mix':
         if (entity.billboard) {
@@ -148,18 +152,21 @@ export const dataSourceRender = async (
         });
 
         if (entity.polygon) {
+          const mixPolygonHierarchy = entity.polygon?.hierarchy?.getValue(now);
           entity.polygon = new PolygonGraphics({
             hierarchy: entity.polygon?.hierarchy,
             material: paint.fill,
             arcType: ArcType.RHUMB,
           });
-          entity.polyline = new PolylineGraphics({
-            positions: (entity.polygon.hierarchy as any)?._value.positions,
-            width: paint.strokeWidth,
-            material: paint.stroke,
-            clampToGround: true,
-            arcType: ArcType.RHUMB,
-          });
+          if (mixPolygonHierarchy?.positions) {
+            entity.polyline = new PolylineGraphics({
+              positions: mixPolygonHierarchy.positions,
+              width: paint.strokeWidth,
+              material: paint.stroke,
+              clampToGround: true,
+              arcType: ArcType.RHUMB,
+            });
+          }
         }
 
         break;
@@ -299,16 +306,20 @@ function dataSourceCluster(
     );
 }
 
-function updateEntityPosition(entity: Entity) {
+function updateEntityPosition(
+  entity: Entity,
+  now: JulianDate = JulianDate.now(),
+) {
   if (entity.polygon) {
-    const center = getPositionsCenter(
-      entity.polygon?.hierarchy?.getValue(JulianDate.now()).positions,
-    ).cartesian3;
+    const hierarchy = entity.polygon?.hierarchy?.getValue(now);
+    if (!hierarchy?.positions) return;
+    const center = getPositionsCenter(hierarchy.positions).cartesian3;
     entity.position = new ConstantPositionProperty(center);
     return;
   }
   if (entity.polyline) {
-    const positions = entity.polyline.positions?.getValue(JulianDate.now());
+    const positions = entity.polyline.positions?.getValue(now);
+    if (!positions || positions.length === 0) return;
     const center = positions[Math.floor(positions.length / 2)];
     entity.position = new ConstantPositionProperty(center);
     return;
@@ -317,8 +328,9 @@ function updateEntityPosition(entity: Entity) {
 
 export function updateDataSourcePosition(dataSource: DataSource) {
   const entities = dataSource.entities.values;
+  const now = JulianDate.now();
   for (let i = 0; i < entities.length; i += 1) {
     const entity = entities[i];
-    updateEntityPosition(entity);
+    updateEntityPosition(entity, now);
   }
 }

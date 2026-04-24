@@ -1,2 +1,16 @@
 export { POVWidget } from './POVWidget';
-export type { POVWidgetOptions, POVWidgetPosition } from './typings';
+export { UAVLine } from './UAVLine';
+export { UAVLineDrawer } from './UAVLineDrawer';
+export { EditableUAVLine } from './EditableUAVLine';
+export type {
+  POVWidgetOptions,
+  POVWidgetPosition,
+  HeightMode,
+  HeightFunction,
+  DropLineOptions,
+  UAVLineOptions,
+  UAVNode,
+  UAVEditingParams,
+  UAVLineStartOptions,
+  UAVEditOptions,
+} from './typings';

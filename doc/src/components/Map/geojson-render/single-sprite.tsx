@@ -2,14 +2,14 @@ import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
 import { GeoJsonRenderConfig } from '@gaea-explorer/gaea-explorer-js';
 
-import { initMap } from '@/utils/initMap';
+import { initMap, PUBLIC_BASE } from '@/utils/initMap';
 import { addGeojsonByDataSource, addGeojsonByPrimitive } from './bubble-auto';
 
 const config: GeoJsonRenderConfig = {
   type: 'point',
   style: {
     sprite: {
-      url: '/sprite/sprite@2x.png',
+      url: `${PUBLIC_BASE}sprite/sprite@2x.png`,
     },
     type: 'bubble',
     config: {
@@ -43,7 +43,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cesiumContainer3');
-    addGeojsonByPrimitive(viewer, '/earthquack.geojson', config);
+    addGeojsonByPrimitive(viewer, `${PUBLIC_BASE}earthquack.geojson`, config);
 
     return () => {
       viewer?.destroy();

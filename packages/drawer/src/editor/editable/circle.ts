@@ -1,4 +1,10 @@
-import { CallbackProperty, Cartesian3, JulianDate } from 'cesium';
+import {
+  CallbackProperty,
+  Cartesian3,
+  ConstantPositionProperty,
+  ConstantProperty,
+  JulianDate,
+} from 'cesium';
 import type { Entity } from 'cesium';
 import { ControlPointType } from '../typings';
 import type { EditingParams } from '../typings';
@@ -20,14 +26,8 @@ export class EditableCircle extends EditableShape {
         : ((semiMinor as CallbackProperty)?.getValue?.(JulianDate.now()) ??
           100);
 
-    ellipse.semiMinorAxis = new CallbackProperty(
-      () => this._radius,
-      false,
-    ) as any;
-    ellipse.semiMajorAxis = new CallbackProperty(
-      () => this._radius,
-      false,
-    ) as any;
+    ellipse.semiMinorAxis = new CallbackProperty(() => this._radius, false);
+    ellipse.semiMajorAxis = new CallbackProperty(() => this._radius, false);
 
     this.createControlPointEntity(
       this._center,
@@ -59,7 +59,7 @@ export class EditableCircle extends EditableShape {
 
     if (meta.controlType === ControlPointType.CENTER) {
       this._center = newPosition;
-      this._entity.position = newPosition as any;
+      this._entity.position = new ConstantPositionProperty(newPosition);
 
       const radiusCp = this._findControlPoint(ControlPointType.RADIUS);
       if (radiusCp) {
@@ -76,7 +76,7 @@ export class EditableCircle extends EditableShape {
 
   setPosition(position: Cartesian3): void {
     this._center = position;
-    this._entity.position = position as any;
+    this._entity.position = new ConstantPositionProperty(position);
 
     const centerCp = this._findControlPoint(ControlPointType.CENTER);
     if (centerCp) this.updateControlPointPosition(centerCp, position);
@@ -102,8 +102,8 @@ export class EditableCircle extends EditableShape {
 
   finalize(): void {
     if (this._entity.ellipse) {
-      this._entity.ellipse.semiMinorAxis = this._radius as any;
-      this._entity.ellipse.semiMajorAxis = this._radius as any;
+      this._entity.ellipse.semiMinorAxis = new ConstantProperty(this._radius);
+      this._entity.ellipse.semiMajorAxis = new ConstantProperty(this._radius);
     }
   }
 

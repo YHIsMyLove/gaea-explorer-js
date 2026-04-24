@@ -1,4 +1,10 @@
-import { Cartesian3, Color, Entity, JulianDate } from 'cesium';
+import {
+  Cartesian3,
+  ConstantPositionProperty,
+  Color,
+  Entity,
+  JulianDate,
+} from 'cesium';
 import type { PointGraphics, Viewer } from 'cesium';
 import { ControlPointType } from '../typings';
 import type {
@@ -122,7 +128,7 @@ export abstract class EditableShape {
     entity: Entity,
     newPosition: Cartesian3,
   ): void {
-    entity.position = newPosition as any;
+    entity.position = new ConstantPositionProperty(newPosition);
   }
 
   /** 从 Entity 解析 position（处理 Cesium Property 包装） */

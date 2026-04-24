@@ -122,13 +122,13 @@ importers:
   packages/drawer:
     dependencies:
       '@gaea-explorer/common':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../common
       '@gaea-explorer/subscriber':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../subscriber
       '@gaea-explorer/tooltip':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../tooltip
     devDependencies:
       cesium:
@@ -183,7 +183,7 @@ importers:
   packages/geojson-render:
     dependencies:
       '@gaea-explorer/primitive-geojson':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../primitive-geojson
       '@turf/turf':
         specifier: ^6.5.0
@@ -215,13 +215,13 @@ importers:
   packages/measure:
     dependencies:
       '@gaea-explorer/drawer':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../drawer
       '@gaea-explorer/subscriber':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../subscriber
       '@gaea-explorer/tooltip':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../tooltip
       '@turf/area':
         specifier: ^6.5.0
@@ -262,7 +262,7 @@ importers:
         version: 4.0.2
     devDependencies:
       '@gaea-explorer/subscriber':
-        specifier: 1.1.1
+        specifier: 1.0.0
         version: link:../subscriber
       '@types/geojson':
         specifier: ^7946.0.10
@@ -286,11 +286,11 @@ importers:
   packages/tooltip:
     dependencies:
       '@gaea-explorer/common':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../common
     devDependencies:
       '@gaea-explorer/subscriber':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../subscriber
       cesium:
         specifier: 1.140.0
@@ -301,9 +301,18 @@ importers:
       '@gaea-explorer/common':
         specifier: 1.0.0
         version: link:../common
+      '@gaea-explorer/drawer':
+        specifier: workspace:*
+        version: link:../drawer
       '@gaea-explorer/graphics-extends':
         specifier: workspace:*
         version: link:../graphics-extends
+      '@gaea-explorer/subscriber':
+        specifier: workspace:*
+        version: link:../subscriber
+      '@gaea-explorer/tooltip':
+        specifier: workspace:*
+        version: link:../tooltip
     devDependencies:
       cesium:
         specifier: 1.140.0
@@ -312,7 +321,7 @@ importers:
   packages/zoom-controller:
     dependencies:
       '@gaea-explorer/common':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../common
     devDependencies:
       cesium:

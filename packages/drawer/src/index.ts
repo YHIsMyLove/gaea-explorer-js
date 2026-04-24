@@ -3,6 +3,7 @@ import { MouseTooltip } from '@gaea-explorer/tooltip';
 import Subscriber from '@gaea-explorer/subscriber';
 
 import Painter from './painter';
+import BasicGraphices from './base';
 import Circle from './shape/circle';
 import Line from './shape/line';
 import Point from './shape/point';
@@ -21,6 +22,7 @@ import type {
   Status,
 } from './typings';
 
+export { pickCartesian3 } from './utils';
 export * from './typings';
 
 export const defaultOptions: DrawOption = {
@@ -397,11 +399,25 @@ export default class Drawer {
 
 // Editor
 export { Editor } from './editor';
+export { EditablePolyline } from './editor/editable/polyline';
+export { EditableShape } from './editor/editable/base';
+export {
+  EDITOR_CONTROL_KEY,
+  defaultVertexStyle,
+  defaultMidPointStyle,
+  defaultRadiusStyle,
+} from './editor/editable/base';
+export { ControlPointType } from './editor/typings';
 export type {
   EditorOptions,
   EditCallbacks,
   EditingParams,
   EditableType,
-  ControlPointType,
   ControlPointMeta,
 } from './editor/typings';
+
+// Internal classes for extension
+export { BasicGraphices };
+export type { BasicGraphicesOptions, LifeCycle } from './base';
+export { Painter };
+export type { DrawOption } from './typings';

@@ -13,4 +13,9 @@ export { default as Compass } from '@gaea-explorer/compass';
 export { default as ZoomControl } from '@gaea-explorer/zoom-control';
 export { default as SyncViewer } from '@gaea-explorer/sync-viewer';
 export { default as HeatMapLayer } from '@gaea-explorer/heat';
-export { POVWidget } from '@gaea-explorer/uav';
+export {
+  POVWidget,
+  UAVLine,
+  UAVLineDrawer,
+  EditableUAVLine,
+} from '@gaea-explorer/uav';

@@ -2,7 +2,7 @@ import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
 import { GeoJsonRenderConfig } from '@gaea-explorer/gaea-explorer-js';
 
-import { initMap } from '@/utils/initMap';
+import { initMap, PUBLIC_BASE } from '@/utils/initMap';
 import { addGeojsonByDataSource, addGeojsonByPrimitive } from './bubble-auto';
 
 const config: GeoJsonRenderConfig = {
@@ -41,7 +41,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('point-value');
-    addGeojsonByPrimitive(viewer, '/earthquack.geojson', config);
+    addGeojsonByPrimitive(viewer, `${PUBLIC_BASE}earthquack.geojson`, config);
 
     return () => {
       viewer?.destroy();

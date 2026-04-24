@@ -7,7 +7,7 @@ order: 14
 
 # @gaea-explorer/uav
 
-UAV（无人机）相关功能组件，提供第一视角同步 Widget。
+UAV（无人机）相关功能组件，提供第一视角同步 Widget 和航线绘制功能。
 
 ## 安装
 
@@ -35,6 +35,59 @@ const povWidget = new POVWidget(viewer, {
 });
 ```
 
+### UAVLineDrawer
+
+`UAVLineDrawer` 提供无人机航线绘制功能，支持：
+- 固定高度或动态高度函数
+- 相对地形高度或绝对高度模式
+- 每个节点自动生成下垂虚线指向地表
+- 绘制完成后支持编辑节点位置和高度
+
+```typescript
+import { UAVLineDrawer, EditableUAVLine, Editor } from '@gaea-explorer/uav';
+
+// 创建航线绘制器
+const drawer = new UAVLineDrawer(viewer);
+
+// 固定高度绘制
+drawer.start({
+  height: 100,                          // 固定高度 100m
+  heightMode: 'RELATIVE_TO_GROUND',     // 相对地形高度
+  showDropLines: true,                  // 显示下垂线
+  onEnd: (entity, positions, groundPositions) => {
+    console.log('航线绘制完成');
+
+    // 进入编辑模式
+    editor.startEdit(entity, {
+      onEditing: (params) => {
+        console.log('节点信息:', params.nodes);
+      },
+    });
+  },
+});
+
+// 动态高度绘制（阶梯高度）
+drawer.start({
+  height: (index, positions) => 50 + index * 30, // 阶梯高度
+  heightMode: 'RELATIVE_TO_GROUND',
+  showDropLines: true,
+});
+
+// 编辑节点高度
+const editableShape = editor['_editableShape'];
+if (editableShape instanceof EditableUAVLine) {
+  editableShape.setNodeHeight(0, 200); // 设置第一个节点高度为 200m
+}
+```
+
+## 示例
+
+### 航线绘制
+
+以下示例展示无人机航线绘制功能，包括固定高度、阶梯高度、递减高度三种模式，以及节点高度编辑。
+
+<code src="@/components/Map/uav-line/index.tsx"></code>
+
 ## API
 
 ### POVWidgetOptions
@@ -56,6 +109,50 @@ const povWidget = new POVWidget(viewer, {
 - `destroy()` - 销毁 Widget
 - `povViewer` - 获取内部 Viewer（用于调试）
 - `isDestroyed` - 是否已销毁
+
+### UAVLineStartOptions
+
+| 参数 | 类型 | 默认值 | 描述 |
+|---|---|---|---|
+| `height` | `number \| HeightFunction` | `100` | 固定高度值(m)或高度计算函数 |
+| `heightMode` | `'RELATIVE_TO_GROUND' \| 'ABSOLUTE'` | `'RELATIVE_TO_GROUND'` | 高度模式 |
+| `showDropLines` | `boolean` | `true` | 是否显示下垂线 |
+| `finalOptions` | `PolylineGraphics.ConstructorOptions` | - | 最终航线样式 |
+| `dynamicOptions` | `PolylineGraphics.ConstructorOptions` | - | 动态绘制时的样式 |
+| `dropLineOptions` | `PolylineGraphics.ConstructorOptions` | - | 下垂线样式 |
+| `onEnd` | `(entity, positions, groundPositions) => void` | - | 结束绘制回调 |
+
+### HeightFunction
+
+高度计算函数签名：
+
+```typescript
+type HeightFunction = (index: number, groundPositions: Cartesian3[]) => number;
+```
+
+- `index` - 当前节点序号
+- `groundPositions` - 当前所有地表位置数组
+- 返回值 - 该节点的飞行高度(m)
+
+### UAVLineDrawer 方法
+
+| 方法 | 描述 |
+|---|---|
+| `start(options)` | 开始绘制航线 |
+| `pause()` | 暂停绘制 |
+| `reset()` | 重置并清除已绘制内容 |
+| `destroy()` | 销毁绘制器 |
+| `lineEntity` | 获取航线实体 |
+| `groundPositions` | 获取地表位置数组 |
+| `dropLineEntities` | 获取下垂线实体数组 |
+
+### EditableUAVLine 方法
+
+| 方法 | 描述 |
+|---|---|
+| `setNodeHeight(index, height)` | 设置指定节点的高度 |
+| `nodes` | 获取所有节点信息（含位置、地表位置、高度） |
+| `dropLineEntities` | 获取下垂线实体数组 |
 
 ## 场景示例
 
