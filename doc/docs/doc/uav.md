@@ -56,7 +56,7 @@ drawer.start({
   showDropLines: true,                  // 显示下垂线
   onEnd: (entity, positions, groundPositions) => {
     console.log('航线绘制完成');
-    
+
     // 进入编辑模式
     editor.startEdit(entity, {
       onEditing: (params) => {
@@ -104,7 +104,7 @@ if (editableShape instanceof EditableUAVLine) {
 | `smoothing` | `number` | `0.15` | 平滑跟随系数，0~1，值越大跟随越快 |
 | `container` | `Element` | `viewer.container` | 自定义容器 |
 
-### POVWidget 方法
+### 方法
 
 - `destroy()` - 销毁 Widget
 - `povViewer` - 获取内部 Viewer（用于调试）
