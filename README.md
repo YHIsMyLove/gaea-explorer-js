@@ -27,22 +27,46 @@ npm install @gaea-explorer/gaea-explorer-js --save
 
 gaea-explorer-js 提供了以下功能：
 
-- 事件订阅 `@gaea-explorer/subscriber` - [npm](https://www.npmjs.com/package/@gaea-explorer/subscriber)
-- primitive 方式加速渲染 geojson `@gaea-explorer/primitive-geojson` - [npm](https://www.npmjs.com/package/@gaea-explorer/primitive-geojson)
-- 丰富的 geojson 样式渲染 `@gaea-explorer/geojson-render` - [npm](https://www.npmjs.com/package/@gaea-explorer/geojson-render)
-- tooltip `@gaea-explorer/tooltip` - [npm](https://www.npmjs.com/package/@gaea-explorer/tooltip)
-- 弹出框 `@gaea-explorer/popup` - [npm](https://www.npmjs.com/package/@gaea-explorer/popup)
-- 指南针 `@gaea-explorer/compass` - [npm](https://www.npmjs.com/package/@gaea-explorer/compass)
-- 缩放控制 `@gaea-explorer/zoom-control` - [npm](https://www.npmjs.com/package/@gaea-explorer/zoom-control)
-- 绘图工具 `@gaea-explorer/drawer` - [npm](https://www.npmjs.com/package/@gaea-explorer/drawer)
-- 测量工具 `@gaea-explorer/measure` - [npm](https://www.npmjs.com/package/@gaea-explorer/measure)
-- 双屏联动工具 `@gaea-explorer/sync-viewer` - [npm](https://www.npmjs.com/package/@gaea-explorer/sync-viewer)
-- 热力图 `@gaea-explorer/heat` - [npm](https://www.npmjs.com/package/@gaea-explorer/heat)
-- 无人机视角 `@gaea-explorer/uav` - [npm](https://www.npmjs.com/package/@gaea-explorer/uav)
-- 自定义 Graphics 扩展 `@gaea-explorer/graphics-extends` - [npm](https://www.npmjs.com/package/@gaea-explorer/graphics-extends)
-- 公共工具 `@gaea-explorer/common` - [npm](https://www.npmjs.com/package/@gaea-explorer/common)
+| 包名 | 说明 | npm |
+| --- | --- | --- |
+| `@gaea-explorer/subscriber` | 统一的 Cesium 鼠标/屏幕事件管理层 | [npm](https://www.npmjs.com/package/@gaea-explorer/subscriber) |
+| `@gaea-explorer/common` | Widget 基类、DomUtil 工具 | [npm](https://www.npmjs.com/package/@gaea-explorer/common) |
+| `@gaea-explorer/primitive-geojson` | Primitive API 高性能 GeoJSON 渲染 | [npm](https://www.npmjs.com/package/@gaea-explorer/primitive-geojson) |
+| `@gaea-explorer/geojson-render` | GeoJSON 深度样式渲染引擎 | [npm](https://www.npmjs.com/package/@gaea-explorer/geojson-render) |
+| `@gaea-explorer/tooltip` | 固定位置/鼠标跟随提示框 | [npm](https://www.npmjs.com/package/@gaea-explorer/tooltip) |
+| `@gaea-explorer/popup` | 地理坐标锚定 HTML 弹窗 | [npm](https://www.npmjs.com/package/@gaea-explorer/popup) |
+| `@gaea-explorer/compass` | 3D 指南针导航组件 | [npm](https://www.npmjs.com/package/@gaea-explorer/compass) |
+| `@gaea-explorer/zoom-control` | 缩放控制组件 | [npm](https://www.npmjs.com/package/@gaea-explorer/zoom-control) |
+| `@gaea-explorer/drawer` | 交互式矢量绘制和编辑（点、线、面、圆、矩形） | [npm](https://www.npmjs.com/package/@gaea-explorer/drawer) |
+| `@gaea-explorer/measure` | 距离/面积测量工具 | [npm](https://www.npmjs.com/package/@gaea-explorer/measure) |
+| `@gaea-explorer/sync-viewer` | 双视图同步联动 | [npm](https://www.npmjs.com/package/@gaea-explorer/sync-viewer) |
+| `@gaea-explorer/heat` | 热力图图层 | [npm](https://www.npmjs.com/package/@gaea-explorer/heat) |
+| `@gaea-explorer/uav` | 无人机第一人称视角和航线绘制 | [npm](https://www.npmjs.com/package/@gaea-explorer/uav) |
+| `@gaea-explorer/graphics-extends` | Cesium Graphics 扩展（Frustum 视锥体等） | [npm](https://www.npmjs.com/package/@gaea-explorer/graphics-extends) |
 
 详细信息及 demo，请参阅 [API 文档](https://yhismylove.github.io/gaea-explorer-js/)。
+
+## 开发
+
+```bash
+# 安装依赖
+pnpm install
+
+# 构建
+pnpm build
+
+# 代码检查
+pnpm lint
+
+# 自动修复
+pnpm lint:fix --unsafe
+
+# 运行测试
+pnpm test
+
+# 启动文档站
+pnpm dev
+```
 
 ## 示例
 

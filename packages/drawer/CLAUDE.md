@@ -8,8 +8,9 @@
 - `src/painter.ts` — 绘制状态机，管理绘制生命周期
 - `src/base.ts` — 绘制基类 BasicGraphices
 - `src/utils.ts` — `pickCartesian3` 屏幕坐标拾取工具
-- `src/shape/` — 各形状实现：circle, line, point, polygon, rectangle
-- `src/editor/` — 编辑器核心 + `editable/` 下各形状的编辑实现
+- `src/shape/` — 各形状绘制实现：circle, line, point, polygon, rectangle
+- `src/editor/` — Editor 编辑器类 + `detect.ts` 自动检测 Entity 可编辑类型
+  - `editable/` — 各形状编辑策略：point, polyline, polygon, circle（均继承 EditableShape 基类）
 - `src/typings.ts` — DrawOption, StartOption, OperationType 等类型定义
 
 ## Notes
