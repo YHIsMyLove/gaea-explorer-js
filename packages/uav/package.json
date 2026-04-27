@@ -1,6 +1,6 @@
 {
   "name": "@gaea-explorer/uav",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@gaea-explorer/common": "1.0.0",
-    "@gaea-explorer/drawer": "workspace:*",
-    "@gaea-explorer/graphics-extends": "workspace:*",
-    "@gaea-explorer/subscriber": "workspace:*",
-    "@gaea-explorer/tooltip": "workspace:*"
+    "@gaea-explorer/drawer": "1.1.0",
+    "@gaea-explorer/graphics-extends": "1.1.0",
+    "@gaea-explorer/subscriber": "1.0.0",
+    "@gaea-explorer/tooltip": "1.0.0"
   }
 }
