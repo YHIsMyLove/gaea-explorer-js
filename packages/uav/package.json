@@ -22,6 +22,7 @@
     "first-person-view",
     "drone"
   ],
+  "description": "UAV first-person POV view and flight line drawing for Cesium",
   "author": "",
   "license": "MIT",
   "peerDependencies": {

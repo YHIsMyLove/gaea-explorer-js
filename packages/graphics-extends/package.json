@@ -22,6 +22,7 @@
     "frustum",
     "entity"
   ],
+  "description": "Cesium Graphics extensions (Frustum, etc.) for Entity visualization",
   "author": "",
   "license": "MIT",
   "peerDependencies": {
