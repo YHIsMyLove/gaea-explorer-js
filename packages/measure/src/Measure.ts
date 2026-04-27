@@ -52,6 +52,7 @@ export type MeasureOptions = {
     scale?: number;
     scaleByDistance?: NearFarScalar;
     heightReference?: HeightReference;
+    disableDepthTestDistance?: number;
   };
   /** defaults to kilometers */
   units?: MeasureUnits;
@@ -94,6 +95,7 @@ const DefaultOptions: MeasureOptions = {
     scale: 1,
     scaleByDistance: new NearFarScalar(1, 0.85, 8.0e6, 0.75),
     heightReference: HeightReference.CLAMP_TO_GROUND,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
 };
 
