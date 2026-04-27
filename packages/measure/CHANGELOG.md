@@ -1,3 +1,10 @@
+# @gaea-explorer/measure [1.2.0](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/measure@1.1.0...@gaea-explorer/measure@1.2.0) (2026-04-27)
+
+
+### Features
+
+* graphics-extends, uav, measure enhancements and UAV line drawing ([#15](https://github.com/YHIsMyLove/gaea-explorer-js/issues/15)) ([7d300da](https://github.com/YHIsMyLove/gaea-explorer-js/commit/7d300da55384cbbe24e9b94fd65b42daefa7e5dd))
+
 # @gaea-explorer/measure [1.1.0](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/measure@1.0.0...@gaea-explorer/measure@1.1.0) (2026-04-24)
 
 
