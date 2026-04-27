@@ -11,7 +11,7 @@
 - `compass/` — 3D 指南针导航组件（依赖 common）
 - `zoom-controller/` — 缩放控制组件（依赖 common）
 - `drawer/` — 矢量绘制和编辑工具（依赖 subscriber, tooltip）
-- `measure/` — 距离/面积测量工具（依赖 drawer, subscriber, tooltip）
+- `measure/` — 距离/面积/高度/三角测量工具（依赖 drawer, subscriber, tooltip）
 - `primitive-geojson/` — 高性能 GeoJSON Primitive 渲染（无内部依赖）
 - `geojson-render/` — GeoJSON 样式渲染引擎（依赖 primitive-geojson）
 - `graphics-extends/` — Cesium Graphics 扩展如 Frustum（依赖 subscriber）

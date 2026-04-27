@@ -19,7 +19,7 @@
     "cesium",
     "popup"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

@@ -22,7 +22,7 @@
     "frustum",
     "entity"
   ],
-  "author": "",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

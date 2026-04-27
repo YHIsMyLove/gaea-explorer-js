@@ -22,7 +22,7 @@
     "first-person-view",
     "drone"
   ],
-  "author": "",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

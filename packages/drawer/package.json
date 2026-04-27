@@ -20,7 +20,7 @@
     "cesium",
     "drawer"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

@@ -20,7 +20,7 @@
     "plugin",
     "extends"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

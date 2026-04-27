@@ -20,7 +20,7 @@
     "widget",
     "tooltip"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

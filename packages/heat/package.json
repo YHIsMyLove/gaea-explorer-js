@@ -19,7 +19,7 @@
     "cesium",
     "heatMap"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"

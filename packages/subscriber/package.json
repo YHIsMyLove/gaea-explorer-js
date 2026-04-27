@@ -19,7 +19,7 @@
     "cesium",
     "subscriber"
   ],
-  "author": "hongfaqiu",
+  "author": "DannyJones",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
