@@ -1,3 +1,21 @@
+# @gaea-explorer/gaea-explorer-js [1.1.0](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/gaea-explorer-js@1.0.1...@gaea-explorer/gaea-explorer-js@1.1.0) (2026-04-27)
+
+
+### Features
+
+* UAV line drawing, drawer improvements, and code quality fixes ([#13](https://github.com/YHIsMyLove/gaea-explorer-js/issues/13)) ([84f74d1](https://github.com/YHIsMyLove/gaea-explorer-js/commit/84f74d18d39635c530c72e623069376368a6592d))
+
+
+
+
+
+### Dependencies
+
+* **@gaea-explorer/uav:** upgraded to 1.1.0
+* **@gaea-explorer/graphics-extends:** upgraded to 1.1.0
+* **@gaea-explorer/measure:** upgraded to 1.2.0
+* **@gaea-explorer/sync-viewer:** upgraded to 1.1.0
+
 ## @gaea-explorer/gaea-explorer-js [1.0.1](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/gaea-explorer-js@1.0.0...@gaea-explorer/gaea-explorer-js@1.0.1) (2026-04-16)
 
 
