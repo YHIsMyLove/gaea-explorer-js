@@ -1,6 +1,6 @@
 {
   "name": "@gaea-explorer/graphics-extends",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -29,7 +29,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@gaea-explorer/subscriber": "workspace:*",
+    "@gaea-explorer/subscriber": "1.0.0",
     "cesium": "^1.125.0"
   }
 }
