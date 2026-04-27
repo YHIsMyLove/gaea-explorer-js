@@ -1,3 +1,10 @@
+# @gaea-explorer/sync-viewer [1.1.0](https://github.com/YHIsMyLove/gaea-explorer-js/compare/@gaea-explorer/sync-viewer@1.0.0...@gaea-explorer/sync-viewer@1.1.0) (2026-04-27)
+
+
+### Features
+
+* UAV line drawing, drawer improvements, and code quality fixes ([#13](https://github.com/YHIsMyLove/gaea-explorer-js/issues/13)) ([84f74d1](https://github.com/YHIsMyLove/gaea-explorer-js/commit/84f74d18d39635c530c72e623069376368a6592d))
+
 # @gaea-explorer/sync-viewer 1.0.0 (2026-04-16)
 
 
